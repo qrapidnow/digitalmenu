@@ -32,8 +32,8 @@ body {
 
 .cart-button {
   padding: 10px;
-  background-color: #00BF63;
-  color: white;
+  background-color: #fff;
+  color: #00BF63;
   border: none;
   border-radius: 5px;
   cursor: pointer;

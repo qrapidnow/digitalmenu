@@ -17,15 +17,15 @@ const App = () => {
 
   useEffect(() => {
     const backendApiUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
-
+  
     const fetchUsersAndToken = async () => {
       try {
-        const usersResponse = await axios.get(${backendApiUrl}/users);
+        const usersResponse = await axios.get(`${backendApiUrl}/users`);
         console.log('Users response:', usersResponse.data);
         const users = usersResponse.data;
         if (users && users.length > 0) {
           const firstUserId = users[0]._id;
-          const tokenResponse = await axios.get(${backendApiUrl}/token/${firstUserId});
+          const tokenResponse = await axios.get(`${backendApiUrl}/token/${firstUserId}`);
           console.log('Token response:', tokenResponse.data);
           const token = tokenResponse.data.token;
           if (token) {
@@ -44,14 +44,14 @@ const App = () => {
         console.error('Error fetching users or token:', error);
       }
     };
-
+  
     fetchUsersAndToken();
   }, []);
-
+  
   const fetchRestaurant = async (token) => {
     try {
-      const response = await axios.get(${import.meta.env.VITE_APP_BASE_BACKEND_API}/restaurants, {
-        headers: { Authorization: Bearer ${token} }
+      const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/restaurants`, {
+        headers: { Authorization: `Bearer ${token}` }
       });
       console.log('Fetched restaurant data:', response.data);
       setRestaurantName(response.data.name);
@@ -61,7 +61,35 @@ const App = () => {
       console.error('Error fetching restaurant data:', error);
     }
   };
-
+  
+  const handleSubmitOrder = async (event) => {
+    event.preventDefault();
+  
+    const orderData = {
+      name,
+      whatsapp,
+      items: cartItems.map(item => ({
+        name: item.name,
+        price: item.price,
+      })),
+    };
+  
+    console.log('Environment Variable:', import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API); // Log the environment variable
+  
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API}/orders`,
+        orderData
+      );
+      console.log('Order saved:', response.data);
+      alert('Order placed successfully!');
+      setShowPlaceOrderPage(false); // Close the order page
+    } catch (error) {
+      console.error('Error saving order:', error);
+      alert('Failed to place the order. Please try again.');
+    }
+  };
+  
   const addItem = (item) => {
     setCart((prevCart) => [...prevCart, item]);
     updateItemCount(item.id, 1);

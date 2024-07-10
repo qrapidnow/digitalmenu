@@ -8,7 +8,7 @@
   margin-bottom: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 100%; /* Ensure food-item-card takes full width */
+  width: 100%;
 }
 
 .food-item-summary {
@@ -22,8 +22,8 @@
   color: #333;
   margin: 0;
   font-weight: bold;
-  flex: 1; /* Ensure it takes up available space */
-  margin-right: 20px; /* Add space between title and price */
+  flex: 1;
+  margin-right: 20px;
 }
 
 .food-item-price {

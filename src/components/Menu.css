@@ -1,22 +1,21 @@
  
+ 
 .menu {  
-  display: flex;  
-  flex-direction: column;  
-  align-items: stretch;  
-  background-color: #fff;  
-  width: 100%; /* Remove max-width: 1200px */  
+  box-sizing: border-box;  
+  width: 100%;  
   padding: 0 10px;  
 }  
   
 .menu-section {  
+  box-sizing: border-box;  
   width: 100%;  
-  margin-bottom: 20px;  
   padding: 10px;  
+  margin-bottom: 20px;  
   border: 1px solid #ddd;  
   border-radius: 10px;  
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);  
-  /* Remove max-width: 1200px */  
 }  
+
   
 .menu h2 {  
   font-weight: bold;  
@@ -41,12 +40,15 @@
   width: 100%;  
 }  
   
+ 
 @media (max-width: 768px) {  
- .menu h2 {  
-    font-size: 1.5rem;  
-  }  
- .menu-items {  
-    flex-direction: column;  
-    align-items: stretch;  
-  }  
-}  
+  .menu {  
+     width: 100vw; /* Set width to full viewport width */  
+     padding: 0; /* Remove padding to make it full-width */  
+   }  
+  .menu-section {  
+     width: 100vw; /* Set width to full viewport width */  
+     padding: 10px; /* Keep padding for inner content */  
+   }  
+ }  
+ 

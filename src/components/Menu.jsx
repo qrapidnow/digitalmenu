@@ -33,10 +33,7 @@ const Menu = ({ addItem, updateItemCount, activeCategory }) => {
             return {
               id: category._id,
               title: category.name,
-              items: itemsResponse.data.map(item => ({
-                ...item,
-                image: `${import.meta.env.VITE_APP_BASE_BACKEND_API}/uploads/${item.image}`
-              }))
+              items: itemsResponse.data
             };
           })
         );

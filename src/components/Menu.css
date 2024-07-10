@@ -43,6 +43,10 @@
 }
 
 @media (max-width: 768px) {
+  .menu-section {
+    padding: 0 10px;
+  }
+
   .menu h2 {
     font-size: 1.5rem;
   }

@@ -35,12 +35,11 @@ body {
   background-color: #fff;
   fill: #00BF63;
   border: none;
+  border-color: #00BF63;
   border-radius: 5px;
   cursor: pointer;
 }
-.cart-button i {
-  color:#00BF63 ; /* Ensures the font icon color is white */
-}
+
 .view-order-bar {
   position: fixed;
   bottom: 20px;

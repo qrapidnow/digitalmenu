@@ -33,7 +33,7 @@ body {
 .cart-button {
   padding: 10px;
   background-color: #fff;
-  color: #00BF63;
+  fill: #00BF63;
   border: none;
   border-radius: 5px;
   cursor: pointer;

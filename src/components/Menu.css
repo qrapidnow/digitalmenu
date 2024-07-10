@@ -3,18 +3,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #fff;
 }
 
 .menu-section {
   width: 100%;
   max-width: 1200px;
   margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .menu h2 {
   font-weight: bold;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   border-bottom: 2px solid #00BF63;
   padding-bottom: 5px;
   width: 100%;
@@ -22,24 +27,14 @@
 }
 
 .menu-items-container {
-  margin-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  margin-top: 10px;
 }
 
 .menu-items {
   display: flex;
-  flex-direction: column; /* Ensure items are in a column format */
+  flex-direction: column;
   gap: 10px;
   padding: 5px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.menu-items::-webkit-scrollbar {
-  display: none;
 }
 
 @media (max-width: 768px) {

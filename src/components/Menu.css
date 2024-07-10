@@ -4,7 +4,8 @@
   align-items: stretch; /* Change from center to stretch */
   background-color: #fff;
   width: 100%;
-  padding: 0 10px; /* Add padding to align with the edges */
+  padding: 0 10px;
+  max-width: 1200px; /* Add padding to align with the edges */
 }
 
 .menu-section {

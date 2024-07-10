@@ -20,7 +20,7 @@ const App = () => {
   
     const fetchUsersAndToken = async () => {
       try {
-        const usersResponse = await axios.get(`${backendApiUrl}users`);
+        const usersResponse = await axios.get(`${backendApiUrl}/users`);
         console.log('Users response:', usersResponse.data);
         const users = usersResponse.data;
         if (users && users.length > 0) {

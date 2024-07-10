@@ -1,52 +1,52 @@
-.menu {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch; /* Change from center to stretch */
-  background-color: #fff;
-  width: 100%;
-  padding: 0 10px;
-  max-width: 1200px; /* Add padding to align with the edges */
-}
-
-.menu-section {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.menu h2 {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #00BF63;
-  padding-bottom: 5px;
-  width: 100%;
-  text-align: center;
-}
-
-.menu-items-container {
-  margin-top: 10px;
-  width: 100%;
-}
-
-.menu-items {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 5px;
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .menu h2 {
-    font-size: 1.5rem;
-  }
-
-  .menu-items {
-    flex-direction: column;
-    align-items: stretch; /* Change from center to stretch */
-  }
-}
+ 
+.menu {  
+  display: flex;  
+  flex-direction: column;  
+  align-items: stretch;  
+  background-color: #fff;  
+  width: 100%; /* Remove max-width: 1200px */  
+  padding: 0 10px;  
+}  
+  
+.menu-section {  
+  width: 100%;  
+  margin-bottom: 20px;  
+  padding: 10px;  
+  border: 1px solid #ddd;  
+  border-radius: 10px;  
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);  
+  /* Remove max-width: 1200px */  
+}  
+  
+.menu h2 {  
+  font-weight: bold;  
+  color: #333;  
+  margin-bottom: 10px;  
+  border-bottom: 2px solid #00BF63;  
+  padding-bottom: 5px;  
+  width: 100%;  
+  text-align: center;  
+}  
+  
+.menu-items-container {  
+  margin-top: 10px;  
+  width: 100%;  
+}  
+  
+.menu-items {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 10px;  
+  padding: 5px;  
+  width: 100%;  
+}  
+  
+@media (max-width: 768px) {  
+ .menu h2 {  
+    font-size: 1.5rem;  
+  }  
+ .menu-items {  
+    flex-direction: column;  
+    align-items: stretch;  
+  }  
+}  

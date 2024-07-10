@@ -1,67 +1,71 @@
-.food-item-card {
-  display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-}
 
-.food-item-summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Align items center to ensure vertical alignment */
-  padding: 10px;
-}
-
-.food-item-title {
-  font-size: 1.2rem;
-  color: #333;
-  margin: 0;
-  font-weight: bold;
-  flex-grow: 1; /* Ensure it takes up available space */
-  text-align: left; /* Align text to the left */
-}
-
-.food-item-price {
-  font-size: 1rem;
-  color: #e94b3c;
-  font-weight: bold;
-  margin: 0;
-  text-align: right; /* Align text to the right */
-}
-
-.food-item-expanded-content {
-  padding: 10px;
-  background-color: #f8f8f8;
-  border-top: 1px solid #e0e0e0;
-  display: flex;
-  flex-direction: column;
-}
-
-.food-item-description {
-  font-size: 0.9rem;
-  color: #666;
-  margin: 0;
-}
-
-.food-item-weight {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 5px;
-}
-
-.add-button {
-  padding: 8px 12px;
-  background-color: #00BF63;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 10px;
-}
+  
+/* fooditemcard.css */  
+  
+.food-item-card {  
+  display: flex;  
+  flex-direction: column;  
+  background-color: #ffffff;  
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);  
+  border-radius: 10px;  
+  overflow: hidden;  
+  margin-bottom: 20px;  
+  cursor: pointer;  
+  transition: all 0.3s ease;  
+  width: 100%; /* Remove max-width: 1200px */  
+}  
+  
+.food-item-summary {  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+  padding: 10px;  
+}  
+  
+.food-item-title {  
+  font-size: 1.2rem;  
+  color: #333;  
+  margin: 0;  
+  font-weight: bold;  
+  flex-grow: 1;  
+  text-align: left;  
+}  
+  
+.food-item-price {  
+  font-size: 1rem;  
+  color: #e94b3c;  
+  font-weight: bold;  
+  margin: 0;  
+  text-align: right;  
+}  
+  
+.food-item-expanded-content {  
+  padding: 10px;  
+  background-color: #f8f8f8;  
+  border-top: 1px solid #e0e0e0;  
+  display: flex;  
+  flex-direction: column;  
+}  
+  
+.food-item-description {  
+  font-size: 0.9rem;  
+  color: #666;  
+  margin: 0;  
+}  
+  
+.food-item-weight {  
+  font-size: 0.9rem;  
+  color: #666;  
+  margin-top: 5px;  
+}  
+  
+.add-button {  
+  padding: 8px 12px;  
+  background-color: #00BF63;  
+  color: white;  
+  border: none;  
+  border-radius: 5px;  
+  cursor: pointer;  
+  font-size: 1rem;  
+  margin-top: 10px;  
+}  

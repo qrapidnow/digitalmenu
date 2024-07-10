@@ -28,7 +28,6 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 20px 0;
-  padding: 0 10px; /* Add padding to align with the edges */
 }
 
 .cart-button {
@@ -40,6 +39,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
+
 
 .view-order-bar {
   position: fixed;

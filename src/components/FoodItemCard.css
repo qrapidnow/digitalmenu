@@ -14,6 +14,7 @@
 .food-item-summary {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Align items center to ensure vertical alignment */
   padding: 10px;
 }
 
@@ -22,8 +23,8 @@
   color: #333;
   margin: 0;
   font-weight: bold;
-  flex: 1;
-  margin-right: 20px;
+  flex-grow: 1; /* Ensure it takes up available space */
+  text-align: left; /* Align text to the left */
 }
 
 .food-item-price {
@@ -31,6 +32,7 @@
   color: #e94b3c;
   font-weight: bold;
   margin: 0;
+  text-align: right; /* Align text to the right */
 }
 
 .food-item-expanded-content {

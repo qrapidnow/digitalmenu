@@ -2,12 +2,12 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 1000px;
+  max-width: calc(100% - 50px); /* Adjust width to fit alongside the cart button */
 }
 
 .search-bar-input {
   width: 100%;
-  max-width: calc(100% - 40px); /* Adjust width to fit alongside the cart button */
+  max-width: calc(100% - 50px); /* Adjust width to fit alongside the cart button */
   padding: 10px 15px;
   border: 2px solid #00BF63;
   border-radius: 25px;

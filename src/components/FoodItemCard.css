@@ -8,8 +8,7 @@
   margin-bottom: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 100%;
-  max-width: 800px; /* Increased width */
+  width: 100%; /* Ensure food-item-card takes full width */
 }
 
 .food-item-summary {

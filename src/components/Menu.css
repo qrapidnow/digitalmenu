@@ -32,7 +32,7 @@
 
 .menu-items {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Ensure items are in a column format */
   gap: 10px;
   padding: 5px;
   -webkit-overflow-scrolling: touch;
@@ -43,10 +43,6 @@
 }
 
 @media (max-width: 768px) {
-  .menu-section {
-    padding: 0 10px;
-  }
-
   .menu h2 {
     font-size: 1.5rem;
   }

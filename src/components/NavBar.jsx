@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './NavBar.css';
 
-const Navbar = () => {
+const Navbar = ({ setActiveCategory }) => {
   const [categories, setCategories] = useState([]);
-  const [activeCategory, setActiveCategory] = useState(null);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -33,7 +32,7 @@ const Navbar = () => {
         {categories.map((category) => (
           <li key={category._id}>
             <button
-              className={`category-button ${activeCategory === category._id ? 'active' : ''}`}
+              className="category-button"
               onClick={() => setActiveCategory(category._id)}
             >
               {category.name}

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import './Menu.css';
 import FoodItemCard from './FoodItemCard';
 
-const Menu = ({ addItem, updateItemCount }) => {
+const Menu = ({ addItem, updateItemCount, activeCategory }) => {
   const [sections, setSections] = useState([]);
+  const sectionRefs = useRef({});
 
   useEffect(() => {
     const fetchCategoriesAndItems = async () => {
@@ -28,7 +29,9 @@ const Menu = ({ addItem, updateItemCount }) => {
                 Authorization: `Bearer ${token}`
               }
             });
+            sectionRefs.current[category._id] = React.createRef();
             return {
+              id: category._id,
               title: category.name,
               items: itemsResponse.data.map(item => ({
                 ...item,
@@ -46,10 +49,16 @@ const Menu = ({ addItem, updateItemCount }) => {
     fetchCategoriesAndItems();
   }, []);
 
+  useEffect(() => {
+    if (activeCategory && sectionRefs.current[activeCategory]) {
+      sectionRefs.current[activeCategory].current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [activeCategory]);
+
   return (
     <div className="menu">
       {sections.map((section) => (
-        <div key={section.title} className="menu-section">
+        <div key={section.id} ref={sectionRefs.current[section.id]} className="menu-section">
           <h2>{section.title}</h2>
           <div className="menu-items-container">
             <div className="menu-items">

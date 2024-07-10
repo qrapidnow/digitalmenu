@@ -29,12 +29,14 @@
 
 .menu-items-container {
   margin-top: 10px;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .menu-items {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 2px;
   padding: 5px;
   width: 100%; /* Ensure menu-items take full width */
 }

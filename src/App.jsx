@@ -14,7 +14,6 @@ const App = () => {
   const [foodItemCounts, setFoodItemCounts] = useState({});
   const [restaurantName, setRestaurantName] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [activeCategory, setActiveCategory] = useState(null);
 
   useEffect(() => {
     const backendApiUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
@@ -51,7 +50,7 @@ const App = () => {
 
   const fetchRestaurant = async (token) => {
     try {
-      const response = await axios.get(`${backendApiUrl}/restaurants`, {
+      const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/restaurants`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       console.log('Fetched restaurant data:', response.data);
@@ -103,9 +102,9 @@ const App = () => {
         <SearchBar />
         <button className="cart-button" onClick={handleCartClick}>🛒</button>
       </div>
-      <Navbar setActiveCategory={setActiveCategory} />
+      <Navbar />
       <div className="content-container">
-        <Menu addItem={addItem} updateItemCount={updateItemCount} activeCategory={activeCategory} />
+        <Menu addItem={addItem} updateItemCount={updateItemCount} />
       </div>
       {getTotalItems() > 0 && (
         <div className="view-order-bar" onClick={handleViewOrderClick}>

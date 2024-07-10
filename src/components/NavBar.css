@@ -35,6 +35,6 @@
 }
 
 .category-button.active {
-  background-color: #00BF63;
-  color: #fff;
+  background-color: #fff;
+  color: #00BF63;
 }

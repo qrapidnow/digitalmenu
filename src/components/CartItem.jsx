@@ -32,6 +32,15 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
     }
   };
 
+  const handleQuantityChange = (item, countChange) => {
+    const newQuantity = item.quantity + countChange;
+    if (newQuantity > 0) {
+      updateItemCount(item.id, countChange);
+    } else {
+      removeItem(item);
+    }
+  };
+
   if (showPlaceOrderPage) {
     return (
       <div className="cart-item-container">
@@ -73,6 +82,19 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
                   <h3>{item.name}</h3>
                   <p>₹{item.price}/-</p>
                   <p>Quantity: {item.quantity}</p>
+                  <div className="quantity-controls">
+                    <button
+                      className="quantity-button"
+                      onClick={() => handleQuantityChange(item, -1)}
+                      disabled={item.quantity <= 1}
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button className="quantity-button" onClick={() => handleQuantityChange(item, 1)}>
+                      +
+                    </button>
+                  </div>
                 </div>
                 <button className="delete-button" onClick={() => removeItem(item)}>
                   🗑

@@ -79,25 +79,18 @@ const App = () => {
     setShowCartItem(true);
     setShowPlaceOrderPage(false);
   };
-
+  
   const removeItem = (itemToRemove) => {  
-    setCart((prevCart) => prevCart.filter((item) => item !== itemToRemove));  
+    setCart((prevCart) => prevCart.filter((item) => item!== itemToRemove));  
     updateItemCount(itemToRemove.id, -itemToRemove.quantity);  
     setShowCartItem(true); // Update the cart item count display  
-  };
+};  
+
 
   const updateItemCount = (itemId, countChange) => {
     setFoodItemCounts((prevCounts) => {
       const currentCount = prevCounts[itemId] || 0;
-      const newCount = Math.max(0, currentCount + countChange);
-      const updatedCart = cart.map((item) => {
-        if (item.id === itemId) {
-          return { ...item, quantity: newCount };
-        }
-        return item;
-      });
-      setCart(updatedCart);
-      return { ...prevCounts, [itemId]: newCount };
+      return { ...prevCounts, [itemId]: Math.max(0, currentCount + countChange) };
     });
   };
 
@@ -114,7 +107,7 @@ const App = () => {
       </div>
       <Navbar setActiveCategory={setActiveCategory} /> {/* Added setActiveCategory prop */}
       <div className="content-container">
-        <Menu addItem={addItem} updateItemCount={updateItemCount} activeCategory={activeCategory} />
+      <Menu addItem={addItem} updateItemCount={updateItemCount} activeCategory={activeCategory} />
       </div>
       {getTotalItems() > 0 && (
         <div className="view-order-bar" onClick={handleViewOrderClick}>

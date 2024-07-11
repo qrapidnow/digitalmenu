@@ -79,11 +79,13 @@ const App = () => {
     setShowCartItem(true);
     setShowPlaceOrderPage(false);
   };
+  
+  const removeItem = (itemToRemove) => {  
+    setCart((prevCart) => prevCart.filter((item) => item!== itemToRemove));  
+    updateItemCount(itemToRemove.id, -itemToRemove.quantity);  
+    setShowCartItem(true); // Update the cart item count display  
+};  
 
-  const removeItem = (itemToRemove) => {
-    setCart((prevCart) => prevCart.filter((item) => item !== itemToRemove));
-    updateItemCount(itemToRemove.id, -itemToRemove.quantity);
-  };
 
   const updateItemCount = (itemId, countChange) => {
     setFoodItemCounts((prevCounts) => {

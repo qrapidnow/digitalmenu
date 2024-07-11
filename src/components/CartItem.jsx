@@ -32,6 +32,10 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
     }
   };
 
+  const handleQuantityChange = (item, countChange) => {
+    updateItemCount(item.id, countChange);
+  };
+
   if (showPlaceOrderPage) {
     return (
       <div className="cart-item-container">
@@ -87,7 +91,7 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
                     </button>
                   </div>
                 </div>
-                <button className="delete-button" onClick={() => handleDelete(item)}>
+                <button className="delete-button" onClick={() => removeItem(item)}>
                   🗑
                 </button>
               </div>

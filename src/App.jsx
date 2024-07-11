@@ -64,22 +64,11 @@ const App = () => {
   };
 
   const addItem = (item) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
-      if (existingItem) {
-        return prevCart.map(cartItem =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        );
-      } else {
-        return [...prevCart, { ...item, quantity: 1 }];
-      }
-    });
+    setCart((prevCart) => [...prevCart, item]);
     updateItemCount(item.id, 1);
   };
 
-  const getTotalItems = () => cart.reduce((total, item) => total + item.quantity, 0);
+  const getTotalItems = () => cart.length;
 
   const handleViewOrderClick = () => {
     setShowCartItem(true);
@@ -91,10 +80,10 @@ const App = () => {
     setShowPlaceOrderPage(false);
   };
 
-  const removeItem = (itemToRemove) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== itemToRemove.id));
-    updateItemCount(itemToRemove.id, -itemToRemove.quantity);
-    setShowCartItem(true); // Update the cart item count display
+  const removeItem = (itemToRemove) => {  
+    setCart((prevCart) => prevCart.filter((item) => item !== itemToRemove));  
+    updateItemCount(itemToRemove.id, -itemToRemove.quantity);  
+    setShowCartItem(true); // Update the cart item count display  
   };
 
   const updateItemCount = (itemId, countChange) => {

@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #f9f9f9;
   color: #333;
   line-height: 1.6;
@@ -33,13 +33,12 @@ body {
 .cart-button {
   padding: 10px;
   background-color: #fff;
-  fill: #00BF63;
-  border: none;
-  border-color: #00BF63;
+  fill: #4CAF50;
+  border: 2px solid #4CAF50;
   border-radius: 5px;
   cursor: pointer;
+  color: #4CAF50;
 }
-
 
 .view-order-bar {
   position: fixed;
@@ -48,9 +47,9 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #00BF63;
+  background-color: #4CAF50;
   color: #ffffff;
-  padding: 8px 16px;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,7 +59,7 @@ body {
 }
 
 .order-count {
-  background-color: #009e52;
+  background-color: #388e3c;
   color: #ffffff;
   padding: 6px;
   border-radius: 50%;
@@ -68,7 +67,7 @@ body {
 
 @media (max-width: 768px) {
   .view-order-bar {
-    padding: 6px 12px;
+    padding: 8px 16px;
     width: calc(100% - 20px);
     max-width: none;
   }

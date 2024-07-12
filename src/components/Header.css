@@ -14,28 +14,30 @@ body {
   color: #333;
   text-align: center;
   border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
   position: relative;
   z-index: 1;
 }
 
 .header-title {
-  font-size: 2rem;
+  font-size: 2.5rem; /* Slightly increase font size */
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 10px; /* Adjust margin for better spacing */
   font-family: 'Open Sans', sans-serif; /* Modern, clean font */
   color: #212121;
 }
 
 .header-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #888;
   font-family: 'Open Sans', sans-serif; /* Pairing with a modern sans-serif */
+  margin-bottom: 20px; /* Add bottom margin for spacing */
 }
 
 .header-status {
   font-size: 1rem;
   color: #e94b3c;
-  margin: 15px 0;
+  margin: 10px 0; /* Adjust margin for better spacing */
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -48,17 +50,24 @@ body {
 
 .header-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 12px 24px; /* Increase padding for a better look */
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Slightly increase font size */
   font-family: 'Open Sans', sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add transition for box-shadow */
 }
 
 .header-button:hover {
   background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+/* Focus state for accessibility */
+.header-button:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
 }

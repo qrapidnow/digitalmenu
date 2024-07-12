@@ -9,7 +9,7 @@
   width: 100%;
   max-width: calc(100% - 50px); /* Adjust width to fit alongside the cart button */
   padding: 10px 15px;
-  border: 2px solid #00BF63;
+  border: 2px solid #4CAF50; /* Adjusted border color */
   border-radius: 25px;
   font-size: 1rem;
   color: #333;
@@ -23,7 +23,7 @@
 }
 
 .search-bar-input:focus {
-  border-color: #007f4a;
+  border-color: #388e3c; /* Darker green on focus */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   outline: none;
 }

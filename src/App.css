@@ -105,28 +105,35 @@ body {
 /* Back to Top Button */
 .back-to-top {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
-  width: 50px;
-  height: 50px;
-  background-color: #4CAF50;
-  color: #fff;
+  bottom: 30px; /* Slightly closer to the bottom */
+  right: 30px; /* Slightly closer to the right */
+  width: 60px; /* Slightly larger for better visibility */
+  height: 60px; /* Slightly larger for better visibility */
+  background-color: #43a047; /* Softer green */
+  color: #ffffff;
   border: none;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Added transform transition */
   z-index: 1000;
 }
 
 .back-to-top.show {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0); /* Smooth entrance */
+}
+
+.back-to-top:hover {
+  background-color: #2e7d32; /* Darker green on hover */
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 
 /* Other CSS code remains unchanged */

@@ -1,6 +1,4 @@
 import React from 'react';
-import './BackToTopButton.css';
-
 const BackToTopButton = ({ isVisible }) => {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

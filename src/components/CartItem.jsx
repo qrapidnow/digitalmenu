@@ -56,10 +56,10 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
     <div className="cart-item-container">
       <div className="cart-item">
         <div className="cart-item-header">
-          <h2>CART</h2>
           <button className="back-button" onClick={handleBackToCart}>
             ➜
           </button>
+          <h2>CART</h2>
         </div>
         {totalItems === 0 ? (
           <div className="empty-cart-message">

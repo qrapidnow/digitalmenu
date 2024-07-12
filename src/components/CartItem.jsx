@@ -4,7 +4,6 @@ import PlaceOrderPage from './PlaceOrderPage';
 import AskForBillPage from './AskForBillPage';
 
 const CartItem = ({ cartItems, orderedItems, setCart, removeItem, setShowCartItem, updateItemCount, setShowPlaceOrderPage }) => {
-  const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
   const [showAskForBillPage, setShowAskForBillPage] = useState(false);
 
   const handleBackToCart = () => {

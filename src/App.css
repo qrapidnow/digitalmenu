@@ -21,6 +21,16 @@ body {
   padding: 20px;
 }
 
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .search-cart-container {
   display: flex;
   justify-content: space-between;
@@ -28,6 +38,7 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 20px 0;
+  padding: 10px 20px;
 }
 
 .cart-button {
@@ -63,6 +74,10 @@ body {
   color: #ffffff;
   padding: 6px;
   border-radius: 50%;
+}
+
+.content-container {
+  margin-top: 160px; /* Adjust according to the height of the fixed elements */
 }
 
 @media (max-width: 768px) {

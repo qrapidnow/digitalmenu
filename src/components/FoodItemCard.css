@@ -38,7 +38,7 @@
 
 .food-item-price {
   font-size: 1rem; /* Reduced font size */
-  color: #ff9800; /* Brighter orange */
+  color: #66bb6a; /* Greenish price text */
   font-weight: 600; /* Semi-bold font */
   margin: 0;
   text-align: right;
@@ -69,7 +69,7 @@
 
 .add-button {
   padding: 10px 14px; /* Reduced padding */
-  background-color: #ff6600; /* Vibrant orange */
+  background-color: #4caf50; /* Green button */
   color: #fff;
   border: none;
   border-radius: 8px; /* Rounded corners */
@@ -81,13 +81,13 @@
 }
 
 .add-button:hover {
-  background-color: #cc5200; /* Darker orange on hover */
+  background-color: #388e3c; /* Darker green on hover */
   transform: translateY(-2px); /* Slight lift on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow on hover */
 }
 
 /* Focus state for accessibility */
 .add-button:focus {
-  outline: 2px solid #cc5200;
+  outline: 2px solid #388e3c;
   outline-offset: 2px;
 }

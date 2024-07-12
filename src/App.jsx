@@ -9,7 +9,6 @@ import axios from 'axios';
 
 const App = () => {
   const [cart, setCart] = useState([]);
-  const [orderedItems, setOrderedItems] = useState([]);
   const [showCartItem, setShowCartItem] = useState(false);
   const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
   const [foodItemCounts, setFoodItemCounts] = useState({});
@@ -82,22 +81,17 @@ const App = () => {
   };
   
   const removeItem = (itemToRemove) => {  
-    setCart((prevCart) => prevCart.filter((item) => item !== itemToRemove));  
+    setCart((prevCart) => prevCart.filter((item) => item!== itemToRemove));  
     updateItemCount(itemToRemove.id, -itemToRemove.quantity);  
     setShowCartItem(true); // Update the cart item count display  
-  };  
+};  
+
 
   const updateItemCount = (itemId, countChange) => {
     setFoodItemCounts((prevCounts) => {
       const currentCount = prevCounts[itemId] || 0;
       return { ...prevCounts, [itemId]: Math.max(0, currentCount + countChange) };
     });
-  };
-
-  const handlePlaceOrder = () => {
-    setOrderedItems((prevOrderedItems) => [...prevOrderedItems, ...cart]);
-    setCart([]);
-    setShowPlaceOrderPage(false);
   };
 
   if (!isLoggedIn) {
@@ -113,7 +107,7 @@ const App = () => {
       </div>
       <Navbar setActiveCategory={setActiveCategory} /> {/* Added setActiveCategory prop */}
       <div className="content-container">
-        <Menu addItem={addItem} updateItemCount={updateItemCount} activeCategory={activeCategory} />
+      <Menu addItem={addItem} updateItemCount={updateItemCount} activeCategory={activeCategory} />
       </div>
       {getTotalItems() > 0 && (
         <div className="view-order-bar" onClick={handleViewOrderClick}>
@@ -124,18 +118,17 @@ const App = () => {
       {showCartItem && (
         <CartItem
           cartItems={cart}
-          orderedItems={orderedItems}
           setCart={setCart}
           removeItem={removeItem}
           setShowCartItem={setShowCartItem}
           updateItemCount={updateItemCount}
-          setShowPlaceOrderPage={setShowPlaceOrderPage}
         />
       )}
       {showPlaceOrderPage && (
-        <PlaceOrderPage cartItems={cart} setShowPlaceOrderPage={setShowPlaceOrderPage} handlePlaceOrder={handlePlaceOrder} />
+        <PlaceOrderPage cartItems={cart} setShowPlaceOrderPage={setShowPlaceOrderPage} />
       )}
     </div>
   );
 };
+
 export default App;

@@ -3,7 +3,8 @@ import './CartItem.css';
 import PlaceOrderPage from './PlaceOrderPage';
 import AskForBillPage from './AskForBillPage';
 
-const CartItem = ({ cartItems, orderedItems, setCart, removeItem, setShowCartItem, updateItemCount, setShowPlaceOrderPage }) => {
+const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemCount }) => {
+  const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
   const [showAskForBillPage, setShowAskForBillPage] = useState(false);
 
   const handleBackToCart = () => {
@@ -11,10 +12,8 @@ const CartItem = ({ cartItems, orderedItems, setCart, removeItem, setShowCartIte
   };
 
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
-  const totalOrderedItems = orderedItems.reduce((total, item) => total + item.quantity, 0);
 
   const totalAmount = cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
-  const totalOrderedAmount = orderedItems.reduce((total, item) => total + item.quantity * item.price, 0);
 
   const handleAddItems = () => {
     setShowCartItem(false);
@@ -62,53 +61,24 @@ const CartItem = ({ cartItems, orderedItems, setCart, removeItem, setShowCartIte
           </button>
           <h2>CART</h2>
         </div>
-        {totalOrderedItems > 0 && (
-          <div className="ordered-items-section">
-            <h3>Ordered Items</h3>
-            <div className="cart-item-scrollable">
-              {orderedItems.map((item, index) => (
-                <div key={index} className="cart-item-row">
-                  <div className="item-details">
-                    <h3>{item.name}</h3>
-                    <p>₹{item.price}/-</p>
-                    <p>Quantity: {item.quantity}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="totals-container">
-              <div className="totals-column">
-                <h3>Total Ordered Quantity:</h3>
-                <p>{totalOrderedItems}</p>
-              </div>
-              <div className="totals-column">
-                <h3>Total Ordered Amount:</h3>
-                <p>₹{totalOrderedAmount}</p>
-              </div>
-            </div>
-          </div>
-        )}
         {totalItems === 0 ? (
           <div className="empty-cart-message">
             <p>No items added yet. Add items to your cart!</p>
           </div>
         ) : (
-          <div className="new-items-section">
-            <h3>New Items for Ordering</h3>
-            <div className="cart-item-scrollable">
-              {cartItems.map((item, index) => (
-                <div key={index} className="cart-item-row">
-                  <div className="item-details">
-                    <h3>{item.name}</h3>
-                    <p>₹{item.price}/-</p>
-                    <p>Quantity: {item.quantity}</p>
-                  </div>
-                  <button className="delete-button" onClick={() => removeItem(item)}>
-                    🗑
-                  </button>
+          <div className="cart-item-scrollable">
+            {cartItems.map((item, index) => (
+              <div key={index} className="cart-item-row">
+                <div className="item-details">
+                  <h3>{item.name}</h3>
+                  <p>₹{item.price}/-</p>
+                  <p>Quantity: {item.quantity}</p>
                 </div>
-              ))}
-            </div>
+                <button className="delete-button" onClick={() => removeItem(item)}>
+                  🗑
+                </button>
+              </div>
+            ))}
           </div>
         )}
         <div className="cart-item-actions">

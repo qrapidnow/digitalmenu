@@ -136,9 +136,7 @@ body {
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   border-radius: 30px;
-  margin-bottom: 80px; /* Added margin to give space for the back-to-top button */
 }
-
 .back-to-top {
   position: fixed;
   bottom: 90px; /* Adjusted position to be above the View Order bar */

@@ -22,6 +22,12 @@ body {
   padding: 20px;
 }
 
+.header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+}
+
 .search-cart-container {
   display: flex;
   justify-content: space-between;
@@ -29,12 +35,18 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 20px 0;
+  transition: all 0.3s ease;
+}
+
+.search-cart-container.fixed {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   background-color: #fff;
   padding: 10px;
-  z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 .cart-button {
@@ -48,18 +60,25 @@ body {
 }
 
 .navbar {
+  width: 100%;
+  max-width: 1200px;
+  transition: all 0.3s ease;
+}
+
+.navbar.fixed {
   position: fixed;
   top: 60px; /* Adjust based on the height of the search bar */
-  width: 100%;
+  left: 0;
+  right: 0;
   background-color: #fff;
   z-index: 999;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .content-container {
-  margin-top: 120px; /* Adjust based on the combined height of the search bar and navbar */
   width: 100%;
   max-width: 1200px;
+  margin-top: 20px;
 }
 
 .view-order-bar {

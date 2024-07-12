@@ -5,6 +5,7 @@ import SearchBar from './components/SearchBar';
 import Navbar from './components/NavBar';
 import Menu from './components/Menu';
 import CartItem from './components/CartItem';
+import BackToTopButton from './components/BackToTopButton'; // Import the BackToTopButton component
 import axios from 'axios';
 
 const App = () => {
@@ -16,6 +17,8 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isFixed, setIsFixed] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false); // State for Back to Top button visibility
 
   useEffect(() => {
     const backendApiUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
@@ -94,19 +97,44 @@ const App = () => {
     });
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 100) { // Adjust this value as needed
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+      if (offset > 300) { // Show Back to Top button after scrolling down 300px
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   if (!isLoggedIn) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="app">
-      <Header restaurantName={restaurantName} />
-      <div className="search-cart-container">
+      <div className="header-container">
+        <Header restaurantName={restaurantName} />
+      </div>
+      <div className={`search-cart-container ${isFixed ? 'fixed' : ''}`}>
         <SearchBar setSearchTerm={setSearchTerm} />
         <button className="cart-button" onClick={handleCartClick}>🛒</button>
       </div>
-      <Navbar setActiveCategory={setActiveCategory} />
-      <div className="content-container">
+      <div className={`navbar ${isFixed ? 'fixed' : ''}`}>
+        <Navbar setActiveCategory={setActiveCategory} />
+      </div>
+      <div className={`content-container ${isFixed ? 'fixed-margin' : ''}`}>
         <Menu 
           addItem={addItem}
           updateItemCount={updateItemCount}
@@ -132,6 +160,7 @@ const App = () => {
       {showPlaceOrderPage && (
         <PlaceOrderPage cartItems={cart} setShowPlaceOrderPage={setShowPlaceOrderPage} />
       )}
+      <BackToTopButton isVisible={showBackToTop} />
     </div>
   );
 };

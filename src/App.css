@@ -78,7 +78,11 @@ body {
 .content-container {
   width: 100%;
   max-width: 1200px;
-  margin-top: 160px; /* Adjust based on the combined height of the search bar and navbar */
+  margin-top: 20px;
+}
+
+.content-container.fixed-margin {
+  margin-top: 120px; /* Adjust based on the combined height of the search bar and navbar */
 }
 
 .view-order-bar {

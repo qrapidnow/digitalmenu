@@ -127,7 +127,7 @@ const App = () => {
       <div className={`navbar ${isFixed ? 'fixed' : ''}`}>
         <Navbar setActiveCategory={setActiveCategory} />
       </div>
-      <div className="content-container">
+      <div className={`content-container ${isFixed ? 'fixed-margin' : ''}`}>
         <Menu 
           addItem={addItem}
           updateItemCount={updateItemCount}

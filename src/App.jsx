@@ -15,7 +15,7 @@ const App = () => {
   const [restaurantName, setRestaurantName] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
-  const [searchTerm, setSearchTerm] = useState(''); // Add searchTerm state
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const backendApiUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
@@ -80,11 +80,11 @@ const App = () => {
     setShowCartItem(true);
     setShowPlaceOrderPage(false);
   };
-  
-  const removeItem = (itemToRemove) => {  
-    setCart((prevCart) => prevCart.filter((item) => item !== itemToRemove));  
-    updateItemCount(itemToRemove.id, -itemToRemove.quantity);  
-    setShowCartItem(true); // Update the cart item count display  
+
+  const removeItem = (itemToRemove) => {
+    setCart((prevCart) => prevCart.filter((item) => item !== itemToRemove));
+    updateItemCount(itemToRemove.id, -itemToRemove.quantity);
+    setShowCartItem(true);
   };
 
   const updateItemCount = (itemId, countChange) => {
@@ -101,19 +101,17 @@ const App = () => {
   return (
     <div className="app">
       <Header restaurantName={restaurantName} />
-      <div className="fixed-top">
-        <div className="search-cart-container">
-          <SearchBar setSearchTerm={setSearchTerm} />
-          <button className="cart-button" onClick={handleCartClick}>🛒</button>
-        </div>
-        <Navbar setActiveCategory={setActiveCategory} /> {/* Added setActiveCategory prop */}
+      <div className="search-cart-container">
+        <SearchBar setSearchTerm={setSearchTerm} />
+        <button className="cart-button" onClick={handleCartClick}>🛒</button>
       </div>
+      <Navbar setActiveCategory={setActiveCategory} />
       <div className="content-container">
         <Menu 
           addItem={addItem}
           updateItemCount={updateItemCount}
           activeCategory={activeCategory}
-          searchTerm={searchTerm} // Pass searchTerm to Menu
+          searchTerm={searchTerm}
         />
       </div>
       {getTotalItems() > 0 && (

@@ -1,3 +1,4 @@
+/* Global styles */
 * {
   margin: 0;
   padding: 0;
@@ -21,16 +22,6 @@ body {
   padding: 20px;
 }
 
-.fixed-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #ffffff;
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
 .search-cart-container {
   display: flex;
   justify-content: space-between;
@@ -38,7 +29,12 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 20px 0;
-  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  padding: 10px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .cart-button {
@@ -49,6 +45,21 @@ body {
   border-radius: 5px;
   cursor: pointer;
   color: #4CAF50;
+}
+
+.navbar {
+  position: fixed;
+  top: 60px; /* Adjust based on the height of the search bar */
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content-container {
+  margin-top: 120px; /* Adjust based on the combined height of the search bar and navbar */
+  width: 100%;
+  max-width: 1200px;
 }
 
 .view-order-bar {
@@ -74,10 +85,6 @@ body {
   color: #ffffff;
   padding: 6px;
   border-radius: 50%;
-}
-
-.content-container {
-  margin-top: 160px; /* Adjust according to the height of the fixed elements */
 }
 
 @media (max-width: 768px) {

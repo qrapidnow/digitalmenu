@@ -120,9 +120,28 @@ body {
   border-radius: 30px;
 }
 
+.view-order-bar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 500px;
+  background-color: #4CAF50; /* Green background */
+  color: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 30px;
+  margin-bottom: 80px; /* Added margin to give space for the back-to-top button */
+}
+
 .back-to-top {
   position: fixed;
-  bottom: 30px; /* Default position */
+  bottom: 90px; /* Adjusted position to be above the View Order bar */
   right: 30px;
   width: 60px; /* Slightly larger for better visibility */
   height: 60px; /* Slightly larger for better visibility */
@@ -145,10 +164,6 @@ body {
   opacity: 1;
   visibility: visible;
   transform: translateY(0); /* Smooth entrance */
-}
-
-.back-to-top.with-view-order-bar {
-  bottom: 80px; /* Adjusted position to be above the View Order bar */
 }
 
 .back-to-top:hover {

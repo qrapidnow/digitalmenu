@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import './PlaceOrderPage.css';
 
 const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
@@ -32,7 +33,12 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
         { headers: { 'Content-Type': 'application/json' } }
       );
       console.log('Order saved:', response.data);
-      alert('Order placed successfully!');
+      Swal.fire({
+        title: 'Order Placed Successfully!',
+        text: 'Your order has been placed.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
       setShowPlaceOrderPage(false); // Close the order page
     } catch (error) {
       console.error('Error saving order:', error);
@@ -45,7 +51,12 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       } else {
         console.log('Error message:', error.message);
       }
-      alert('Failed to place the order. Please try again.');
+      Swal.fire({
+        title: 'Failed to Place Order',
+        text: 'Please try again.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
     }
   };
 

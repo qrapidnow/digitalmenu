@@ -23,22 +23,22 @@ body {
   font-size: 2rem; /* Reduced font size */
   font-weight: 700; /* Bolder font */
   margin-bottom: 10px; /* Adjusted margin */
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif; /* Distinct font for title */
   color: #2e7d32; /* Dark green title color */
 }
 
 .header-subtitle {
   font-size: 1rem; /* Reduced font size */
   color: #388e3c; /* Green subtitle color */
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Same as body font */
   margin-bottom: 20px; /* Adjusted margin */
 }
 
 .header-status {
   font-size: 0.9rem; /* Reduced font size */
-  color: #e94b3c;
+  color: #ff9800; /* Changed time color to orange */
   margin: 8px 0; /* Adjusted margin */
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Same as body font */
 }
 
 .header-buttons {
@@ -56,7 +56,7 @@ body {
   border: none;
   border-radius: 6px; /* Slightly more rounded corners */
   font-size: 0.9rem; /* Reduced font size */
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Same as body font */
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transition effect */
 }

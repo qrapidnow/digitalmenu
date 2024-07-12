@@ -19,24 +19,24 @@ body {
 }
 
 .header-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 600;
   margin-bottom: 15px;
-  font-family: 'Poppins', sans-serif; /* Modern, clean font */
+  font-family: 'Open Sans', sans-serif; /* Modern, clean font */
   color: #212121;
 }
 
 .header-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #888;
-  font-family: 'Roboto', sans-serif; /* Pairing with a modern sans-serif */
+  font-family: 'Open Sans', sans-serif; /* Pairing with a modern sans-serif */
 }
 
 .header-status {
   font-size: 1rem;
   color: #e94b3c;
   margin: 15px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .header-buttons {
@@ -53,8 +53,8 @@ body {
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 1rem;
-  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  font-family: 'Open Sans', sans-serif;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

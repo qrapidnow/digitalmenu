@@ -3,8 +3,8 @@ import './CartItem.css';
 import PlaceOrderPage from './PlaceOrderPage';
 import AskForBillPage from './AskForBillPage';
 
-const CartItem = ({ cartItems, orderedItems, setCart, removeItem, setShowCartItem, updateItemCount, setShowPlaceOrderPage }) => {
-  const [showPlaceOrderPage, setShowPlaceOrderPageState] = useState(false);
+const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemCount }) => {
+  const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
   const [showAskForBillPage, setShowAskForBillPage] = useState(false);
 
   const handleBackToCart = () => {
@@ -20,7 +20,6 @@ const CartItem = ({ cartItems, orderedItems, setCart, removeItem, setShowCartIte
   };
 
   const handlePlaceOrderPage = () => {
-    setShowPlaceOrderPageState(true);
     setShowPlaceOrderPage(true);
   };
 
@@ -33,14 +32,25 @@ const CartItem = ({ cartItems, orderedItems, setCart, removeItem, setShowCartIte
     }
   };
 
-  const handleQuantityChange = (item, countChange) => {
-    const newQuantity = item.quantity + countChange;
-    if (newQuantity > 0) {
-      updateItemCount(item.id, countChange);
-    } else {
-      removeItem(item);
-    }
-  };
+  if (showPlaceOrderPage) {
+    return (
+      <div className="cart-item-container">
+        <PlaceOrderPage
+          cartItems={cartItems}
+          setShowPlaceOrderPage={setShowPlaceOrderPage}
+        />
+      </div>
+    );
+  }
+
+  if (showAskForBillPage) {
+    return (
+      <AskForBillPage
+        cartItems={cartItems}
+        setShowAskForBillPage={setShowAskForBillPage}
+      />
+    );
+  }
 
   return (
     <div className="cart-item-container">
@@ -51,71 +61,33 @@ const CartItem = ({ cartItems, orderedItems, setCart, removeItem, setShowCartIte
           </button>
           <h2>CART</h2>
         </div>
-        {totalItems === 0 && orderedItems.length === 0 ? (
+        {totalItems === 0 ? (
           <div className="empty-cart-message">
             <p>No items added yet. Add items to your cart!</p>
           </div>
         ) : (
-          <>
-            {orderedItems.length > 0 && (
-              <div className="ordered-items">
-                <h3>Ordered Items:</h3>
-                <div className="cart-item-scrollable">
-                  {orderedItems.map((item, index) => (
-                    <div key={index} className="cart-item-row">
-                      <div className="item-details">
-                        <h3>{item.name}</h3>
-                        <p>₹{item.price}/-</p>
-                        <p>Quantity: {item.quantity}</p>
-                      </div>
-                    </div>
-                  ))}
+          <div className="cart-item-scrollable">
+            {cartItems.map((item, index) => (
+              <div key={index} className="cart-item-row">
+                <div className="item-details">
+                  <h3>{item.name}</h3>
+                  <p>₹{item.price}/-</p>
+                  <p>Quantity: {item.quantity}</p>
                 </div>
+                <button className="delete-button" onClick={() => removeItem(item)}>
+                  🗑
+                </button>
               </div>
-            )}
-            {totalItems > 0 && (
-              <div className="new-items-for-ordering">
-                <h3>New Items for Ordering:</h3>
-                <div className="cart-item-scrollable">
-                  {cartItems.map((item, index) => (
-                    <div key={index} className="cart-item-row">
-                      <div className="item-details">
-                        <h3>{item.name}</h3>
-                        <p>₹{item.price}/-</p>
-                        <p>Quantity: {item.quantity}</p>
-                        <div className="quantity-controls">
-                          <button
-                            className="quantity-button"
-                            onClick={() => handleQuantityChange(item, -1)}
-                            disabled={item.quantity <= 1}
-                          >
-                            -
-                          </button>
-                          <span>{item.quantity}</span>
-                          <button className="quantity-button" onClick={() => handleQuantityChange(item, 1)}>
-                            +
-                          </button>
-                        </div>
-                      </div>
-                      <button className="delete-button" onClick={() => removeItem(item)}>
-                        🗑
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </>
+            ))}
+          </div>
         )}
         <div className="cart-item-actions">
           <button className="action-button" onClick={handleAddItems}>
             Add Items
           </button>
-          {totalItems > 0 && (
-            <button className="action-button" onClick={handlePlaceOrderPage}>
-              Place Order
-            </button>
-          )}
+          <button className="action-button" onClick={handlePlaceOrderPage}>
+            Place Order
+          </button>
           <button className="action-button ask-for-bill-button" onClick={handleAskForBill}>
             Ask For Bill
           </button>

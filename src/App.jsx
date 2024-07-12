@@ -15,6 +15,7 @@ const App = () => {
   const [restaurantName, setRestaurantName] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(''); // Add searchTerm state
 
   useEffect(() => {
     const backendApiUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
@@ -102,12 +103,17 @@ const App = () => {
     <div className="app">
       <Header restaurantName={restaurantName} />
       <div className="search-cart-container">
-        <SearchBar />
-        <button className="cart-button" onClick={handleCartClick}>🛒</button>
+      <SearchBar setSearchTerm={setSearchTerm} /> {/* Pass setSearchTerm to SearchBar */}
+      <button className="cart-button" onClick={handleCartClick}>🛒</button>
       </div>
       <Navbar setActiveCategory={setActiveCategory} /> {/* Added setActiveCategory prop */}
       <div className="content-container">
-      <Menu addItem={addItem} updateItemCount={updateItemCount} activeCategory={activeCategory} />
+      <Menu 
+      addItem={addItem}
+      updateItemCount={updateItemCount}
+      activeCategory={activeCategory}
+      searchTerm={searchTerm} // Pass searchTerm to Menu
+ />
       </div>
       {getTotalItems() > 0 && (
         <div className="view-order-bar" onClick={handleViewOrderClick}>

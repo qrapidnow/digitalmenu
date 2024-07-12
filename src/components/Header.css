@@ -1,6 +1,6 @@
 /* Base Styles */
 body {
-  font-family: 'Poppins', sans-serif; /* Updated to a more modern font */
+  font-family: 'Poppins', sans-serif; /* Modern font */
   margin: 0;
   padding: 0;
   background-color: #f7f7f7;
@@ -9,65 +9,65 @@ body {
 /* Header Styles */
 .header {
   width: 100%;
-  padding: 30px 0; /* Increased padding for a better look */
-  background-color: #f0f0f0; /* Slightly darker background for better contrast */
-  color: #444; /* Darker text for better readability */
+  padding: 20px 0; /* Reduced padding */
+  background-color: #e0f7e9; /* Light green background */
+  color: #444; /* Darker text */
   text-align: center;
-  border-bottom: 1px solid #d0d0d0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+  border-bottom: 1px solid #c0d6c9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
   position: relative;
   z-index: 1;
 }
 
 .header-title {
-  font-size: 2.8rem; /* Increased font size for emphasis */
-  font-weight: 700; /* Bolder font weight */
-  margin-bottom: 15px; /* Adjusted margin */
+  font-size: 2rem; /* Reduced font size */
+  font-weight: 700; /* Bolder font */
+  margin-bottom: 10px; /* Adjusted margin */
   font-family: 'Poppins', sans-serif;
-  color: #1a1a1a; /* Darker title color */
+  color: #2e7d32; /* Dark green title color */
 }
 
 .header-subtitle {
-  font-size: 1.4rem; /* Slightly larger subtitle */
-  color: #555;
+  font-size: 1rem; /* Reduced font size */
+  color: #388e3c; /* Green subtitle color */
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 25px; /* Adjusted margin */
+  margin-bottom: 20px; /* Adjusted margin */
 }
 
 .header-status {
-  font-size: 1.2rem; /* Increased font size */
+  font-size: 0.9rem; /* Reduced font size */
   color: #e94b3c;
-  margin: 12px 0; /* Adjusted margin */
+  margin: 8px 0; /* Adjusted margin */
   font-family: 'Poppins', sans-serif;
 }
 
 .header-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px; /* Increased gap for better spacing */
-  margin-top: 25px;
+  gap: 15px; /* Adjusted gap */
+  margin-top: 15px;
 }
 
 .header-button {
   display: inline-block;
-  padding: 14px 28px; /* Increased padding */
-  background-color: #ff6600; /* Changed to a vibrant orange color */
+  padding: 10px 20px; /* Reduced padding */
+  background-color: #4caf50; /* Green button */
   color: #fff;
   border: none;
   border-radius: 6px; /* Slightly more rounded corners */
-  font-size: 1.1rem; /* Increased font size */
+  font-size: 0.9rem; /* Reduced font size */
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transition effect */
 }
 
 .header-button:hover {
-  background-color: #cc5200; /* Darker orange on hover */
+  background-color: #388e3c; /* Darker green on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 /* Focus state for accessibility */
 .header-button:focus {
-  outline: 2px solid #cc5200;
+  outline: 2px solid #388e3c;
   outline-offset: 2px;
 }

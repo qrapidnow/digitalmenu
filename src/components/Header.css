@@ -3,71 +3,72 @@ body {
   font-family: 'Poppins', sans-serif; /* Modern font */
   margin: 0;
   padding: 0;
-  background-color: #f7f7f7;
+  background-color: #f9f9f9; /* Softer background color */
+  color: #333; /* Slightly darker base text color */
 }
 
 /* Header Styles */
 .header {
   width: 100%;
-  padding: 20px 0; /* Reduced padding */
-  background-color: #e0f7e9; /* Light green background */
-  color: #444; /* Darker text */
+  padding: 15px 0; /* Reduced padding for a sleeker look */
+  background-color: #e8f5e9; /* Light green background */
+  color: #2e7d32; /* Dark green text color */
   text-align: center;
-  border-bottom: 1px solid #c0d6c9;
+  border-bottom: 1px solid #c8e6c9; /* Lighter green border */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
   position: relative;
   z-index: 1;
 }
 
 .header-title {
-  font-size: 2rem; /* Reduced font size */
-  font-weight: 700; /* Bolder font */
-  margin-bottom: 10px; /* Adjusted margin */
+  font-size: 2.5rem; /* Larger font size for prominence */
+  font-weight: 800; /* Extra bold font */
+  margin-bottom: 8px; /* Adjusted margin */
   font-family: 'Montserrat', sans-serif; /* Distinct font for title */
-  color: #2e7d32; /* Dark green title color */
+  color: #1b5e20; /* Darker green title color */
 }
 
 .header-subtitle {
-  font-size: 1rem; /* Reduced font size */
+  font-size: 1.2rem; /* Increased font size for better readability */
   color: #388e3c; /* Green subtitle color */
-  font-family: 'Poppins', sans-serif; /* Same as body font */
-  margin-bottom: 20px; /* Adjusted margin */
+  font-family: 'Roboto', sans-serif; /* Modern and clean font */
+  margin-bottom: 15px; /* Adjusted margin */
 }
 
 .header-status {
-  font-size: 0.9rem; /* Reduced font size */
-  color: #ff9800; /* Changed time color to orange */
-  margin: 8px 0; /* Adjusted margin */
-  font-family: 'Poppins', sans-serif; /* Same as body font */
+  font-size: 1rem; /* Adjusted font size */
+  color: #d32f2f; /* Red color for status to stand out */
+  margin: 10px 0; /* Adjusted margin */
+  font-family: 'Roboto', sans-serif; /* Consistent with subtitle font */
 }
 
 .header-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Adjusted gap */
-  margin-top: 15px;
+  gap: 20px; /* Increased gap for better spacing */
+  margin-top: 20px; /* Adjusted margin */
 }
 
 .header-button {
   display: inline-block;
-  padding: 10px 20px; /* Reduced padding */
-  background-color: #4caf50; /* Green button */
-  color: #fff;
+  padding: 12px 25px; /* Adjusted padding */
+  background-color: #43a047; /* Green button */
+  color: #ffffff; /* White text */
   border: none;
-  border-radius: 6px; /* Slightly more rounded corners */
-  font-size: 0.9rem; /* Reduced font size */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 1rem; /* Standard font size */
   font-family: 'Poppins', sans-serif; /* Same as body font */
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transition effect */
 }
 
 .header-button:hover {
-  background-color: #388e3c; /* Darker green on hover */
+  background-color: #2e7d32; /* Darker green on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 /* Focus state for accessibility */
 .header-button:focus {
-  outline: 2px solid #388e3c;
+  outline: 2px solid #2e7d32;
   outline-offset: 2px;
 }

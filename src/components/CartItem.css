@@ -43,7 +43,7 @@
   border: none;
   font-size: 1.5em;
   cursor: pointer;
-  color: #00bf63;
+  color: #4CAF50;
   transform: rotate(180deg);
 }
 
@@ -92,7 +92,7 @@
 .quantity-button {
   padding: 5px;
   margin: 0 5px;
-  background-color: #00bf63;
+  background-color: #4CAF50;
   color: white;
   border: none;
   cursor: pointer;
@@ -106,7 +106,7 @@
 }
 
 .quantity-button:hover:not(:disabled) {
-  background-color: #008c4a;
+  background-color: #388e3c;
 }
 
 .delete-button {
@@ -134,7 +134,7 @@
   flex-grow: 1;
   padding: 10px 15px;
   margin-right: 10px;
-  background-color: #00bf63;
+  background-color: #4CAF50;
   color: white;
   border: none;
   cursor: pointer;
@@ -148,7 +148,7 @@
 }
 
 .action-button:hover {
-  background-color: #008c4a;
+  background-color: #388e3c;
   transform: translateY(-2px);
 }
 

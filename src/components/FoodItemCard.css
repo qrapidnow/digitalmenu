@@ -4,7 +4,7 @@
 .food-item-card {  
   display: flex;  
   flex-direction: column;  
-  background-color: #fff;  
+  background-color: #f7f7f7; /* light gray background */  
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  
   border-radius: 12px;  
   overflow: hidden;  
@@ -12,6 +12,7 @@
   cursor: pointer;  
   transition: all 0.3s ease;  
   width: 100%;  
+  font-family: 'Montserrat', sans-serif; /* modern sans-serif font */  
 }  
   
 .food-item-summary {  
@@ -19,59 +20,62 @@
   justify-content: space-between;  
   align-items: center;  
   padding: 16px;  
-  border-bottom: 1px solid #f0f0f0;  
+  border-bottom: 1px solid #ddd; /* light gray border */  
 }  
   
 .food-item-title {  
   font-size: 1.4rem;  
-  color: #333;  
+  color: #212121; /* dark gray text */  
   margin: 0;  
-  font-weight: 500;  
+  font-weight: 600; /* semi-bold font weight */  
   flex-grow: 1;  
   text-align: left;  
 }  
   
 .food-item-price {  
   font-size: 1.2rem;  
-  color: #e74c3c;  
-  font-weight: 500;  
+  color: #8bc34a; /* greenish-yellow price text */  
+  font-weight: 600; /* semi-bold font weight */  
   margin: 0;  
   text-align: right;  
 }  
   
 .food-item-expanded-content {  
   padding: 16px;  
-  background-color: #f8f8f8;  
-  border-top: 1px solid #e0e0e0;  
+  background-color: #f8f8f8; /* light gray background */  
+  border-top: 1px solid #e0e0e0; /* light gray border */  
   display: flex;  
   flex-direction: column;  
 }  
   
 .food-item-description {  
   font-size: 1rem;  
-  color: #666;  
+  color: #666; /* dark gray text */  
   margin: 0;  
   margin-bottom: 8px;  
+  font-weight: 400; /* regular font weight */  
 }  
   
 .food-item-weight {  
   font-size: 1rem;  
-  color: #666;  
+  color: #666; /* dark gray text */  
   margin-top: 0;  
+  font-weight: 400; /* regular font weight */  
 }  
   
 .add-button {  
   padding: 12px 16px;  
-  background-color: #34c759;  
-  color: #fff;  
+  background-color: #4CAF50; /* green button color */  
+  color: #fff; /* white text */  
   border: none;  
   border-radius: 8px;  
   cursor: pointer;  
   font-size: 1.2rem;  
   margin-top: 16px;  
   transition: background-color 0.2s ease;  
+  font-weight: 500; /* medium font weight */  
 }  
   
 .add-button:hover {  
-  background-color: #2ecc71;  
+  background-color: #3e8e41; /* darker green hover color */  
 }  

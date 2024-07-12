@@ -52,18 +52,25 @@ const Menu = ({ addItem, updateItemCount, activeCategory, searchTerm }) => {
     }
   }, [activeCategory]);
 
+  const filteredSections = sections
+    .map((section) => ({
+      ...section,
+      items: section.items.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    }))
+    .filter((section) => section.items.length > 0);
+
   return (
     <div className="menu">
-      {sections.map((section) => (
+      {filteredSections.map((section) => (
         <div key={section.id} ref={sectionRefs.current[section.id]} className="menu-section">
           <h2>{section.title}</h2>
           <div className="menu-items-container">
             <div className="menu-items">
-              {section.items
-                .filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase())) // Filter items by search term
-                .map((item) => (
-                  <FoodItemCard key={item._id} item={item} addItem={addItem} updateItemCount={updateItemCount} />
-                ))}
+              {section.items.map((item) => (
+                <FoodItemCard key={item._id} item={item} addItem={addItem} updateItemCount={updateItemCount} />
+              ))}
             </div>
           </div>
         </div>

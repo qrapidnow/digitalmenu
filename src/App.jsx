@@ -16,7 +16,6 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isFixed, setIsFixed] = useState(false);
 
   useEffect(() => {
     const backendApiUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
@@ -95,39 +94,19 @@ const App = () => {
     });
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 100) { // Adjust this value as needed
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   if (!isLoggedIn) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="app">
-      <div className="header-container">
-        <Header restaurantName={restaurantName} />
-      </div>
-      <div className={`search-cart-container ${isFixed ? 'fixed' : ''}`}>
+      <Header restaurantName={restaurantName} />
+      <div className="search-cart-container">
         <SearchBar setSearchTerm={setSearchTerm} />
         <button className="cart-button" onClick={handleCartClick}>🛒</button>
       </div>
-      <div className={`navbar ${isFixed ? 'fixed' : ''}`}>
-        <Navbar setActiveCategory={setActiveCategory} />
-      </div>
-      <div className={`content-container ${isFixed ? 'fixed-margin' : ''}`}>
+      <Navbar setActiveCategory={setActiveCategory} />
+      <div className="content-container">
         <Menu 
           addItem={addItem}
           updateItemCount={updateItemCount}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './PlaceOrderPage.css';
 
-const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
+const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, handleOrderSuccess }) => {
   const [name, setName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [tableNo, setTableNo] = useState('');
@@ -33,6 +33,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       );
       console.log('Order saved:', response.data);
       alert('Order placed successfully!');
+      handleOrderSuccess();
       setShowPlaceOrderPage(false); // Close the order page
     } catch (error) {
       console.error('Error saving order:', error);

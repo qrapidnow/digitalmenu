@@ -5,9 +5,9 @@
   flex-direction: column;
   background-color: #ffffff; /* White background */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 15px; /* More rounded corners */
+  border-radius: 12px; /* Rounded corners */
   overflow: hidden;
-  margin-bottom: 28px; /* Increased bottom margin */
+  margin-bottom: 20px; /* Reduced margin */
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
@@ -15,7 +15,7 @@
 }
 
 .food-item-card:hover {
-  transform: scale(1.05); /* Slightly more enlarge on hover */
+  transform: scale(1.03); /* Slightly enlarge on hover */
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
@@ -23,29 +23,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px; /* Increased padding */
+  padding: 16px; /* Adjusted padding */
   border-bottom: 1px solid #ddd;
 }
 
 .food-item-title {
-  font-size: 1.6rem; /* Increased font size */
-  color: #333; /* Darker text color */
+  font-size: 1.2rem; /* Reduced font size */
+  color: #333; /* Darker text */
   margin: 0;
-  font-weight: 700; /* Bolder font weight */
+  font-weight: 600; /* Semi-bold font */
   flex-grow: 1;
   text-align: left;
 }
 
 .food-item-price {
-  font-size: 1.4rem; /* Increased font size */
-  color: #ff9800; /* Changed to a brighter orange */
-  font-weight: 700; /* Bolder font weight */
+  font-size: 1rem; /* Reduced font size */
+  color: #ff9800; /* Brighter orange */
+  font-weight: 600; /* Semi-bold font */
   margin: 0;
   text-align: right;
 }
 
 .food-item-expanded-content {
-  padding: 20px; /* Increased padding */
+  padding: 16px; /* Adjusted padding */
   background-color: #f9f9f9; /* Lighter gray background */
   border-top: 1px solid #e0e0e0;
   display: flex;
@@ -53,37 +53,37 @@
 }
 
 .food-item-description {
-  font-size: 1.1rem; /* Slightly larger text */
+  font-size: 0.9rem; /* Reduced font size */
   color: #666;
   margin: 0;
-  margin-bottom: 12px; /* Increased bottom margin */
-  font-weight: 400;
+  margin-bottom: 10px; /* Adjusted margin */
+  font-weight: 400; /* Regular font weight */
 }
 
 .food-item-weight {
-  font-size: 1.1rem; /* Slightly larger text */
+  font-size: 0.9rem; /* Reduced font size */
   color: #666;
   margin-top: 0;
-  font-weight: 400;
+  font-weight: 400; /* Regular font weight */
 }
 
 .add-button {
-  padding: 14px 20px; /* Increased padding */
-  background-color: #ff6600; /* Changed to a vibrant orange */
+  padding: 10px 14px; /* Reduced padding */
+  background-color: #ff6600; /* Vibrant orange */
   color: #fff;
   border: none;
-  border-radius: 10px; /* More rounded corners */
+  border-radius: 8px; /* Rounded corners */
   cursor: pointer;
-  font-size: 1.3rem; /* Increased font size */
-  margin-top: 20px; /* Adjusted top margin */
+  font-size: 1rem; /* Reduced font size */
+  margin-top: 16px; /* Adjusted margin */
   transition: background-color 0.2s ease, transform 0.2s ease;
   font-weight: 500;
 }
 
 .add-button:hover {
   background-color: #cc5200; /* Darker orange on hover */
-  transform: translateY(-3px); /* Lift button more on hover */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow on hover */
 }
 
 /* Focus state for accessibility */

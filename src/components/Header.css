@@ -1,34 +1,64 @@
+/* Base Styles */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+}
+
+/* Header Styles */
 .header {
   width: 100%;
-  padding: 20px;
+  padding: 20px 0;
   background-color: #ffffff;
   color: #333;
   text-align: center;
   border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  z-index: 1;
 }
 
 .header-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-  font-family: 'Dancing Script', cursive;  /* Applying Dancing Script to header title */
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif; /* Modern, clean font */
+  color: #212121;
 }
 
 .header-subtitle {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #888;
-  font-family: 'Kameron', serif;  /* Optional: Maintaining Kameron for subtitle */
+  font-family: 'Roboto', sans-serif; /* Pairing with a modern sans-serif */
 }
 
 .header-status {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #e94b3c;
-  margin: 10px 0;
+  margin: 15px 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header-buttons {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.header-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header-button:hover {
+  background-color: #0056b3;
 }

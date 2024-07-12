@@ -20,7 +20,7 @@
 
 .category-button {
   border-radius: 20px;
-  border: 1px solid #333;
+  border: 1px solid #4CAF50; /* Green border */
   background-color: transparent;
   color: #333;
   cursor: pointer;
@@ -30,11 +30,11 @@
 }
 
 .category-button:hover {
-  color: #00BF63;
-  border-color: #00BF63;
+  color: #4CAF50; /* Green text on hover */
+  border-color: #4CAF50; /* Green border on hover */
 }
 
 .category-button.active {
   background-color: #fff;
-  color: #00BF63;
+  color: #4CAF50; /* Green active color */
 }

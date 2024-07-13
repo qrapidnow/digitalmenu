@@ -10,7 +10,7 @@ body {
 /* Header Styles */
 .header {
   width: 100%;
-  padding: 10px 0; /* Reduced padding for a sleeker look */
+  padding: 15px 0; /* Reduced padding for a sleeker look */
   background-color: #e8f5e9; /* Light green background */
   color: #2e7d32; /* Dark green text color */
   text-align: center;

@@ -16,7 +16,7 @@ body {
   text-align: center;
   border-bottom: 1px solid #c8e6c9; /* Lighter green border */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
-  position: relative;
+  position: absolute;
   z-index: 1;
 }
 

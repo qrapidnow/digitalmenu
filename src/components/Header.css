@@ -21,7 +21,7 @@ body {
 }
 
 .header-title {
-  font-size: 2.5rem; /* Larger font size for prominence */
+  font-size: 1.8rem; /* Larger font size for prominence */
   font-weight: 800; /* Extra bold font */
   margin-bottom: 8px; /* Adjusted margin */
   font-family: 'Montserrat', sans-serif; /* Distinct font for title */

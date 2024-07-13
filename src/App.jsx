@@ -142,7 +142,7 @@ const App = () => {
           searchTerm={searchTerm}
         />
       </div>
-      {getTotalItems() > 0 && (
+      {!showCartItem && getTotalItems() > 0 && (
         <div className="view-order-bar" onClick={handleViewOrderClick}>
           <span>View Order</span>
           <span className="order-count">{getTotalItems()}</span>
@@ -160,7 +160,7 @@ const App = () => {
       {showPlaceOrderPage && (
         <PlaceOrderPage cartItems={cart} setShowPlaceOrderPage={setShowPlaceOrderPage} />
       )}
-      <BackToTopButton isVisible={showBackToTop} />
+      {!showCartItem && <BackToTopButton isVisible={showBackToTop} />}
     </div>
   );
 };

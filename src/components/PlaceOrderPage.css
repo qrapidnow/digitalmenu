@@ -17,7 +17,8 @@
 .place-order-button {
   background-color: #4CAF50; /* Green button */
   color: #fff;
-  padding: 10px 20px;
+  padding: 15px 30px; /* Increase size */
+  font-size: 16px; /* Optional: Increase font size */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -31,7 +32,8 @@
 .back-button {
   background-color: #f44336; /* Red button */
   color: #fff;
-  padding: 10px 20px;
+  padding: 5px 10px; /* Decrease size */
+  font-size: 12px; /* Optional: Decrease font size */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -42,6 +44,7 @@
 .back-button:hover {
   background-color: #d32f2f; /* Darker red on hover */
 }
+
 
 .place-order {
   width: 90%;

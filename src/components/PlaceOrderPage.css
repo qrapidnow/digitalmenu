@@ -17,10 +17,10 @@
 .place-order-button {
   background-color: #4CAF50; /* Green button */
   color: #fff;
-  padding: 15px 30px; /* Increase size */
+  padding: 10px 25px; /* Increase size */
   font-size: 16px; /* Optional: Increase font size */
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -32,7 +32,7 @@
 .back-button {
   background-color: #f44336; /* Red button */
   color: #fff;
-  padding: 5px 10px; /* Decrease size */
+  padding: 3px 8px; /* Decrease size */
   font-size: 12px; /* Optional: Decrease font size */
   border: none;
   border-radius: 5px;

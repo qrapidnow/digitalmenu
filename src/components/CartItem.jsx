@@ -88,9 +88,6 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
           <button className="action-button" onClick={handlePlaceOrderPage}>
             Place Order
           </button>
-          {/* <button className="action-button ask-for-bill-button" onClick={handleAskForBill}>
-            Ask For Bill
-          </button> */}
         </div>
         {totalItems > 0 && (
           <div className="totals-container">

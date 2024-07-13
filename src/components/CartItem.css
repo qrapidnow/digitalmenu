@@ -125,15 +125,14 @@
 
 .cart-item-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the buttons */
+  gap: 10px; /* Add some space between the buttons */
   margin-top: 20px;
   padding-top: 20px;
 }
 
 .action-button {
-  flex-grow: 1;
-  padding: 10px 15px;
-  margin-right: 10px;
+  padding: 10px 20px;
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -143,22 +142,8 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.action-button:last-child {
-  margin-right: 0;
-}
-
 .action-button:hover {
   background-color: #388e3c;
-  transform: translateY(-2px);
-}
-
-.ask-for-bill-button {
-  background-color: #ffd700;
-  color: #000;
-}
-
-.ask-for-bill-button:hover {
-  background-color: #e6c200;
   transform: translateY(-2px);
 }
 
@@ -167,4 +152,23 @@
   margin-top: 20px;
   color: #666;
   font-size: 1.1em;
+}
+
+.totals-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.totals-column h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.totals-column p {
+  margin: 5px 0;
+  color: #666;
 }

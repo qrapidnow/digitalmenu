@@ -30,7 +30,7 @@
 }
 
 .back-button {
-  background-color: #f44336; /* Red button */
+  background-color: #fff; /* Red button */
   color: #fff;
   padding: 3px 8px; /* Decrease size */
   font-size: 12px; /* Optional: Decrease font size */

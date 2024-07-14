@@ -6,6 +6,7 @@ import Navbar from './components/NavBar';
 import Menu from './components/Menu';
 import CartItem from './components/CartItem';
 import BackToTopButton from './components/BackToTopButton'; // Import the BackToTopButton component
+import PlaceOrderPage from './components/PlaceOrderPage'; // Import PlaceOrderPage
 import axios from 'axios';
 
 const App = () => {
@@ -172,7 +173,7 @@ const App = () => {
         <PlaceOrderPage
           cartItems={cart}
           setShowPlaceOrderPage={setShowPlaceOrderPage}
-          setShowMenuPage={() => setShowCartItem(false)}
+          setShowMenuPage={() => setShowCartItem(false)} // Ensure this function is correctly passed
         />
       )}
       {!showCartItem && <BackToTopButton isVisible={showBackToTop} />}

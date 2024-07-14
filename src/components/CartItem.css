@@ -91,7 +91,7 @@
 
 .quantity-button {
   padding: 5px;
-  margin: 0 10px;  /* Increased the margin */
+  margin: 0 20px; /* Increased the margin to create more space between the buttons */
   background-color: #4CAF50;
   color: white;
   border: none;

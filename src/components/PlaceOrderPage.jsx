@@ -20,7 +20,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, setShowMenuPage }) =
       items: cartItems.map(item => ({
         name: item.name,
         price: item.price,
-        quantity: item.quantity,
+        quantity: item.quantity, // Add quantity here
       })),
     };
 

@@ -68,11 +68,22 @@ const App = () => {
   };
 
   const addItem = (item) => {
-    setCart((prevCart) => [...prevCart, item]);
+    setCart((prevCart) => {
+      const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
+      if (existingItem) {
+        return prevCart.map(cartItem =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        );
+      } else {
+        return [...prevCart, { ...item, quantity: 1 }];
+      }
+    });
     updateItemCount(item.id, 1);
   };
 
-  const getTotalItems = () => cart.length;
+  const getTotalItems = () => cart.reduce((total, item) => total + item.quantity, 0);
 
   const handleViewOrderClick = () => {
     setShowCartItem(true);
@@ -85,7 +96,7 @@ const App = () => {
   };
 
   const removeItem = (itemToRemove) => {
-    setCart((prevCart) => prevCart.filter((item) => item !== itemToRemove));
+    setCart((prevCart) => prevCart.filter((item) => item.id !== itemToRemove.id));
     updateItemCount(itemToRemove.id, -itemToRemove.quantity);
     setShowCartItem(true);
   };
@@ -158,7 +169,11 @@ const App = () => {
         />
       )}
       {showPlaceOrderPage && (
-        <PlaceOrderPage cartItems={cart} setShowPlaceOrderPage={setShowPlaceOrderPage} />
+        <PlaceOrderPage
+          cartItems={cart}
+          setShowPlaceOrderPage={setShowPlaceOrderPage}
+          setShowMenuPage={() => setShowCartItem(false)}
+        />
       )}
       {!showCartItem && <BackToTopButton isVisible={showBackToTop} />}
     </div>

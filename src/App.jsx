@@ -12,7 +12,6 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [showCartItem, setShowCartItem] = useState(false);
   const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
-  const [foodItemCounts, setFoodItemCounts] = useState({});
   const [restaurantName, setRestaurantName] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);

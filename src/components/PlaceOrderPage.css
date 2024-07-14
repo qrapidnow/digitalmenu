@@ -1,3 +1,4 @@
+/* Container for placing an order */
 .place-order-container {
   display: flex;
   flex-direction: column;
@@ -6,48 +7,58 @@
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
 }
 
+/* Title for the order form */
 .place-order-title {
   font-size: 1.5rem;
   color: #333;
   margin-bottom: 20px;
+  text-align: center;
 }
 
+/* Style for the submit order button */
 .place-order-button {
   background-color: #4CAF50; /* Green button */
   color: #fff;
-  padding: 10px 25px; /* Increase size */
-  font-size: 16px; /* Optional: Increase font size */
+  padding: 10px 25px;
+  font-size: 16px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .place-order-button:hover {
   background-color: #388e3c; /* Darker green on hover */
 }
 
+/* Style for the back button */
 .back-button {
-  background-color: #fff; /* Red button */
+  background-color: #f44336; /* Red button */
   color: #fff;
-  padding: 3px 8px; /* Decrease size */
-  font-size: 8px; /* Optional: Decrease font size */
+  padding: 10px 25px;
+  font-size: 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 10px; /* Add some space between the buttons */
+  width: 100%;
+  margin-top: 10px;
 }
 
 .back-button:hover {
   background-color: #d32f2f; /* Darker red on hover */
 }
 
-
+/* Form for placing the order */
 .place-order {
-  width: 90%;
+  width: 100%;
   max-width: 400px;
   border: 2px solid #ccc;
   border-radius: 20px;
@@ -56,6 +67,7 @@
   background-color: #fff;
 }
 
+/* Label styles for form elements */
 .place-order label {
   display: block;
   margin-bottom: 5px;
@@ -63,6 +75,7 @@
   font-weight: bold;
 }
 
+/* Input and select styles for the order form */
 .place-order input[type="text"],
 .place-order input[type="number"],
 .place-order select {
@@ -74,29 +87,42 @@
   box-sizing: border-box;
 }
 
-.place-order .order-summary {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.place-order .item-list {
-  list-style: none;
-  padding: 0;
-}
-
-.place-order .item-list li {
+/* Loading indicator styles */
+.loading-indicator {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.loading-indicator p {
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .place-order-container {
-    width: 100%; /* Adjust width for smaller screens */
+    width: 100%;
+    padding: 10px;
   }
 
   .place-order-title {
-    font-size: 1.2rem; /* Adjust font size for smaller screens */
+    font-size: 1.2rem;
+  }
+
+  .place-order {
+    padding: 15px;
+  }
+
+  .place-order-button,
+  .back-button {
+    font-size: 14px;
+    padding: 8px 20px;
   }
 }

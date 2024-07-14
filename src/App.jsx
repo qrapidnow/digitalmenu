@@ -68,21 +68,9 @@ const App = () => {
   };
 
   const addItem = (item) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
-      if (existingItem) {
-        return prevCart.map(cartItem =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        );
-      } else {
-        return [...prevCart, { ...item, quantity: 1 }];
-      }
-    });
+    setCart((prevCart) => [...prevCart, item]);
     updateItemCount(item.id, 1);
   };
-  
 
   const getTotalItems = () => cart.length;
 

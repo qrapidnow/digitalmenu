@@ -93,14 +93,14 @@
 }  
   
 .quantity-button {  
-  padding: 10px 20px; /* increased size */  
+  padding: 15px 25px; /* increased size */  
   margin: 0 10px; /* increased spacing */  
   background: linear-gradient(135deg, #6b8e23, #4CAF50);  
   color: white;  
   border: none;  
   cursor: pointer;  
   border-radius: 5px;  
-  font-size: 1.5em; /* increased size */  
+  font-size: 2em; /* increased size */  
   transition: background-color 0.3s ease, transform 0.2s ease;  
 }  
   
@@ -115,12 +115,12 @@
 }  
   
 .delete-button {  
-  padding: 15px 30px; /* increased size */  
+  padding: 10px 20px; /* decreased size */  
   background-image: linear-gradient(to bottom, #ff6347, #cc5140);  
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  
   border: none;  
   border-radius: 50%;  
-  font-size: 2em; /* increased size */  
+  font-size: 1.2em; /* decreased size */  
   color: #fff;  
   cursor: pointer;  
   transition: background-color 0.3s ease, transform 0.2s ease;  
@@ -179,4 +179,4 @@
 .totals-column p {  
   margin: 5px 0;  
   color: #666;  
-}  
+}

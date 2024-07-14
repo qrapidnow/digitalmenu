@@ -90,14 +90,15 @@
 }
 
 .quantity-button {
-  padding: 5px;
+  padding: 5px 10px;
   margin: 0 5px;
-  background-color: #4CAF50;
+  background: linear-gradient(135deg, #6b8e23, #4CAF50);
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .quantity-button:disabled {
@@ -107,6 +108,7 @@
 
 .quantity-button:hover:not(:disabled) {
   background-color: #388e3c;
+  transform: scale(1.1);
 }
 
 .delete-button {

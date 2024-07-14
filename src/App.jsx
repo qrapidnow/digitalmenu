@@ -172,7 +172,7 @@ const App = () => {
         <PlaceOrderPage
           cartItems={cart}
           setShowPlaceOrderPage={setShowPlaceOrderPage}
-          setShowMenuPage={() => setShowCartItem(false)} // Ensure this function is correctly passed
+          setShowMenuPage={() => setShowCartItem(false)}
         />
       )}
       {!showCartItem && <BackToTopButton isVisible={showBackToTop} />}

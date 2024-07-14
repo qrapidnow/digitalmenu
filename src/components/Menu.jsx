@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Menu.css';
 import FoodItemCard from './FoodItemCard';
 
-const Menu = ({ addItem, updateItemCount, activeCategory, searchTerm }) => {
+const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) => {
   const [sections, setSections] = useState([]);
   const sectionRefs = useRef({});
 
@@ -68,9 +68,19 @@ const Menu = ({ addItem, updateItemCount, activeCategory, searchTerm }) => {
           <h2>{section.title}</h2>
           <div className="menu-items-container">
             <div className="menu-items">
-              {section.items.map((item) => (
-                <FoodItemCard key={item._id} item={item} addItem={addItem} updateItemCount={updateItemCount} />
-              ))}
+              {section.items.map((item) => {
+                const cartItem = cart.find(cartItem => cartItem._id === item._id);
+                const quantity = cartItem ? cartItem.quantity : 0;
+                return (
+                  <FoodItemCard 
+                    key={item._id} 
+                    item={item} 
+                    addItem={addItem} 
+                    quantity={quantity}
+                    updateItemCount={updateItemCount} 
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

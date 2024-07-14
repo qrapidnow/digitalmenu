@@ -68,10 +68,10 @@ const App = () => {
 
   const addItem = (item) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
+      const existingItem = prevCart.find(cartItem => cartItem._id === item._id);
       if (existingItem) {
         return prevCart.map(cartItem =>
-          cartItem.id === item.id
+          cartItem._id === item._id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
@@ -94,14 +94,14 @@ const App = () => {
   };
 
   const removeItem = (itemToRemove) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== itemToRemove.id));
+    setCart((prevCart) => prevCart.filter((item) => item._id !== itemToRemove._id));
   };
 
   const updateItemCount = (itemId, countChange) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
-        item.id === itemId ? { ...item, quantity: item.quantity + countChange } : item
-      )
+        item._id === itemId ? { ...item, quantity: item.quantity + countChange } : item
+      ).filter(item => item.quantity > 0)
     );
   };
 
@@ -145,6 +145,7 @@ const App = () => {
       <div className={`content-container ${isFixed ? 'fixed-margin' : ''}`}>
         <Menu 
           addItem={addItem}
+          cart={cart}
           updateItemCount={updateItemCount}
           activeCategory={activeCategory}
           searchTerm={searchTerm}

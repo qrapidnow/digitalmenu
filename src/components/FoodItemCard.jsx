@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import './FoodItemCard.css';
 
-const FoodItemCard = ({ item, addItem, updateItemCount }) => {
+const FoodItemCard = ({ item, addItem, quantity, updateItemCount }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleAdd = (e) => {
     e.stopPropagation(); // Prevent the card's onClick from firing
     addItem(item);
-    updateItemCount(item, 1);
   };
 
   const toggleExpand = () => {
@@ -24,7 +23,12 @@ const FoodItemCard = ({ item, addItem, updateItemCount }) => {
         <div className="food-item-expanded-content">
           <p className="food-item-description">{item.description}</p>
           <span className="food-item-weight">{item.weight} g</span>
-          <button onClick={handleAdd} className="add-button">Add</button>
+          <div className="food-item-controls">
+            <button onClick={(e) => { e.stopPropagation(); updateItemCount(item._id, -1); }} disabled={quantity === 0}>-</button>
+            <span>{quantity}</span>
+            <button onClick={(e) => { e.stopPropagation(); updateItemCount(item._id, 1); }}>+</button>
+            <button onClick={handleAdd} className="add-button">Add</button>
+          </div>
         </div>
       )}
     </div>

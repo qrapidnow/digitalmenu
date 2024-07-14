@@ -72,7 +72,7 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
                 <div className="item-details">
                   <h3>{item.name}</h3>
                   <p>₹{item.price}/-</p>
-                  <p>Quantity: {item.quantity}</p>
+                  <p>Quantity: x{item.quantity}</p>
                 </div>
                 <button className="delete-button" onClick={() => removeItem(item)}>
                   🗑

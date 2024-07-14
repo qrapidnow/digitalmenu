@@ -82,6 +82,7 @@ const App = () => {
     });
     updateItemCount(item.id, 1);
   };
+  
 
   const getTotalItems = () => cart.length;
 
@@ -96,7 +97,7 @@ const App = () => {
   };
 
   const removeItem = (itemToRemove) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== itemToRemove.id));
+    setCart((prevCart) => prevCart.filter((item) => item !== itemToRemove));
     updateItemCount(itemToRemove.id, -itemToRemove.quantity);
     setShowCartItem(true);
   };

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './PlaceOrderPage.css';
 
-const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
+const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, setShowMenuPage }) => {
   const [name, setName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [tableNo, setTableNo] = useState('');
@@ -42,6 +42,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
         confirmButtonText: 'OK'
       });
       setShowPlaceOrderPage(false); // Close the order page
+      setShowMenuPage(true); // Open the menu page
     } catch (error) {
       console.error('Error saving order:', error);
       if (error.response) {
@@ -107,7 +108,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
           <button type="submit" className="place-order-button">Submit Order</button>
         </form>
       )}
-      <button className="back-button" onClick={() => setShowPlaceOrderPage(false)}>Back to Cart</button>
+      {!isLoading && <button className="back-button" onClick={() => setShowPlaceOrderPage(false)}>Back to Cart</button>}
     </div>
   );
 };

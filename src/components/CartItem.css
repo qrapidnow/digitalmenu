@@ -39,7 +39,7 @@
   color: #333;  
 }  
   
-.cart-item-header.back-button {  
+.cart-item-header .back-button {  
   background: none;  
   border: none;  
   font-size: 1.5em;  
@@ -60,6 +60,7 @@
   align-items: center;  
   border-bottom: 1px solid #ddd;  
   padding: 10px 0;  
+  text-align: center; /* Center content for mobile view */  
 }  
   
 .item-image {  
@@ -72,6 +73,7 @@
   
 .item-details {  
   flex-grow: 1;  
+  text-align: center; /* Center content for mobile view */  
 }  
   
 .item-details h3 {  
@@ -88,7 +90,7 @@
 .quantity-controls {  
   display: flex;  
   align-items: center;  
-  justify-content: space-between;  
+  justify-content: center;  
   margin: 0 20px;  
 }  
   
@@ -115,19 +117,28 @@
 }  
   
 .delete-button {  
-  padding: 10px 20px;  
-  background-image: linear-gradient(to bottom, #ff6347, #cc5140);  
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  
+  padding: 10px;  
+  background-color: #ff6347;  
   border: none;  
   border-radius: 50%;  
-  font-size: 1.2em;  
+  font-size: 1.5em;  
   color: #fff;  
   cursor: pointer;  
   transition: background-color 0.3s ease, transform 0.2s ease;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  width: 40px;  
+  height: 40px;  
+}  
+  
+.delete-button::before {  
+  content: '\f1f8'; /* FontAwesome Unicode for trash icon */  
+  font-family: 'FontAwesome';  
 }  
   
 .delete-button:hover {  
-  background-image: linear-gradient(to bottom, #cc5140, #ff6347);  
+  background-color: #cc5140;  
   transform: scale(1.1);  
 }  
   

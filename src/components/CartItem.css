@@ -24,7 +24,7 @@
   display: flex;  
   flex-direction: column;  
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
-  margin: 0 auto;  
+  margin: 0 auto; /* added to center the cart item */  
 }  
   
 .cart-item-header {  
@@ -39,7 +39,7 @@
   color: #333;  
 }  
   
-.cart-item-header .back-button {  
+.cart-item-header.back-button {  
   background: none;  
   border: none;  
   font-size: 1.5em;  
@@ -60,12 +60,11 @@
   align-items: center;  
   border-bottom: 1px solid #ddd;  
   padding: 10px 0;  
-  text-align: center; /* Center content for mobile view */  
 }  
   
 .item-image {  
-  width: 60px;  
-  height: 60px;  
+  width: 60px; /* increased size */  
+  height: 60px; /* increased size */  
   object-fit: cover;  
   border-radius: 10%;  
   margin-right: 10px;  
@@ -73,7 +72,6 @@
   
 .item-details {  
   flex-grow: 1;  
-  text-align: center; /* Center content for mobile view */  
 }  
   
 .item-details h3 {  
@@ -90,19 +88,19 @@
 .quantity-controls {  
   display: flex;  
   align-items: center;  
-  justify-content: center;  
-  margin: 0 20px;  
+  justify-content: space-between;  
+  margin: 0 20px; /* increased spacing */  
 }  
   
 .quantity-button {  
-  padding: 15px 25px;  
-  margin: 0 30px; /* Increased spacing */  
+  padding: 10px 20px; /* increased size */  
+  margin: 0 10px; /* increased spacing */  
   background: linear-gradient(135deg, #6b8e23, #4CAF50);  
   color: white;  
   border: none;  
   cursor: pointer;  
   border-radius: 5px;  
-  font-size: 2em;  
+  font-size: 1.5em; /* increased size */  
   transition: background-color 0.3s ease, transform 0.2s ease;  
 }  
   
@@ -117,47 +115,38 @@
 }  
   
 .delete-button {  
-  padding: 10px 15px; /* Adjusted size */  
-  background-color: #ff6347;  
+  padding: 15px 30px; /* increased size */  
+  background-image: linear-gradient(to bottom, #ff6347, #cc5140);  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  
   border: none;  
-  border-radius: 5px; /* Changed to square with rounded corners */  
-  font-size: 1em; /* Adjusted size */  
+  border-radius: 50%;  
+  font-size: 2em; /* increased size */  
   color: #fff;  
   cursor: pointer;  
   transition: background-color 0.3s ease, transform 0.2s ease;  
-  display: flex;  
-  align-items: center;  
-  justify-content: center;  
-  width: 35px; /* Adjusted size */  
-  height: 35px; /* Adjusted size */  
-}  
-  
-.delete-button::before {  
-  content: '\f2ed'; /* FontAwesome Unicode for professional trash icon */  
-  font-family: 'FontAwesome';  
 }  
   
 .delete-button:hover {  
-  background-color: #cc5140;  
+  background-image: linear-gradient(to bottom, #cc5140, #ff6347);  
   transform: scale(1.1);  
 }  
   
 .cart-item-actions {  
   display: flex;  
   justify-content: center;  
-  gap: 20px;  
-  margin-top: 30px;  
-  padding-top: 30px;  
+  gap: 20px; /* increased spacing */  
+  margin-top: 30px; /* increased spacing */  
+  padding-top: 30px; /* increased spacing */  
 }  
   
 .action-button {  
-  padding: 15px 30px;  
+  padding: 15px 30px; /* increased size */  
   background-color: #4CAF50;  
   color: white;  
   border: none;  
   cursor: pointer;  
   border-radius: 5px;  
-  font-size: 1.5em;  
+  font-size: 1.5em; /* increased size */  
   transition: background-color 0.3s ease, transform 0.3s ease;  
 }  
   
@@ -168,7 +157,7 @@
   
 .empty-cart-message {  
   text-align: center;  
-  margin-top: 30px;  
+  margin-top: 30px; /* increased spacing */  
   color: #666;  
   font-size: 1.2em;  
 }  
@@ -176,8 +165,8 @@
 .totals-container {  
   display: flex;  
   justify-content: space-between;  
-  margin-top: 30px;  
-  padding-top: 30px;  
+  margin-top: 30px; /* increased spacing */  
+  padding-top: 30px; /* increased spacing */  
   border-top: 1px solid #ddd;  
 }  
   

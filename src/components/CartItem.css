@@ -117,19 +117,19 @@
 }  
   
 .delete-button {  
-  padding: 10px;  
+  padding: 10px 15px; /* Adjusted size */  
   background-color: #ff6347;  
   border: none;  
   border-radius: 5px; /* Changed to square with rounded corners */  
-  font-size: 1.5em;  
+  font-size: 1em; /* Adjusted size */  
   color: #fff;  
   cursor: pointer;  
   transition: background-color 0.3s ease, transform 0.2s ease;  
   display: flex;  
   align-items: center;  
   justify-content: center;  
-  width: 40px;  
-  height: 40px;  
+  width: 35px; /* Adjusted size */  
+  height: 35px; /* Adjusted size */  
 }  
   
 .delete-button::before {  

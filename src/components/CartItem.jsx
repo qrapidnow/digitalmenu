@@ -24,7 +24,6 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
   };
 
   const handleAskForBill = () => {
-    // Assuming nameEntered and whatsappEntered are passed to CartItem component
     if (nameEntered && whatsappEntered) {
       setShowAskForBillPage(true);
     } else {
@@ -73,6 +72,11 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
                   <h3>{item.name}</h3>
                   <p>₹{item.price}/-</p>
                   <p>Quantity: {item.quantity}</p>
+                  <div className="quantity-controls">
+                    <button onClick={() => updateItemCount(item.id, -1)} disabled={item.quantity === 1}>-</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => updateItemCount(item.id, 1)}>+</button>
+                  </div>
                 </div>
                 <button className="delete-button" onClick={() => removeItem(item)}>
                   🗑

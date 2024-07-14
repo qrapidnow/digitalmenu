@@ -1,3 +1,4 @@
+/* Container for placing an order */
 .place-order-container {
   display: flex;
   flex-direction: column;
@@ -11,6 +12,7 @@
   margin: auto;
 }
 
+/* Title for the order form */
 .place-order-title {
   font-size: 1.5rem;
   color: #333;
@@ -18,6 +20,7 @@
   text-align: center;
 }
 
+/* Style for the submit order button */
 .place-order-button {
   background-color: #4CAF50; /* Green button */
   color: #fff;
@@ -35,6 +38,7 @@
   background-color: #388e3c; /* Darker green on hover */
 }
 
+/* Style for the back button */
 .back-button {
   background-color: #f44336; /* Red button */
   color: #fff;
@@ -52,6 +56,7 @@
   background-color: #d32f2f; /* Darker red on hover */
 }
 
+/* Form for placing the order */
 .place-order {
   width: 100%;
   max-width: 400px;
@@ -62,6 +67,7 @@
   background-color: #fff;
 }
 
+/* Label styles for form elements */
 .place-order label {
   display: block;
   margin-bottom: 5px;
@@ -69,6 +75,7 @@
   font-weight: bold;
 }
 
+/* Input and select styles for the order form */
 .place-order input[type="text"],
 .place-order input[type="number"],
 .place-order select {
@@ -80,6 +87,7 @@
   box-sizing: border-box;
 }
 
+/* Loading indicator styles */
 .loading-indicator {
   display: flex;
   flex-direction: column;
@@ -97,6 +105,7 @@
   text-align: center;
 }
 
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .place-order-container {
     width: 100%;

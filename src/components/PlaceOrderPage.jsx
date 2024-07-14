@@ -69,6 +69,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       <h2 className="place-order-title">Place Your Order</h2>
       {isLoading ? (
         <div className="loading-indicator">
+          <div className="spinner"></div>
           <p>Please wait...</p>
         </div>
       ) : (

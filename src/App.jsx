@@ -8,8 +8,10 @@ import Menu from './components/Menu';
 import CartItem from './components/CartItem';
 import PlaceOrderPage from './components/PlaceOrderPage'; // Import PlaceOrderPage
 import BackToTopButton from './components/BackToTopButton'; // Import the BackToTopButton component
+import { useParams } from 'react-router-dom'; // Import useParams
 
 const App = () => {
+    const { userId } = useParams(); // Get userId from URL parameters
     const [cart, setCart] = useState([]);
     const [showCartItem, setShowCartItem] = useState(false);
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
@@ -29,8 +31,7 @@ const App = () => {
                 console.log('Users response:', usersResponse.data);
                 const users = usersResponse.data;
                 if (users && users.length > 0) {
-                    const firstUserId = users[0]._id;
-                    const tokenResponse = await axios.get(`${backendApiUrl}/token/${firstUserId}`);
+                    const tokenResponse = await axios.get(`${backendApiUrl}/token/${userId}`);
                     console.log('Token response:', tokenResponse.data);
                     const token = tokenResponse.data.token;
                     if (token) {
@@ -51,7 +52,7 @@ const App = () => {
         };
 
         fetchUsersAndToken();
-    }, []);
+    }, [userId]);
 
     const fetchRestaurant = async (token) => {
         try {
@@ -66,44 +67,6 @@ const App = () => {
             console.error('Error fetching restaurant data:', error);
         }
     };
-
-    useEffect(() => {
-        const fetchCategoriesAndItems = async () => {
-            const token = localStorage.getItem('token');
-            const restaurantId = localStorage.getItem('restaurantId');
-            if (!token || !restaurantId) {
-                console.error('Token or restaurant ID not found in localStorage');
-                return;
-            }
-            try {
-                const categoriesResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                const categories = categoriesResponse.data;
-                const sectionsWithItems = await Promise.all(
-                    categories.map(async (category) => {
-                        const itemsResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/items/${category._id}`, {
-                            headers: {
-                                Authorization: `Bearer ${token}`
-                            }
-                        });
-                        return {
-                            id: category._id,
-                            title: category.name,
-                            items: itemsResponse.data
-                        };
-                    })
-                );
-                setSections(sectionsWithItems);
-            } catch (error) {
-                console.error('Error fetching categories or items:', error);
-            }
-        };
-
-        fetchCategoriesAndItems();
-    }, [isLoggedIn]);
 
     const addItem = (item) => {
         setCart((prevCart) => {

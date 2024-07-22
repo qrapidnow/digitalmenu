@@ -2,8 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import './Menu.css';
 import FoodItemCard from './FoodItemCard';
+import { useParams } from 'react-router-dom'; // Import useParams
 
 const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) => {
+  const { userId } = useParams(); // Get userId from URL parameters
   const [sections, setSections] = useState([]);
   const sectionRefs = useRef({});
 
@@ -16,7 +18,7 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
         return;
       }
       try {
-        const categoriesResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${restaurantId}`, {
+        const categoriesResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${restaurantId}/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -24,7 +26,7 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
         const categories = categoriesResponse.data;
         const sectionsWithItems = await Promise.all(
           categories.map(async (category) => {
-            const itemsResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/items/${category._id}`, {
+            const itemsResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/items/${category._id}/${userId}`, {
               headers: {
                 Authorization: `Bearer ${token}`
               }
@@ -44,7 +46,7 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
     };
 
     fetchCategoriesAndItems();
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     if (activeCategory && sectionRefs.current[activeCategory]) {

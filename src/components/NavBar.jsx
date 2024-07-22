@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './NavBar.css';
+import { useParams } from 'react-router-dom'; // Import useParams
 
 const Navbar = ({ setActiveCategory }) => {
+  const { userId } = useParams(); // Get userId from URL parameters
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -14,7 +16,7 @@ const Navbar = ({ setActiveCategory }) => {
         return;
       }
       try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories`, {
+        const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${restaurantId}/${userId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setCategories(response.data);
@@ -24,7 +26,7 @@ const Navbar = ({ setActiveCategory }) => {
     };
 
     fetchCategories();
-  }, []);
+  }, [userId]);
 
   return (
     <nav className="navbar">

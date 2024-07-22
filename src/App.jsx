@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './App.css';
 import Header from './components/Header';
@@ -55,7 +55,7 @@ const App = () => {
 
     const fetchRestaurant = async (token) => {
         try {
-            const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/restaurants`, {
+            const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/restaurant`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             console.log('Fetched restaurant data:', response.data);
@@ -66,6 +66,44 @@ const App = () => {
             console.error('Error fetching restaurant data:', error);
         }
     };
+
+    useEffect(() => {
+        const fetchCategoriesAndItems = async () => {
+            const token = localStorage.getItem('token');
+            const restaurantId = localStorage.getItem('restaurantId');
+            if (!token || !restaurantId) {
+                console.error('Token or restaurant ID not found in localStorage');
+                return;
+            }
+            try {
+                const categoriesResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                const categories = categoriesResponse.data;
+                const sectionsWithItems = await Promise.all(
+                    categories.map(async (category) => {
+                        const itemsResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/items/${category._id}`, {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        });
+                        return {
+                            id: category._id,
+                            title: category.name,
+                            items: itemsResponse.data
+                        };
+                    })
+                );
+                setSections(sectionsWithItems);
+            } catch (error) {
+                console.error('Error fetching categories or items:', error);
+            }
+        };
+
+        fetchCategoriesAndItems();
+    }, [isLoggedIn]);
 
     const addItem = (item) => {
         setCart((prevCart) => {

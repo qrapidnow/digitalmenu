@@ -14,7 +14,7 @@ const Navbar = ({ setActiveCategory }) => {
         return;
       }
       try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${restaurantId}`, {
+        const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setCategories(response.data);

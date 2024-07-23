@@ -6,12 +6,12 @@ import SearchBar from './components/SearchBar';
 import Navbar from './components/NavBar';
 import Menu from './components/Menu';
 import CartItem from './components/CartItem';
-import PlaceOrderPage from './components/PlaceOrderPage'; // Import PlaceOrderPage
-import BackToTopButton from './components/BackToTopButton'; // Import the BackToTopButton component
+import PlaceOrderPage from './components/PlaceOrderPage';
+import BackToTopButton from './components/BackToTopButton';
 import { useParams } from 'react-router-dom';
 
 const App = () => {
-    const { userId } = useParams(); // Get userId from URL parameters
+    const { userId } = useParams();
     const [cart, setCart] = useState([]);
     const [showCartItem, setShowCartItem] = useState(false);
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
@@ -23,20 +23,20 @@ const App = () => {
     const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
-        console.log("Fetching users and token for userId:", userId);
-        const backendApiUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
-
         const fetchUsersAndToken = async () => {
+            const backendApiUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
+
             try {
                 const tokenResponse = await axios.get(`${backendApiUrl}/token/${userId}`);
-                console.log("Token response:", tokenResponse.data);
                 const token = tokenResponse.data.token;
+
                 if (token) {
                     localStorage.setItem('token', token);
                     const restaurantResponse = await fetchRestaurant(token);
                     if (restaurantResponse && restaurantResponse._id) {
                         localStorage.setItem('restaurantId', restaurantResponse._id);
-                        console.log("Set restaurantId in localStorage:", restaurantResponse._id);
+                        setRestaurantName(restaurantResponse.name);
+                        setIsLoggedIn(true);
                     }
                 } else {
                     console.error('No token found');
@@ -51,13 +51,9 @@ const App = () => {
 
     const fetchRestaurant = async (token) => {
         try {
-            console.log("Fetching restaurant data with token:", token);
             const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/restaurant`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            console.log("Fetched restaurant data:", response.data);
-            setRestaurantName(response.data.name);
-            setIsLoggedIn(true);
             return response.data;
         } catch (error) {
             console.error('Error fetching restaurant data:', error);
@@ -106,16 +102,8 @@ const App = () => {
     useEffect(() => {
         const handleScroll = () => {
             const offset = window.scrollY;
-            if (offset > 100) {
-                setIsFixed(true);
-            } else {
-                setIsFixed(false);
-            }
-            if (offset > 300) {
-                setShowBackToTop(true);
-            } else {
-                setShowBackToTop(false);
-            }
+            setIsFixed(offset > 100);
+            setShowBackToTop(offset > 300);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -171,4 +159,5 @@ const App = () => {
         </div>
     );
 };
+
 export default App;

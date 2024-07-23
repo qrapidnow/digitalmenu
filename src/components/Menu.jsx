@@ -1,3 +1,4 @@
+// Menu.js
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import './Menu.css';
@@ -26,6 +27,9 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
         });
         console.log("Categories response:", categoriesResponse.data);
         const categories = categoriesResponse.data;
+        if (categories.length === 0) {
+          console.warn('No categories found');
+        }
         const sectionsWithItems = await Promise.all(
           categories.map(async (category) => {
             const itemsResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/items/${category._id}/${userId}`, {

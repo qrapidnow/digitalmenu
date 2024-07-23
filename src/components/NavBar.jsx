@@ -1,4 +1,3 @@
-// Navbar.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './NavBar.css';
@@ -12,13 +11,12 @@ const Navbar = ({ setActiveCategory }) => {
     console.log("Fetching categories for userId:", userId);
     const fetchCategories = async () => {
       const token = localStorage.getItem('token');
-      const restaurantId = localStorage.getItem('restaurantId');
-      if (!token || !restaurantId) {
-        console.error('Token or restaurant ID not found in localStorage');
+      if (!token) {
+        console.error('Token not found in localStorage');
         return;
       }
       try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${restaurantId}/${userId}`, {
+        const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${userId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         console.log("Categories response:", response.data);

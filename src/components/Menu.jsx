@@ -1,4 +1,3 @@
-// Menu.js
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import './Menu.css';
@@ -14,13 +13,12 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
     console.log("Fetching categories and items for userId:", userId);
     const fetchCategoriesAndItems = async () => {
       const token = localStorage.getItem('token');
-      const restaurantId = localStorage.getItem('restaurantId');
-      if (!token || !restaurantId) {
-        console.error('Token or restaurant ID not found in localStorage');
+      if (!token) {
+        console.error('Token not found in localStorage');
         return;
       }
       try {
-        const categoriesResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${restaurantId}/${userId}`, {
+        const categoriesResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

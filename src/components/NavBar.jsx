@@ -8,6 +8,7 @@ const Navbar = ({ setActiveCategory }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+    console.log("Fetching categories for userId:", userId);
     const fetchCategories = async () => {
       const token = localStorage.getItem('token');
       const restaurantId = localStorage.getItem('restaurantId');
@@ -19,6 +20,7 @@ const Navbar = ({ setActiveCategory }) => {
         const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${restaurantId}/${userId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
+        console.log("Categories response:", response.data);
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error);

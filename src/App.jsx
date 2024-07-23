@@ -23,17 +23,20 @@ const App = () => {
     const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
+        console.log("Fetching users and token for userId:", userId);
         const backendApiUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
 
         const fetchUsersAndToken = async () => {
             try {
                 const tokenResponse = await axios.get(`${backendApiUrl}/token/${userId}`);
+                console.log("Token response:", tokenResponse.data);
                 const token = tokenResponse.data.token;
                 if (token) {
                     localStorage.setItem('token', token);
                     const restaurantResponse = await fetchRestaurant(token);
                     if (restaurantResponse && restaurantResponse._id) {
                         localStorage.setItem('restaurantId', restaurantResponse._id);
+                        console.log("Set restaurantId in localStorage:", restaurantResponse._id);
                     }
                 } else {
                     console.error('No token found');
@@ -48,9 +51,11 @@ const App = () => {
 
     const fetchRestaurant = async (token) => {
         try {
+            console.log("Fetching restaurant data with token:", token);
             const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/restaurant`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
+            console.log("Fetched restaurant data:", response.data);
             setRestaurantName(response.data.name);
             setIsLoggedIn(true);
             return response.data;

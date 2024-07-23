@@ -10,6 +10,7 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
   const sectionRefs = useRef({});
 
   useEffect(() => {
+    console.log("Fetching categories and items for userId:", userId);
     const fetchCategoriesAndItems = async () => {
       const token = localStorage.getItem('token');
       const restaurantId = localStorage.getItem('restaurantId');
@@ -23,6 +24,7 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
             Authorization: `Bearer ${token}`
           }
         });
+        console.log("Categories response:", categoriesResponse.data);
         const categories = categoriesResponse.data;
         const sectionsWithItems = await Promise.all(
           categories.map(async (category) => {
@@ -31,6 +33,7 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
                 Authorization: `Bearer ${token}`
               }
             });
+            console.log(`Items for category ${category.name}:`, itemsResponse.data);
             sectionRefs.current[category._id] = React.createRef();
             return {
               id: category._id,

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import './Menu.css';
 import FoodItemCard from './FoodItemCard';
-import { useParams } from 'react-router-dom'; // Import useParams
+import { useParams } from 'react-router-dom';
 
 const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) => {
   const { userId } = useParams(); // Get userId from URL parameters

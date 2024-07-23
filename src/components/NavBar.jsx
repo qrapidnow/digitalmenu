@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './NavBar.css';
-import { useParams } from 'react-router-dom'; // Import useParams
+import { useParams } from 'react-router-dom';
 
 const Navbar = ({ setActiveCategory }) => {
   const { userId } = useParams(); // Get userId from URL parameters

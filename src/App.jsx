@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import Header from './components/Header';
@@ -8,7 +8,7 @@ import Menu from './components/Menu';
 import CartItem from './components/CartItem';
 import PlaceOrderPage from './components/PlaceOrderPage'; // Import PlaceOrderPage
 import BackToTopButton from './components/BackToTopButton'; // Import the BackToTopButton component
-import { useParams } from 'react-router-dom'; // Import useParams
+import { useParams } from 'react-router-dom';
 
 const App = () => {
     const { userId } = useParams(); // Get userId from URL parameters
@@ -20,34 +20,26 @@ const App = () => {
     const [activeCategory, setActiveCategory] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [isFixed, setIsFixed] = useState(false);
-    const [showBackToTop, setShowBackToTop] = useState(false); // State for Back to Top button visibility
+    const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
         const backendApiUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
 
         const fetchUsersAndToken = async () => {
             try {
-                const usersResponse = await axios.get(`${backendApiUrl}/users`);
-                console.log('Users response:', usersResponse.data);
-                const users = usersResponse.data;
-                if (users && users.length > 0) {
-                    const tokenResponse = await axios.get(`${backendApiUrl}/token/${userId}`);
-                    console.log('Token response:', tokenResponse.data);
-                    const token = tokenResponse.data.token;
-                    if (token) {
-                        localStorage.setItem('token', token);
-                        const restaurantResponse = await fetchRestaurant(token);
-                        console.log('Restaurant response:', restaurantResponse);
-                        if (restaurantResponse && restaurantResponse._id) {
-                            localStorage.setItem('restaurantId', restaurantResponse._id);
-                            console.log('Set restaurantId in localStorage:', restaurantResponse._id);
-                        }
+                const tokenResponse = await axios.get(`${backendApiUrl}/token/${userId}`);
+                const token = tokenResponse.data.token;
+                if (token) {
+                    localStorage.setItem('token', token);
+                    const restaurantResponse = await fetchRestaurant(token);
+                    if (restaurantResponse && restaurantResponse._id) {
+                        localStorage.setItem('restaurantId', restaurantResponse._id);
                     }
                 } else {
-                    console.error('No users found');
+                    console.error('No token found');
                 }
             } catch (error) {
-                console.error('Error fetching users or token:', error);
+                console.error('Error fetching token:', error);
             }
         };
 
@@ -59,7 +51,6 @@ const App = () => {
             const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/restaurant`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            console.log('Fetched restaurant data:', response.data);
             setRestaurantName(response.data.name);
             setIsLoggedIn(true);
             return response.data;
@@ -110,12 +101,12 @@ const App = () => {
     useEffect(() => {
         const handleScroll = () => {
             const offset = window.scrollY;
-            if (offset > 100) { // Adjust this value as needed
+            if (offset > 100) {
                 setIsFixed(true);
             } else {
                 setIsFixed(false);
             }
-            if (offset > 300) { // Show Back to Top button after scrolling down 300px
+            if (offset > 300) {
                 setShowBackToTop(true);
             } else {
                 setShowBackToTop(false);

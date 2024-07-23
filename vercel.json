@@ -1,9 +1,8 @@
 {
     "rewrites": [
-      {
-        "source": "/:userId",
-        "destination": "/index.html"
-      }
+        {
+            "source": "/:userId",
+            "destination": "/index.html"
+        }
     ]
-  }
-  
+}

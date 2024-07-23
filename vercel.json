@@ -2,8 +2,7 @@
     "version": 2,
     "name": "digitalmenu",
     "builds": [
-      { "src": "public/**/*", "use": "@vercel/static" },
-      { "src": "src/**/*.{js,jsx}", "use": "@vercel/node" }
+      { "src": "public/**/*", "use": "@vercel/static" }
     ],
     "routes": [
       { "src": "/src/(.*)", "dest": "/src/$1" },

@@ -12,46 +12,55 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
   useEffect(() => {
     console.log("Fetching categories and items for userId:", userId);
     const fetchCategoriesAndItems = async () => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        console.error('Token not found in localStorage');
-        return;
-      }
-      try {
-        const categoriesResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${userId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        console.log("Categories response:", categoriesResponse.data);
-        const categories = categoriesResponse.data;
-        if (categories.length === 0) {
-          console.warn('No categories found');
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token not found in localStorage');
+            return;
         }
-        const sectionsWithItems = await Promise.all(
-          categories.map(async (category) => {
-            const itemsResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/items/${category._id}/${userId}`, {
-              headers: {
-                Authorization: `Bearer ${token}`
-              }
+        try {
+            const categoriesResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             });
-            console.log(`Items for category ${category.name}:`, itemsResponse.data);
-            sectionRefs.current[category._id] = React.createRef();
-            return {
-              id: category._id,
-              title: category.name,
-              items: itemsResponse.data
-            };
-          })
-        );
-        setSections(sectionsWithItems);
-      } catch (error) {
-        console.error('Error fetching categories or items:', error);
-      }
+            console.log("Categories response:", categoriesResponse.data);
+            const categories = categoriesResponse.data;
+            if (categories.length === 0) {
+                console.warn('No categories found');
+            }
+            const sectionsWithItems = await Promise.all(
+                categories.map(async (category) => {
+                    try {
+                        const itemsResponse = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/items/${category._id}/${userId}`, {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        });
+                        console.log(`Items for category ${category.name}:`, itemsResponse.data);
+                        sectionRefs.current[category._id] = React.createRef();
+                        return {
+                            id: category._id,
+                            title: category.name,
+                            items: itemsResponse.data
+                        };
+                    } catch (error) {
+                        console.error(`Error fetching items for category ${category.name}:`, error);
+                        return {
+                            id: category._id,
+                            title: category.name,
+                            items: []
+                        };
+                    }
+                })
+            );
+            setSections(sectionsWithItems);
+        } catch (error) {
+            console.error('Error fetching categories or items:', error);
+        }
     };
 
     fetchCategoriesAndItems();
-  }, [userId]);
+}, [userId]);
 
   useEffect(() => {
     if (activeCategory && sectionRefs.current[activeCategory]) {

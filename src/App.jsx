@@ -7,13 +7,11 @@ import Menu from './components/Menu';
 import CartItem from './components/CartItem';
 import PlaceOrderPage from './components/PlaceOrderPage';
 import BackToTopButton from './components/BackToTopButton';
-import { useParams } from 'react-router-dom';
 import { db, auth } from './firebase-config';  // Import the Firebase configuration
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 
 const App = () => {
-    const { userId } = useParams();
     const [cart, setCart] = useState([]);
     const [showCartItem, setShowCartItem] = useState(false);
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
@@ -27,12 +25,12 @@ const App = () => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                fetchRestaurantDetails(user);
+                fetchRestaurantDetails(user.uid);
             } else {
                 // Sign in the user (for testing purposes, use a test account)
                 signInWithEmailAndPassword(auth, 'test@example.com', 'password')
                     .then((userCredential) => {
-                        fetchRestaurantDetails(userCredential.user);
+                        fetchRestaurantDetails(userCredential.user.uid);
                     })
                     .catch((error) => {
                         console.error('Authentication error:', error);
@@ -41,11 +39,11 @@ const App = () => {
         });
 
         return () => unsubscribe(); // Cleanup subscription on unmount
-    }, [userId]);
+    }, []);
 
-    const fetchRestaurantDetails = async (user) => {
+    const fetchRestaurantDetails = async (uid) => {
         try {
-            const q = query(collection(db, 'restaurants'), where('uid', '==', userId));
+            const q = query(collection(db, 'restaurants'), where('uid', '==', uid));
             const querySnapshot = await getDocs(q);
             if (!querySnapshot.empty) {
                 const restaurantData = querySnapshot.docs[0].data();

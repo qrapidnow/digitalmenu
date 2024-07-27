@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import './App.css';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
@@ -8,9 +8,8 @@ import CartItem from './components/CartItem';
 import PlaceOrderPage from './components/PlaceOrderPage';
 import BackToTopButton from './components/BackToTopButton';
 import { useParams } from 'react-router-dom';
-import { db, auth } from './firebase-config';
+import { db } from './firebase-config';
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { onAuthStateChanged } from 'firebase/auth';
 
 // Creating a context for cart management
 export const CartContext = createContext();
@@ -21,28 +20,17 @@ const App = () => {
     const [showCartItem, setShowCartItem] = useState(false);
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
     const [restaurantName, setRestaurantName] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [activeCategory, setActiveCategory] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [isFixed, setIsFixed] = useState(false);
     const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setIsLoggedIn(true);
-                if (uid) {
-                    fetchRestaurantDetails(uid);
-                } else {
-                    console.error("UID not provided");
-                }
-            } else {
-                setIsLoggedIn(false);
-                console.log("User is not logged in");
-            }
-        });
-
-        return () => unsubscribe();
+        if (uid) {
+            fetchRestaurantDetails(uid);
+        } else {
+            console.error("UID not provided");
+        }
     }, [uid]);
 
     const fetchRestaurantDetails = async (uid) => {
@@ -58,7 +46,7 @@ const App = () => {
             }
         } catch (error) {
             console.error('Error fetching restaurant details:', error);
-            alert('Failed to load restaurant details. Please try again.');  // Provide user feedback directly
+            alert('Failed to load restaurant details. Please try again.');
         }
     };
 
@@ -121,10 +109,6 @@ const App = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
-    if (!isLoggedIn) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <CartContext.Provider value={{ cart, setCart }}>

@@ -8,12 +8,13 @@ const Navbar = ({ setActiveCategory }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+    if (!uid) {
+      console.error('UID not provided');
+      return;
+    }
+
     console.log("Fetching categories for UID:", uid);
     const fetchCategories = async () => {
-      if (!uid) {
-        console.error('UID not provided');
-        return;
-      }
       try {
         const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${uid}`);
         console.log("Categories response:", response.data);

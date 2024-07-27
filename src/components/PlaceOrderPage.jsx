@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from './firebase'; // Ensure you have the firebase setup in a separate file
 import Swal from 'sweetalert2';
 import './PlaceOrderPage.css';
 
@@ -22,19 +23,15 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
         price: item.price,
         quantity: item.quantity,
       })),
+      createdAt: serverTimestamp()
     };
 
     console.log('Order data to be sent:', orderData);
-    console.log('Environment Variable:', import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API);
 
     try {
-      console.log('Attempting to send order data to backend...');
-      const response = await axios.post(
-        `${import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API}/orders`,
-        orderData,
-        { headers: { 'Content-Type': 'application/json' } }
-      );
-      console.log('Order saved:', response.data);
+      console.log('Attempting to send order data to Firestore...');
+      const docRef = await addDoc(collection(db, 'orders'), orderData);
+      console.log('Order saved:', docRef.id);
       Swal.fire({
         title: 'Order Placed Successfully!',
         text: 'Your order has been placed.',
@@ -44,15 +41,6 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       setShowPlaceOrderPage(false); // Close the order page
     } catch (error) {
       console.error('Error saving order:', error);
-      if (error.response) {
-        console.log('Error data:', error.response.data);
-        console.log('Error status:', error.response.status);
-        console.log('Error headers:', error.response.headers);
-      } else if (error.request) {
-        console.log('Error request:', error.request);
-      } else {
-        console.log('Error message:', error.message);
-      }
       Swal.fire({
         title: 'Failed to Place Order',
         text: 'Please try again.',

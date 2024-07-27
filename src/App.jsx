@@ -9,8 +9,9 @@ import CartItem from './components/CartItem';
 import PlaceOrderPage from './components/PlaceOrderPage';
 import BackToTopButton from './components/BackToTopButton';
 import { useParams } from 'react-router-dom';
-import { db } from './firebase-config';
+import { db, auth } from './firebase-config';  // Import the Firebase configuration
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 
 const App = () => {
     const { userId } = useParams();
@@ -25,24 +26,40 @@ const App = () => {
     const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
-        const fetchRestaurantDetails = async () => {
-            try {
-                const q = query(collection(db, 'restaurants'), where('uid', '==', userId));
-                const querySnapshot = await getDocs(q);
-                if (!querySnapshot.empty) {
-                    const restaurantData = querySnapshot.docs[0].data();
-                    setRestaurantName(restaurantData.restaurantName);
-                    setIsLoggedIn(true);
-                } else {
-                    console.error('No restaurant found');
-                }
-            } catch (error) {
-                console.error('Error fetching restaurant details:', error);
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                fetchRestaurantDetails(user);
+            } else {
+                // Sign in the user (for testing purposes, use a test account)
+                signInWithEmailAndPassword(auth, 'test@example.com', 'password')
+                    .then((userCredential) => {
+                        fetchRestaurantDetails(userCredential.user);
+                    })
+                    .catch((error) => {
+                        console.error('Authentication error:', error);
+                    });
             }
-        };
+        });
 
-        fetchRestaurantDetails();
+        return () => unsubscribe(); // Cleanup subscription on unmount
     }, [userId]);
+
+    const fetchRestaurantDetails = async (user) => {
+        try {
+            const q = query(collection(db, 'restaurants'), where('uid', '==', userId));
+            const querySnapshot = await getDocs(q);
+            if (!querySnapshot.empty) {
+                const restaurantData = querySnapshot.docs[0].data();
+                console.log("Fetched restaurant data:", restaurantData);
+                setRestaurantName(restaurantData.restaurantName);
+                setIsLoggedIn(true);
+            } else {
+                console.error('No restaurant found');
+            }
+        } catch (error) {
+            console.error('Error fetching restaurant details:', error);
+        }
+    };
 
     const addItem = (item) => {
         setCart((prevCart) => {

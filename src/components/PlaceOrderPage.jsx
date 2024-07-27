@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from './firebase'; // Ensure you have the firebase setup in a separate file
+import { db } from '../firebase'; // Adjust the path relative to PlaceOrderPage.jsx
 import Swal from 'sweetalert2';
 import './PlaceOrderPage.css';
 

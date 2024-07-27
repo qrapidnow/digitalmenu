@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './NavBar.css';
 import { useParams } from 'react-router-dom';
+import { db } from '../firebase-config';
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const Navbar = ({ setActiveCategory }) => {
   const { uid } = useParams(); // Get UID from URL parameters
@@ -16,9 +17,14 @@ const Navbar = ({ setActiveCategory }) => {
     console.log("Fetching categories for UID:", uid);
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${uid}`);
-        console.log("Categories response:", response.data);
-        setCategories(response.data);
+        const q = query(collection(db, 'restaurants', uid, 'categories'));
+        const querySnapshot = await getDocs(q);
+        const fetchedCategories = querySnapshot.docs.map(doc => ({
+          _id: doc.id,
+          ...doc.data()
+        }));
+        console.log("Categories response:", fetchedCategories);
+        setCategories(fetchedCategories);
       } catch (error) {
         console.error('Error fetching categories:', error);
       }

@@ -11,7 +11,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
 
   const handleSubmitOrder = async (event) => {
     event.preventDefault();
-    setIsLoading(true); // Set loading to true when order submission starts
+    setIsLoading(true);
   
     const orderData = {
       name,
@@ -24,38 +24,21 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       })),
     };
   
-    console.log('Order data to be sent:', orderData);
-    console.log('Environment Variable:', import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API);
-  
     try {
-      console.log('Attempting to send order data to backend...');
       const response = await axios.post(
-        `${import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API}/orders`,
+        `${import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API}/api/orders`, // Ensure this matches your backend route
         orderData,
         { headers: { 'Content-Type': 'application/json' } }
       );
-      console.log('Order saved:', response.data);
       Swal.fire({
         title: 'Order Placed Successfully!',
         text: 'Your order has been placed.',
         icon: 'success',
         confirmButtonText: 'OK'
       });
-      setShowPlaceOrderPage(false); // Close the order page
+      setShowPlaceOrderPage(false);
     } catch (error) {
       console.error('Error saving order:', error);
-      if (error.response) {
-        // Logs to help diagnose issues from server responses
-        console.error('Error response data:', error.response.data);
-        console.error('Error status:', error.response.status);
-        console.error('Error headers:', error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.error('Error request:', error.request);
-      } else {
-        // Something happened in setting up the request and triggered an Error
-        console.error('Error message:', error.message);
-      }
       Swal.fire({
         title: 'Failed to Place Order',
         text: 'Please try again.',
@@ -63,11 +46,10 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
         confirmButtonText: 'OK'
       });
     } finally {
-      setIsLoading(false); // Set loading to false after order submission completes
+      setIsLoading(false);
     }
   };
   
-
   return (
     <div className="place-order-container">
       <h2 className="place-order-title">Place Your Order</h2>

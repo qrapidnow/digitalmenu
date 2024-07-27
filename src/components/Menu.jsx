@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
 import './Menu.css';
 import FoodItemCard from './FoodItemCard';
 import { useParams } from 'react-router-dom';
@@ -7,25 +6,20 @@ import { db } from '../firebase-config';
 import { collection, getDocs, query, where } from "firebase/firestore";
 
 const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) => {
-    const { userId } = useParams();
+    const { uid } = useParams();  // Read UID from URL parameters
     const [sections, setSections] = useState([]);
     const sectionRefs = useRef({});
 
     useEffect(() => {
         const fetchCategoriesAndItems = async () => {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                console.error('Token not found in localStorage');
-                return;
-            }
             try {
-                const q = query(collection(db, 'restaurants', userId, 'categories'));
+                const q = query(collection(db, 'restaurants', uid, 'categories'));
                 const querySnapshot = await getDocs(q);
                 const categories = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
                 const sectionsWithItems = await Promise.all(
                     categories.map(async (category) => {
-                        const itemsQuery = query(collection(db, 'restaurants', userId, 'categories', category.id, 'items'));
+                        const itemsQuery = query(collection(db, 'restaurants', uid, 'categories', category.id, 'items'));
                         const itemsSnapshot = await getDocs(itemsQuery);
                         const items = itemsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                         sectionRefs.current[category.id] = React.createRef();
@@ -43,7 +37,7 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
         };
 
         fetchCategoriesAndItems();
-    }, [userId]);
+    }, [uid]);
 
     useEffect(() => {
         if (activeCategory && sectionRefs.current[activeCategory]) {

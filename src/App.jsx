@@ -7,11 +7,13 @@ import Menu from './components/Menu';
 import CartItem from './components/CartItem';
 import PlaceOrderPage from './components/PlaceOrderPage';
 import BackToTopButton from './components/BackToTopButton';
+import { useParams } from 'react-router-dom';
 import { db, auth } from './firebase-config';  // Import the Firebase configuration
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const App = () => {
+    const { uid } = useParams();  // Read UID from URL parameters
     const [cart, setCart] = useState([]);
     const [showCartItem, setShowCartItem] = useState(false);
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
@@ -23,23 +25,8 @@ const App = () => {
     const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                fetchRestaurantDetails(user.uid);
-            } else {
-                // Sign in the user (for testing purposes, use a test account)
-                signInWithEmailAndPassword(auth, 'test@example.com', 'password')
-                    .then((userCredential) => {
-                        fetchRestaurantDetails(userCredential.user.uid);
-                    })
-                    .catch((error) => {
-                        console.error('Authentication error:', error);
-                    });
-            }
-        });
-
-        return () => unsubscribe(); // Cleanup subscription on unmount
-    }, []);
+        fetchRestaurantDetails(uid);
+    }, [uid]);
 
     const fetchRestaurantDetails = async (uid) => {
         try {

@@ -9,7 +9,7 @@ const root = createRoot(container);
 root.render(
   <Router>
     <Routes>
-      <Route path="/:userId" element={<App />} />
+      <Route path="/:uid" element={<App />} />
     </Routes>
   </Router>
 );

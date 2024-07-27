@@ -26,7 +26,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
   
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API}/api/orders`, // Ensure this matches your backend route
+        `${import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API}/orders`, // Ensure this matches your backend route
         orderData,
         { headers: { 'Content-Type': 'application/json' } }
       );

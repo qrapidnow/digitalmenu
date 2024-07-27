@@ -31,7 +31,11 @@ const App = () => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setIsLoggedIn(true);
-                fetchRestaurantDetails(uid);
+                if (uid) {
+                    fetchRestaurantDetails(uid);
+                } else {
+                    console.error("UID not provided");
+                }
             } else {
                 setIsLoggedIn(false);
                 console.log("User is not logged in");

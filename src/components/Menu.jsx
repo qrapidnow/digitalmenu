@@ -12,6 +12,10 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
 
     useEffect(() => {
         const fetchCategoriesAndItems = async () => {
+            if (!uid) {
+                console.error('UID not provided');
+                return;
+            }
             try {
                 const q = query(collection(db, 'restaurants', uid, 'categories'));
                 const querySnapshot = await getDocs(q);

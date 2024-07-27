@@ -4,21 +4,18 @@ import './NavBar.css';
 import { useParams } from 'react-router-dom';
 
 const Navbar = ({ setActiveCategory }) => {
-  const { userId } = useParams(); // Get userId from URL parameters
+  const { uid } = useParams(); // Get UID from URL parameters
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    console.log("Fetching categories for userId:", userId);
+    console.log("Fetching categories for UID:", uid);
     const fetchCategories = async () => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        console.error('Token not found in localStorage');
+      if (!uid) {
+        console.error('UID not provided');
         return;
       }
       try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${userId}`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        const response = await axios.get(`${import.meta.env.VITE_APP_BASE_BACKEND_API}/categories/${uid}`);
         console.log("Categories response:", response.data);
         setCategories(response.data);
       } catch (error) {
@@ -27,7 +24,7 @@ const Navbar = ({ setActiveCategory }) => {
     };
 
     fetchCategories();
-  }, [userId]);
+  }, [uid]);
 
   return (
     <nav className="navbar">

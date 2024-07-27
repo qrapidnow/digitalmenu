@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import './App.css';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
@@ -8,9 +8,12 @@ import CartItem from './components/CartItem';
 import PlaceOrderPage from './components/PlaceOrderPage';
 import BackToTopButton from './components/BackToTopButton';
 import { useParams } from 'react-router-dom';
-import { db, auth } from './firebase-config';  // Import the Firebase configuration
+import { db, auth } from './firebase-config';
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { onAuthStateChanged } from 'firebase/auth';
+
+// Creating a context for cart management
+export const CartContext = createContext();
 
 const App = () => {
     const { uid } = useParams();  // Read UID from URL parameters
@@ -25,7 +28,17 @@ const App = () => {
     const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
-        fetchRestaurantDetails(uid);
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setIsLoggedIn(true);
+                fetchRestaurantDetails(uid);
+            } else {
+                setIsLoggedIn(false);
+                console.log("User is not logged in");
+            }
+        });
+
+        return () => unsubscribe();
     }, [uid]);
 
     const fetchRestaurantDetails = async (uid) => {
@@ -36,12 +49,12 @@ const App = () => {
                 const restaurantData = querySnapshot.docs[0].data();
                 console.log("Fetched restaurant data:", restaurantData);
                 setRestaurantName(restaurantData.restaurantName);
-                setIsLoggedIn(true);
             } else {
                 console.error('No restaurant found');
             }
         } catch (error) {
             console.error('Error fetching restaurant details:', error);
+            alert('Failed to load restaurant details. Please try again.');  // Provide user feedback directly
         }
     };
 
@@ -110,46 +123,48 @@ const App = () => {
     }
 
     return (
-        <div className="app">
-            <div className="header-container">
-                <Header restaurantName={restaurantName} />
-            </div>
-            <div className={`search-cart-container ${isFixed ? 'fixed' : ''}`}>
-                <SearchBar setSearchTerm={setSearchTerm} />
-                <button className="cart-button" onClick={handleCartClick}>🛒</button>
-            </div>
-            <div className={`navbar ${isFixed ? 'fixed' : ''}`}>
-                <Navbar setActiveCategory={setActiveCategory} />
-            </div>
-            <div className={`content-container ${isFixed ? 'fixed-margin' : ''}`}>
-                <Menu 
-                    addItem={addItem}
-                    cart={cart}
-                    updateItemCount={updateItemCount}
-                    activeCategory={activeCategory}
-                    searchTerm={searchTerm}
-                />
-            </div>
-            {!showCartItem && getTotalItems() > 0 && (
-                <div className="view-order-bar" onClick={handleViewOrderClick}>
-                    <span>View Order</span>
-                    <span className="order-count">{getTotalItems()}</span>
+        <CartContext.Provider value={{ cart, setCart }}>
+            <div className="app">
+                <div className="header-container">
+                    <Header restaurantName={restaurantName} />
                 </div>
-            )}
-            {showCartItem && (
-                <CartItem
-                    cartItems={cart}
-                    setCart={setCart}
-                    removeItem={removeItem}
-                    setShowCartItem={setShowCartItem}
-                    updateItemCount={updateItemCount}
-                />
-            )}
-            {showPlaceOrderPage && (
-                <PlaceOrderPage cartItems={cart} setShowPlaceOrderPage={setShowPlaceOrderPage} />
-            )}
-            {!showCartItem && <BackToTopButton isVisible={showBackToTop} />}
-        </div>
+                <div className={`search-cart-container ${isFixed ? 'fixed' : ''}`}>
+                    <SearchBar setSearchTerm={setSearchTerm} />
+                    <button className="cart-button" onClick={handleCartClick}>🛒</button>
+                </div>
+                <div className={`navbar ${isFixed ? 'fixed' : ''}`}>
+                    <Navbar setActiveCategory={setActiveCategory} />
+                </div>
+                <div className={`content-container ${isFixed ? 'fixed-margin' : ''}`}>
+                    <Menu 
+                        addItem={addItem}
+                        cart={cart}
+                        updateItemCount={updateItemCount}
+                        activeCategory={activeCategory}
+                        searchTerm={searchTerm}
+                    />
+                </div>
+                {!showCartItem && getTotalItems() > 0 && (
+                    <div className="view-order-bar" onClick={handleViewOrderClick}>
+                        <span>View Order</span>
+                        <span className="order-count">{getTotalItems()}</span>
+                    </div>
+                )}
+                {showCartItem && (
+                    <CartItem
+                        cartItems={cart}
+                        setCart={setCart}
+                        removeItem={removeItem}
+                        setShowCartItem={setShowCartItem}
+                        updateItemCount={updateItemCount}
+                    />
+                )}
+                {showPlaceOrderPage && (
+                    <PlaceOrderPage cartItems={cart} setShowPlaceOrderPage={setShowPlaceOrderPage} />
+                )}
+                {!showCartItem && <BackToTopButton isVisible={showBackToTop} />}
+            </div>
+        </CartContext.Provider>
     );
 };
 

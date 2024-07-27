@@ -7,12 +7,12 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
   const [name, setName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [tableNo, setTableNo] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmitOrder = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-  
+
     const orderData = {
       name,
       whatsapp,
@@ -23,13 +23,16 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
         quantity: item.quantity,
       })),
     };
-  
+
+    console.log("Attempting to send order data:", orderData); // Log data being sent
+
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API}/orders`, // Ensure this matches your backend route
+        `${import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API}/orders`,
         orderData,
         { headers: { 'Content-Type': 'application/json' } }
       );
+      console.log("Order response data:", response.data); // Log response data
       Swal.fire({
         title: 'Order Placed Successfully!',
         text: 'Your order has been placed.',
@@ -38,7 +41,12 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       });
       setShowPlaceOrderPage(false);
     } catch (error) {
-      console.error('Error saving order:', error);
+      console.error('Error sending order:', error);
+      if (error.response) {
+        // Log details of response error if it exists
+        console.error('Response data:', error.response.data);
+        console.error('Response status:', error.response.status);
+      }
       Swal.fire({
         title: 'Failed to Place Order',
         text: 'Please try again.',
@@ -49,7 +57,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       setIsLoading(false);
     }
   };
-  
+
   return (
     <div className="place-order-container">
       <h2 className="place-order-title">Place Your Order</h2>

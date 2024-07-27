@@ -9,7 +9,7 @@ import PlaceOrderPage from './components/PlaceOrderPage';
 import BackToTopButton from './components/BackToTopButton';
 import { useParams } from 'react-router-dom';
 import { db } from './firebase-config';
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, doc, getDoc } from "firebase/firestore";
 
 // Creating a context for cart management
 export const CartContext = createContext();
@@ -35,10 +35,11 @@ const App = () => {
 
     const fetchRestaurantDetails = async (uid) => {
         try {
-            const q = query(collection(db, 'restaurants'), where('uid', '==', uid));
-            const querySnapshot = await getDocs(q);
-            if (!querySnapshot.empty) {
-                const restaurantData = querySnapshot.docs[0].data();
+            const docRef = doc(db, 'restaurants', uid);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                const restaurantData = docSnap.data();
                 console.log("Fetched restaurant data:", restaurantData);
                 setRestaurantName(restaurantData.restaurantName);
             } else {

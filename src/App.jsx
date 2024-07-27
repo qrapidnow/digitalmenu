@@ -8,7 +8,7 @@ import CartItem from './components/CartItem';
 import PlaceOrderPage from './components/PlaceOrderPage';
 import BackToTopButton from './components/BackToTopButton';
 import { useParams } from 'react-router-dom';
-import { auth, db } from './firebase-config';
+import { db } from './firebase-config';
 import { collection, getDocs, query, where } from "firebase/firestore";
 
 // Creating a context for cart management
@@ -35,21 +35,14 @@ const App = () => {
 
     const fetchRestaurantDetails = async (uid) => {
         try {
-            const user = auth.currentUser;
-            if (user) {
-                const token = await user.getIdToken();
-                const q = query(collection(db, 'restaurants'), where('uid', '==', uid));
-                const querySnapshot = await getDocs(q);
-                if (!querySnapshot.empty) {
-                    const restaurantData = querySnapshot.docs[0].data();
-                    console.log("Fetched restaurant data:", restaurantData);
-                    setRestaurantName(restaurantData.restaurantName);
-                } else {
-                    console.error('No restaurant found');
-                }
+            const q = query(collection(db, 'restaurants'), where('uid', '==', uid));
+            const querySnapshot = await getDocs(q);
+            if (!querySnapshot.empty) {
+                const restaurantData = querySnapshot.docs[0].data();
+                console.log("Fetched restaurant data:", restaurantData);
+                setRestaurantName(restaurantData.restaurantName);
             } else {
-                console.error('User is not authenticated');
-                alert('Please log in to view restaurant details.');
+                console.error('No restaurant found');
             }
         } catch (error) {
             console.error('Error fetching restaurant details:', error);

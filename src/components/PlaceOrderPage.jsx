@@ -12,7 +12,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
   const handleSubmitOrder = async (event) => {
     event.preventDefault();
     setIsLoading(true); // Set loading to true when order submission starts
-
+  
     const orderData = {
       name,
       whatsapp,
@@ -23,10 +23,10 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
         quantity: item.quantity,
       })),
     };
-
+  
     console.log('Order data to be sent:', orderData);
     console.log('Environment Variable:', import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API);
-
+  
     try {
       console.log('Attempting to send order data to backend...');
       const response = await axios.post(
@@ -45,13 +45,16 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
     } catch (error) {
       console.error('Error saving order:', error);
       if (error.response) {
-        console.log('Error data:', error.response.data);
-        console.log('Error status:', error.response.status);
-        console.log('Error headers:', error.response.headers);
+        // Logs to help diagnose issues from server responses
+        console.error('Error response data:', error.response.data);
+        console.error('Error status:', error.response.status);
+        console.error('Error headers:', error.response.headers);
       } else if (error.request) {
-        console.log('Error request:', error.request);
+        // The request was made but no response was received
+        console.error('Error request:', error.request);
       } else {
-        console.log('Error message:', error.message);
+        // Something happened in setting up the request and triggered an Error
+        console.error('Error message:', error.message);
       }
       Swal.fire({
         title: 'Failed to Place Order',
@@ -63,6 +66,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       setIsLoading(false); // Set loading to false after order submission completes
     }
   };
+  
 
   return (
     <div className="place-order-container">

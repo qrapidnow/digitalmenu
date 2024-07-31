@@ -51,22 +51,23 @@ const App = () => {
         }
     };
 
-    const addItem = (item) => {
+    const addItem = (newItem) => {
         setCart((prevCart) => {
-            const itemIndex = prevCart.findIndex(cartItem => cartItem._id === item._id);
-            if (itemIndex !== -1) {
-                // If item exists, create a new array with the updated item
-                return prevCart.map((cartItem, index) => 
-                    index === itemIndex 
-                    ? { ...cartItem, quantity: cartItem.quantity + 1 }
-                    : cartItem
-                );
-            } else {
-                // If item does not exist, add new item with quantity set to 1
-                return [...prevCart, { ...item, quantity: 1 }];
-            }
+          const existingIndex = prevCart.findIndex(cartItem => cartItem._id === newItem._id);
+          if (existingIndex !== -1) {
+            // If the item exists, update the quantity
+            return prevCart.map((cartItem, index) => {
+              if (index === existingIndex) {
+                return { ...cartItem, quantity: cartItem.quantity + newItem.quantity };
+              }
+              return cartItem;
+            });
+          } else {
+            // If the item does not exist, add it to the cart
+            return [...prevCart, newItem];
+          }
         });
-    };
+      };
     
 
     const getTotalItems = () => cart.reduce((total, item) => total + item.quantity, 0);

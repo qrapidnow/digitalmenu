@@ -10,29 +10,27 @@ body {
 /* Header Styles */
 .header {
   width: 100%;
-  padding: 10px 0; /* Reduced padding for a sleeker look */
-  background-color: #e8f5e9; /* Light green background */
-  color: #2e7d32; /* Dark green text color */
+  padding: 10px 0;
+  background-color: #1e3932; /* Dark green background */
+  color: #fff; /* White text color */
   text-align: center;
-  border-bottom: 1px solid #c8e6c9; /* Lighter green border */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 1;
 }
 
 .header-title {
-  font-size: 2.5rem; /* Larger font size for prominence */
-  font-weight: 800; /* Extra bold font */
-  margin-bottom: 5px; /* Adjusted margin */
-  font-family: 'Montserrat', sans-serif; /* Distinct font for title */
-  color: #1b5e20; /* Darker green title color */
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Dancing Script', cursive; /* Elegant script font */
 }
 
 .header-subtitle {
-  font-size: 1.2rem; /* Increased font size for better readability */
-  color: #388e3c; /* Green subtitle color */
-  font-family: 'Roboto', sans-serif; /* Modern and clean font */
-  margin-bottom: 10px; /* Adjusted margin */
+  font-size: 1rem;
+  color: #c1d1c0; /* Light green subtitle color */
+  margin: 0;
 }
 
 .header-status {

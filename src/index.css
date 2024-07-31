@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Kameron:wght@400;700&display=swap');
 
-.body {
+body {
   margin: 0;
   font-family: 'Kameron', serif;  /* Main body font */
-  background-color: #000;        /* Changed background to black */
-  color: #fff;                   /* Text color set to white */
+  background-color: #f9f9f9; /* Softer background color */
+  color: #333; /* Slightly darker base text color */
 }
 
 * {

@@ -36,7 +36,7 @@
 
 .cart-item-header h2 {
   font-size: 1.5em;
-  color: #333;
+  color: #1e3932; /* Dark green text color */
 }
 
 .cart-item-header .back-button {
@@ -44,7 +44,7 @@
   border: none;
   font-size: 1.5em;
   cursor: pointer;
-  color: #4CAF50;
+  color: #1e3932; /* Dark green color */
   transform: rotate(180deg);
 }
 
@@ -86,7 +86,7 @@
 .quantity-controls button {
   padding: 5px;
   margin: 0 5px;
-  background-color: #4CAF50;
+  background-color: #1e3932; /* Dark green button */
   color: white;
   border: none;
   cursor: pointer;
@@ -100,12 +100,12 @@
 }
 
 .quantity-controls button:hover:not(:disabled) {
-  background-color: #388e3c;
+  background-color: #145a32; /* Darker green on hover */
 }
 
 .delete-button {
   padding: 5px 10px;
-  background-color: #ff6347;
+  background-color: #ff6347; /* Red button */
   color: white;
   border: none;
   cursor: pointer;
@@ -114,7 +114,7 @@
 }
 
 .delete-button:hover {
-  background-color: #cc5140;
+  background-color: #cc5140; /* Darker red on hover */
 }
 
 .cart-item-actions {
@@ -127,7 +127,7 @@
 
 .action-button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #1e3932; /* Dark green button */
   color: white;
   border: none;
   cursor: pointer;
@@ -137,7 +137,7 @@
 }
 
 .action-button:hover {
-  background-color: #388e3c;
+  background-color: #145a32; /* Darker green on hover */
   transform: translateY(-2px);
 }
 

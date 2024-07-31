@@ -1,28 +1,28 @@
 .menu {
   box-sizing: border-box;
   width: 100%;
-  padding: 0 20px; /* Increased padding */
+  padding: 20px;
 }
 
 .menu-section {
   box-sizing: border-box;
   width: 100%;
-  padding: 20px; /* Increased padding */
-  margin-bottom: 25px; /* Increased bottom margin */
+  padding: 20px;
+  margin-bottom: 25px;
   border: 1px solid #c0d6c9; /* Light green border */
-  border-radius: 12px; /* More rounded corners */
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
 }
 
 .menu h2 {
   font-weight: 700; /* Bolder font weight */
-  color: #2e7d32; /* Dark green text color */
+  color: #1e3932; /* Dark green text color */
   margin-bottom: 15px; /* Increased bottom margin */
-  border-bottom: 2px solid #4caf50; /* Green border color */
+  border-bottom: 2px solid #1e3932; /* Green border color */
   padding-bottom: 8px; /* Increased padding */
   width: 100%;
   text-align: center;
-  font-family: 'Roboto', sans-serif; /* Modern sans-serif font */
+  font-family: 'Kameron', serif; /* Consistent serif font */
 }
 
 .menu-items-container {

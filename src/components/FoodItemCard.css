@@ -9,7 +9,7 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
-  font-family: 'Roboto', sans-serif; /* Modern sans-serif font */
+  font-family: 'Kameron', serif; /* Consistent serif font */
 }
 
 .food-item-card:hover {
@@ -27,7 +27,7 @@
 
 .food-item-title {
   font-size: 1.2rem; /* Reduced font size */
-  color: #333; /* Darker text */
+  color: #1e3932; /* Dark green text */
   margin: 0;
   font-weight: 600; /* Semi-bold font */
   flex-grow: 1;
@@ -67,7 +67,7 @@
 
 .add-button {
   padding: 10px 14px; /* Reduced padding */
-  background-color: #4caf50; /* Green button */
+  background-color: #1e3932; /* Dark green button */
   color: #fff;
   border: none;
   border-radius: 8px; /* Rounded corners */
@@ -79,13 +79,13 @@
 }
 
 .add-button:hover {
-  background-color: #388e3c; /* Darker green on hover */
+  background-color: #145a32; /* Darker green on hover */
   transform: translateY(-2px); /* Slight lift on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow on hover */
 }
 
 /* Focus state for accessibility */
 .add-button:focus {
-  outline: 2px solid #388e3c;
+  outline: 2px solid #145a32;
   outline-offset: 2px;
 }

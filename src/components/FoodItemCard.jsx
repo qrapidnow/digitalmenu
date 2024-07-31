@@ -6,22 +6,7 @@ const FoodItemCard = ({ item, addItem, quantity, updateItemCount }) => {
 
   const handleAdd = (e) => {
     e.stopPropagation(); // Prevent the card's onClick from firing
-    console.log('Adding item:', item);
-    addItem(item); // Add the item with initial quantity management
-  };
-
-  const handleIncrement = (e) => {
-    e.stopPropagation(); // Prevent the card's onClick from firing
-    console.log('Incrementing item:', item);
-    updateItemCount(item._id, 1); // Increment the item quantity
-  };
-
-  const handleDecrement = (e) => {
-    e.stopPropagation(); // Prevent the card's onClick from firing
-    console.log('Decrementing item:', item);
-    if (quantity > 0) {
-      updateItemCount(item._id, -1); // Decrement the item quantity
-    }
+    addItem(item);
   };
 
   const toggleExpand = () => {
@@ -39,9 +24,9 @@ const FoodItemCard = ({ item, addItem, quantity, updateItemCount }) => {
           <p className="food-item-description">{item.description}</p>
           <span className="food-item-weight">{item.weight} g</span>
           <div className="food-item-controls">
-            <button onClick={handleDecrement} disabled={quantity === 0}>-</button>
+          <button onClick={(e) => { e.stopPropagation(); updateItemCount(item._id, -1); }} disabled={quantity === 0}>-</button>
             <span>{quantity}</span>
-            <button onClick={handleIncrement}>+</button>
+            <button onClick={(e) => { e.stopPropagation(); updateItemCount(item._id, 1); }}>+</button>
             <button onClick={handleAdd} className="add-button">Add</button>
           </div>
         </div>

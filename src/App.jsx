@@ -51,23 +51,17 @@ const App = () => {
         }
     };
 
-    const addItem = (newItem) => {
-        console.log('Adding new item:', newItem);
-        setCart(prevCart => {
-            console.log('Previous cart:', prevCart);
-            const itemIndex = prevCart.findIndex(cartItem => cartItem._id === newItem._id);
-            if (itemIndex !== -1) {
-                const newCart = [...prevCart];
-                newCart[itemIndex] = {
-                    ...newCart[itemIndex],
-                    quantity: newCart[itemIndex].quantity + 1
-                };
-                console.log('Updated cart:', newCart);
-                return newCart;
+    const addItem = (item) => {
+        setCart((prevCart) => {
+            const existingItem = prevCart.find(cartItem => cartItem._id === item._id);
+            if (existingItem) {
+                return prevCart.map(cartItem =>
+                    cartItem._id === item._id
+                        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                        : cartItem
+                );
             } else {
-                const newCart = [...prevCart, { ...newItem, quantity: 1 }];
-                console.log('New cart:', newCart);
-                return newCart;
+                return [...prevCart, { ...item, quantity: 1 }];
             }
         });
     };
@@ -90,10 +84,11 @@ const App = () => {
     };
 
     const updateItemCount = (itemId, countChange) => {
-        console.log(`Updating item count for item ID ${itemId} by ${countChange}`);
-        setCart(prevCart => prevCart.map(item =>
-            item._id === itemId ? { ...item, quantity: item.quantity + countChange } : item
-        ));
+        setCart((prevCart) =>
+            prevCart.map((item) =>
+                item._id === itemId ? { ...item, quantity: item.quantity + countChange } : item
+            ).filter(item => item.quantity > 0)
+        );
     };
 
     useEffect(() => {

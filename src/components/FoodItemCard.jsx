@@ -6,6 +6,7 @@ const FoodItemCard = ({ item, addItem, quantity, updateItemCount }) => {
 
   const handleAdd = (e) => {
     e.stopPropagation(); // Prevent the card's onClick from firing
+    console.log('Adding item:', item);
     addItem(item);
   };
 
@@ -24,7 +25,7 @@ const FoodItemCard = ({ item, addItem, quantity, updateItemCount }) => {
           <p className="food-item-description">{item.description}</p>
           <span className="food-item-weight">{item.weight} g</span>
           <div className="food-item-controls">
-          <button onClick={(e) => { e.stopPropagation(); updateItemCount(item._id, -1); }} disabled={quantity === 0}>-</button>
+            <button onClick={(e) => { e.stopPropagation(); updateItemCount(item._id, -1); }} disabled={quantity === 0}>-</button>
             <span>{quantity}</span>
             <button onClick={(e) => { e.stopPropagation(); updateItemCount(item._id, 1); }}>+</button>
             <button onClick={handleAdd} className="add-button">Add</button>

@@ -3,7 +3,7 @@ import './Menu.css';
 import FoodItemCard from './FoodItemCard';
 import { useParams } from 'react-router-dom';
 import { db } from '../firebase-config';
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 
 const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) => {
     const { uid } = useParams();  // Read UID from URL parameters
@@ -67,7 +67,7 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
                     <div className="menu-items-container">
                         <div className="menu-items">
                             {section.items.map((item) => {
-                                const cartItem = cart.find(cartItem => cartItem.id === item.id);
+                                const cartItem = cart.find(cartItem => cartItem._id === item._id);
                                 const quantity = cartItem ? cartItem.quantity : 0;
                                 return (
                                     <FoodItemCard 

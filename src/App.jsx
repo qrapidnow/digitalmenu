@@ -52,6 +52,7 @@ const App = () => {
     };
 
     const addItem = (item) => {
+        console.log('Adding new item:', item);
         setCart((prevCart) => {
             const existingItem = prevCart.find(cartItem => cartItem._id === item._id);
             if (existingItem) {
@@ -84,6 +85,7 @@ const App = () => {
     };
 
     const updateItemCount = (itemId, countChange) => {
+        console.log(`Updating item count for item ID ${itemId} by ${countChange}`);
         setCart((prevCart) =>
             prevCart.map((item) =>
                 item._id === itemId ? { ...item, quantity: item.quantity + countChange } : item

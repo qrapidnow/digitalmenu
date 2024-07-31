@@ -62,7 +62,7 @@ const App = () => {
             };
             return newCart;
           } else {
-            return [...prevCart, newItem];
+            return [...prevCart, { ...newItem, quantity: 1 }];
           }
         });
       };

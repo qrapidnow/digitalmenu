@@ -54,10 +54,10 @@ const App = () => {
     const addItem = (item) => {
         console.log('Adding new item:', item);
         setCart((prevCart) => {
-            const existingItem = prevCart.find(cartItem => cartItem._id === item._id);
+            const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
             if (existingItem) {
                 return prevCart.map(cartItem =>
-                    cartItem._id === item._id
+                    cartItem.id === item.id
                         ? { ...cartItem, quantity: cartItem.quantity + 1 }
                         : cartItem
                 );
@@ -81,14 +81,14 @@ const App = () => {
 
     const removeItem = (itemToRemove) => {
         console.log('Removing item:', itemToRemove);
-        setCart((prevCart) => prevCart.filter((item) => item._id !== itemToRemove._id));
+        setCart((prevCart) => prevCart.filter((item) => item.id !== itemToRemove.id));
     };
 
     const updateItemCount = (itemId, countChange) => {
         console.log(`Updating item count for item ID ${itemId} by ${countChange}`);
         setCart((prevCart) =>
             prevCart.map((item) =>
-                item._id === itemId ? { ...item, quantity: item.quantity + countChange } : item
+                item.id === itemId ? { ...item, quantity: item.quantity + countChange } : item
             ).filter(item => item.quantity > 0)
         );
     };

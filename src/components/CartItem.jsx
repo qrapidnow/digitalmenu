@@ -54,9 +54,9 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
                   <p>₹{item.price}/-</p>
                   <p>Quantity: {item.quantity}</p>
                   <div className="quantity-controls">
-                    <button onClick={() => updateItemCount(item._id, -1)} disabled={item.quantity === 1}>-</button>
+                    <button onClick={() => updateItemCount(item.id, -1)} disabled={item.quantity === 1}>-</button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => updateItemCount(item._id, 1)}>+</button>
+                    <button onClick={() => updateItemCount(item.id, 1)}>+</button>
                   </div>
                 </div>
                 <button className="delete-button" onClick={() => removeItem(item)}>

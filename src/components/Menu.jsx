@@ -67,7 +67,7 @@ const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) =>
                     <div className="menu-items-container">
                         <div className="menu-items">
                             {section.items.map((item) => {
-                                const cartItem = cart.find(cartItem => cartItem._id === item._id);
+                                const cartItem = cart.find(cartItem => cartItem.id === item.id);
                                 const quantity = cartItem ? cartItem.quantity : 0;
                                 return (
                                     <FoodItemCard 

@@ -6,16 +6,19 @@ const FoodItemCard = ({ item, addItem, quantity, updateItemCount }) => {
 
   const handleAdd = (e) => {
     e.stopPropagation(); // Prevent the card's onClick from firing
+    console.log('Adding item:', item);
     addItem(item); // Add the item with initial quantity management
   };
 
   const handleIncrement = (e) => {
     e.stopPropagation(); // Prevent the card's onClick from firing
+    console.log('Incrementing item:', item);
     updateItemCount(item._id, 1); // Increment the item quantity
   };
 
   const handleDecrement = (e) => {
     e.stopPropagation(); // Prevent the card's onClick from firing
+    console.log('Decrementing item:', item);
     if (quantity > 0) {
       updateItemCount(item._id, -1); // Decrement the item quantity
     }

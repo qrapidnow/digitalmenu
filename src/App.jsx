@@ -52,24 +52,25 @@ const App = () => {
     };
 
     const addItem = (newItem) => {
+        console.log('Adding new item:', newItem);
         setCart(prevCart => {
-          const itemIndex = prevCart.findIndex(cartItem => cartItem._id === newItem._id);
-          if (itemIndex !== -1) {
-            const newCart = [...prevCart];
-            newCart[itemIndex] = {
-              ...newCart[itemIndex],
-              quantity: newCart[itemIndex].quantity + 1
-            };
-            return newCart;
-          } else {
-            return [...prevCart, { ...newItem, quantity: 1 }];
-          }
+            console.log('Previous cart:', prevCart);
+            const itemIndex = prevCart.findIndex(cartItem => cartItem._id === newItem._id);
+            if (itemIndex !== -1) {
+                const newCart = [...prevCart];
+                newCart[itemIndex] = {
+                    ...newCart[itemIndex],
+                    quantity: newCart[itemIndex].quantity + 1
+                };
+                console.log('Updated cart:', newCart);
+                return newCart;
+            } else {
+                const newCart = [...prevCart, { ...newItem, quantity: 1 }];
+                console.log('New cart:', newCart);
+                return newCart;
+            }
         });
-      };
-      
-    
-    
-    
+    };
 
     const getTotalItems = () => cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -84,16 +85,16 @@ const App = () => {
     };
 
     const removeItem = (itemToRemove) => {
+        console.log('Removing item:', itemToRemove);
         setCart((prevCart) => prevCart.filter((item) => item._id !== itemToRemove._id));
     };
 
     const updateItemCount = (itemId, countChange) => {
+        console.log(`Updating item count for item ID ${itemId} by ${countChange}`);
         setCart(prevCart => prevCart.map(item =>
             item._id === itemId ? { ...item, quantity: item.quantity + countChange } : item
         ));
     };
-    
-    
 
     useEffect(() => {
         const handleScroll = () => {
@@ -115,6 +116,10 @@ const App = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    useEffect(() => {
+        console.log('Cart updated:', cart);
+    }, [cart]);
 
     return (
         <CartContext.Provider value={{ cart, setCart }}>

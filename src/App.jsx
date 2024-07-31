@@ -53,13 +53,13 @@ const App = () => {
 
     const addItem = (item) => {
         setCart((prevCart) => {
-            const existingItem = prevCart.find(cartItem => cartItem._id === item._id);
-            if (existingItem) {
-                // If item exists, increase the quantity
-                return prevCart.map(cartItem =>
-                    cartItem._id === item._id
-                        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-                        : cartItem
+            const itemIndex = prevCart.findIndex(cartItem => cartItem._id === item._id);
+            if (itemIndex !== -1) {
+                // If item exists, create a new array with the updated item
+                return prevCart.map((cartItem, index) => 
+                    index === itemIndex 
+                    ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                    : cartItem
                 );
             } else {
                 // If item does not exist, add new item with quantity set to 1
@@ -67,6 +67,7 @@ const App = () => {
             }
         });
     };
+    
 
     const getTotalItems = () => cart.reduce((total, item) => total + item.quantity, 0);
 

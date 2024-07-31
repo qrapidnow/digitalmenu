@@ -53,21 +53,21 @@ const App = () => {
 
     const addItem = (newItem) => {
         setCart((prevCart) => {
-          const existingIndex = prevCart.findIndex(cartItem => cartItem._id === newItem._id);
-          if (existingIndex !== -1) {
-            // If the item exists, update the quantity
-            return prevCart.map((cartItem, index) => {
-              if (index === existingIndex) {
-                return { ...cartItem, quantity: cartItem.quantity + newItem.quantity };
-              }
-              return cartItem;
-            });
-          } else {
-            // If the item does not exist, add it to the cart
-            return [...prevCart, newItem];
-          }
+            const existingItem = prevCart.find(cartItem => cartItem._id === newItem._id);
+            if (existingItem) {
+                // Update quantity of the existing item
+                return prevCart.map(cartItem =>
+                    cartItem._id === newItem._id
+                    ? { ...cartItem, quantity: cartItem.quantity + newItem.quantity }
+                    : cartItem
+                );
+            } else {
+                // Add new item if it doesn't exist
+                return [...prevCart, { ...newItem, quantity: newItem.quantity }];
+            }
         });
-      };
+    };
+    
     
 
     const getTotalItems = () => cart.reduce((total, item) => total + item.quantity, 0);
@@ -87,12 +87,15 @@ const App = () => {
     };
 
     const updateItemCount = (itemId, countChange) => {
-        setCart((prevCart) =>
-            prevCart.map((item) =>
-                item._id === itemId ? { ...item, quantity: item.quantity + countChange } : item
-            ).filter(item => item.quantity > 0)
-        );
+        setCart((prevCart) => {
+            return prevCart.map(item =>
+                item._id === itemId
+                ? { ...item, quantity: item.quantity + countChange }
+                : item
+            ).filter(item => item.quantity > 0);  // Optionally remove items with quantity 0
+        });
     };
+    
 
     useEffect(() => {
         const handleScroll = () => {

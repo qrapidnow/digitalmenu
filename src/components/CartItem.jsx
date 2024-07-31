@@ -8,24 +8,24 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
   const [showAskForBillPage, setShowAskForBillPage] = useState(false);
 
   const handleBackToCart = () => {
-    setShowCartItem(false);
+    setShowPlaceOrderPage(false);
+    setShowAskForBillPage(false);
+    setShowCartItem(true); // Ensure the cart item view is re-enabled when navigating back
   };
 
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
-
   const totalAmount = cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
-
-  const handleAddItems = () => {
-    setShowCartItem(false);
-  };
 
   const handlePlaceOrderPage = () => {
     setShowPlaceOrderPage(true);
+    setShowCartItem(false); // Disable the cart item view when navigating to place order page
   };
 
   const handleAskForBill = () => {
-    if (nameEntered && whatsappEntered) {
+    // Assuming name and WhatsApp number verification is handled somewhere
+    if (nameEntered && whatsappEntered) { // These should be managed via state or props
       setShowAskForBillPage(true);
+      setShowCartItem(false); // Disable the cart item view when navigating to ask for bill page
     } else {
       alert('Please enter your name and WhatsApp number before asking for the bill.');
     }
@@ -33,12 +33,10 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
 
   if (showPlaceOrderPage) {
     return (
-      <div className="cart-item-container">
-        <PlaceOrderPage
-          cartItems={cartItems}
-          setShowPlaceOrderPage={setShowPlaceOrderPage}
-        />
-      </div>
+      <PlaceOrderPage
+        cartItems={cartItems}
+        setShowPlaceOrderPage={setShowPlaceOrderPage}
+      />
     );
   }
 
@@ -55,9 +53,7 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
     <div className="cart-item-container">
       <div className="cart-item">
         <div className="cart-item-header">
-          <button className="back-button" onClick={handleBackToCart}>
-            ➜
-          </button>
+          <button className="back-button" onClick={handleBackToCart}>➜</button>
           <h2>CART</h2>
         </div>
         {totalItems === 0 ? (
@@ -78,20 +74,14 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
                     <button onClick={() => updateItemCount(item._id, 1)}>+</button>
                   </div>
                 </div>
-                <button className="delete-button" onClick={() => removeItem(item)}>
-                  🗑
-                </button>
+                <button className="delete-button" onClick={() => removeItem(item)}>🗑</button>
               </div>
             ))}
           </div>
         )}
         <div className="cart-item-actions">
-          <button className="action-button" onClick={handleAddItems}>
-            Add Items
-          </button>
-          <button className="action-button" onClick={handlePlaceOrderPage}>
-            Place Order
-          </button>
+          <button className="action-button" onClick={handlePlaceOrderPage}>Place Order</button>
+          <button className="action-button" onClick={handleAskForBill}>Ask for Bill</button>
         </div>
         {totalItems > 0 && (
           <div className="totals-container">

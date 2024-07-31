@@ -18,7 +18,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  padding: 20px;
+  padding: 10px; /* Reduced padding */
 }
 
 .search-cart-container {
@@ -27,17 +27,17 @@ body {
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  margin: 20px 0;
+  margin: 10px 0; /* Reduced margin */
 }
 
 .cart-button {
   padding: 10px;
   background-color: #fff;
-  fill: #4CAF50;
-  border: 2px solid #4CAF50;
+  fill: #1e3932; /* Dark green */
+  border: 2px solid #1e3932; /* Dark green */
   border-radius: 5px;
   cursor: pointer;
-  color: #4CAF50;
+  color: #1e3932; /* Dark green */
 }
 
 .view-order-bar {
@@ -47,7 +47,7 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #4CAF50;
+  background-color: #1e3932; /* Dark green background */
   color: #ffffff;
   padding: 10px 20px;
   display: flex;
@@ -59,7 +59,7 @@ body {
 }
 
 .order-count {
-  background-color: #388e3c;
+  background-color: #145a32; /* Darker green */
   color: #ffffff;
   padding: 6px;
   border-radius: 50%;
@@ -102,48 +102,14 @@ body {
     margin-bottom: 10px;
   }
 }
-.view-order-bar {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 40px);
-  max-width: 500px;
-  background-color: #4CAF50; /* Green background */
-  color: #ffffff;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  border-radius: 30px;
-}
 
-.view-order-bar {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 40px);
-  max-width: 500px;
-  background-color: #4CAF50; /* Green background */
-  color: #ffffff;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  border-radius: 30px;
-}
 .back-to-top {
   position: fixed;
   bottom: 90px; /* Adjusted position to be above the View Order bar */
   right: 30px;
   width: 60px; /* Slightly larger for better visibility */
   height: 60px; /* Slightly larger for better visibility */
-  background-color: #43a047; /* Softer green */
+  background-color: #1e3932; /* Consistent dark green */
   color: #ffffff;
   border: none;
   border-radius: 50%;
@@ -165,7 +131,7 @@ body {
 }
 
 .back-to-top:hover {
-  background-color: #2e7d32; /* Darker green on hover */
+  background-color: #145a32; /* Darker green on hover */
   transform: translateY(-5px); /* Slight lift on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }

@@ -4,19 +4,24 @@ import './FoodItemCard.css';
 const FoodItemCard = ({ item, addItem, quantity, updateItemCount }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleIncrement = (e) => {
+  const handleAdd = (e) => {
     e.stopPropagation(); // Prevent the card's onClick from firing
     if (quantity === 0) {
-      addItem(item); // If no quantity yet, add the item to the cart
+      addItem({ ...item, quantity: 1 }); // If no quantity, add with 1
     } else {
-      updateItemCount(item._id, 1); // Otherwise, just increment the quantity
+      addItem({ ...item, quantity }); // Add with current quantity
     }
+  };
+
+  const handleIncrement = (e) => {
+    e.stopPropagation(); // Prevent the card's onClick from firing
+    updateItemCount(item._id, 1); // Increment the item quantity
   };
 
   const handleDecrement = (e) => {
     e.stopPropagation(); // Prevent the card's onClick from firing
     if (quantity > 0) {
-      updateItemCount(item._id, -1); // Decrement the quantity
+      updateItemCount(item._id, -1); // Decrement the item quantity
     }
   };
 
@@ -38,6 +43,7 @@ const FoodItemCard = ({ item, addItem, quantity, updateItemCount }) => {
             <button onClick={handleDecrement} disabled={quantity === 0}>-</button>
             <span>{quantity}</span>
             <button onClick={handleIncrement}>+</button>
+            <button onClick={handleAdd} className="add-button">Add</button>
           </div>
         </div>
       )}

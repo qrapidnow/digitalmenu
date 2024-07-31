@@ -53,19 +53,20 @@ const App = () => {
 
     const addItem = (newItem) => {
         setCart(prevCart => {
-            const itemIndex = prevCart.findIndex(cartItem => cartItem._id === newItem._id);
-            if (itemIndex !== -1) {
-                const newCart = [...prevCart];
-                newCart[itemIndex] = {
-                    ...newCart[itemIndex],
-                    quantity: newCart[itemIndex].quantity + 1
-                };
-                return newCart;
-            } else {
-                return [...prevCart, {...newItem, quantity: 1}];
-            }
+          const itemIndex = prevCart.findIndex(cartItem => cartItem._id === newItem._id);
+          if (itemIndex !== -1) {
+            const newCart = [...prevCart];
+            newCart[itemIndex] = {
+              ...newCart[itemIndex],
+              quantity: newCart[itemIndex].quantity + 1
+            };
+            return newCart;
+          } else {
+            return [...prevCart, newItem];
+          }
         });
-    };
+      };
+      
     
     
     

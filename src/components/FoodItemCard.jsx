@@ -6,11 +6,7 @@ const FoodItemCard = ({ item, addItem, quantity, updateItemCount }) => {
 
   const handleAdd = (e) => {
     e.stopPropagation(); // Prevent the card's onClick from firing
-    if (quantity === 0) {
-      addItem({ ...item, quantity: 1 }); // If no quantity, add with 1
-    } else {
-      addItem({ ...item, quantity }); // Add with current quantity
-    }
+    addItem({ ...item, quantity: 1 }); // Add the item with quantity 1
   };
 
   const handleIncrement = (e) => {

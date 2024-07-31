@@ -8,28 +8,24 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
   const [showAskForBillPage, setShowAskForBillPage] = useState(false);
 
   const handleBackToCart = () => {
-    setShowCartItem(true); // Re-enable cart item view when navigating back
+    setShowCartItem(false);
   };
 
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   const totalAmount = cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
 
   const handleAddItems = () => {
-    setShowCartItem(true); // Ensure to display cart items view when adding more items
+    setShowCartItem(false);
   };
 
   const handlePlaceOrderPage = () => {
     setShowPlaceOrderPage(true);
-    setShowCartItem(false); // Hide cart items view when placing an order
   };
 
   const handleAskForBill = () => {
-    // Placeholder variables for demonstration
-    const nameEntered = true;  // Should be managed via state or props
-    const whatsappEntered = true;  // Should be managed via state or props
     if (nameEntered && whatsappEntered) {
       setShowAskForBillPage(true);
-      setShowCartItem(false); // Hide cart items view when asking for the bill
     } else {
       alert('Please enter your name and WhatsApp number before asking for the bill.');
     }
@@ -37,10 +33,12 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
 
   if (showPlaceOrderPage) {
     return (
-      <PlaceOrderPage
-        cartItems={cartItems}
-        setShowPlaceOrderPage={setShowPlaceOrderPage}
-      />
+      <div className="cart-item-container">
+        <PlaceOrderPage
+          cartItems={cartItems}
+          setShowPlaceOrderPage={setShowPlaceOrderPage}
+        />
+      </div>
     );
   }
 
@@ -72,7 +70,7 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
               <div key={index} className="cart-item-row">
                 <div className="item-details">
                   <h3>{item.name}</h3>
-                  <p>₹{item.price}</p>
+                  <p>₹{item.price}/-</p>
                   <p>Quantity: {item.quantity}</p>
                   <div className="quantity-controls">
                     <button onClick={() => updateItemCount(item._id, -1)} disabled={item.quantity === 1}>-</button>

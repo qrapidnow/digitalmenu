@@ -52,21 +52,21 @@ const App = () => {
     };
 
     const addItem = (newItem) => {
-        setCart((prevCart) => {
-            const existingItem = prevCart.find(cartItem => cartItem._id === newItem._id);
-            if (existingItem) {
-                // Update quantity of the existing item
-                return prevCart.map(cartItem =>
-                    cartItem._id === newItem._id
-                    ? { ...cartItem, quantity: cartItem.quantity + newItem.quantity }
-                    : cartItem
-                );
+        setCart(prevCart => {
+            const itemIndex = prevCart.findIndex(cartItem => cartItem._id === newItem._id);
+            if (itemIndex !== -1) {
+                const newCart = [...prevCart];
+                newCart[itemIndex] = {
+                    ...newCart[itemIndex],
+                    quantity: newCart[itemIndex].quantity + 1
+                };
+                return newCart;
             } else {
-                // Add new item if it doesn't exist
-                return [...prevCart, { ...newItem, quantity: newItem.quantity }];
+                return [...prevCart, {...newItem, quantity: 1}];
             }
         });
     };
+    
     
     
 

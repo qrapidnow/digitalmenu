@@ -87,14 +87,11 @@ const App = () => {
     };
 
     const updateItemCount = (itemId, countChange) => {
-        setCart((prevCart) => {
-            return prevCart.map(item =>
-                item._id === itemId
-                ? { ...item, quantity: item.quantity + countChange }
-                : item
-            ).filter(item => item.quantity > 0);  // Optionally remove items with quantity 0
-        });
+        setCart(prevCart => prevCart.map(item =>
+            item._id === itemId ? { ...item, quantity: item.quantity + countChange } : item
+        ));
     };
+    
     
 
     useEffect(() => {

@@ -35,7 +35,7 @@ body {
 
 .header-status {
   font-size: 1rem; /* Adjusted font size */
-  color: #d32f2f; /* Red color for status to stand out */
+  color: #f9f9f9; /* Red color for status to stand out */
   margin: 5px 0; /* Adjusted margin */
   font-family: 'Roboto', sans-serif; /* Consistent with subtitle font */
 }

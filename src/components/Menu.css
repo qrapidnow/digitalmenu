@@ -1,14 +1,14 @@
 .menu {
   box-sizing: border-box;
   width: 100%;
-  padding: 20px;
+  padding: 10px 20px; /* Reduced padding */
 }
 
 .menu-section {
   box-sizing: border-box;
   width: 100%;
-  padding: 20px;
-  margin-bottom: 25px;
+  padding: 10px 20px; /* Reduced padding */
+  margin-bottom: 15px; /* Reduced bottom margin */
   border: 1px solid #c0d6c9; /* Light green border */
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
@@ -17,23 +17,23 @@
 .menu h2 {
   font-weight: 700; /* Bolder font weight */
   color: #1e3932; /* Dark green text color */
-  margin-bottom: 15px; /* Increased bottom margin */
+  margin-bottom: 10px; /* Reduced bottom margin */
   border-bottom: 2px solid #1e3932; /* Green border color */
-  padding-bottom: 8px; /* Increased padding */
+  padding-bottom: 5px; /* Reduced padding */
   width: 100%;
   text-align: center;
   font-family: 'Kameron', serif; /* Consistent serif font */
 }
 
 .menu-items-container {
-  margin-top: 15px; /* Increased top margin */
+  margin-top: 10px; /* Reduced top margin */
   width: 100%;
 }
 
 .menu-items {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Increased gap */
+  gap: 10px; /* Reduced gap */
   padding: 10px; /* Increased padding */
   width: 100%;
 }
@@ -45,6 +45,6 @@
   }
   .menu-section {
     width: 100vw;
-    padding: 20px; /* Increased padding for mobile */
+    padding: 10px 20px; /* Increased padding for mobile */
   }
 }

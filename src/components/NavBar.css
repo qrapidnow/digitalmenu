@@ -15,7 +15,7 @@
 }
 
 .navbar li {
-  margin: 0 10px; /* Add space between buttons */
+  margin: 0 5px; /* Reduced space between buttons */
 }
 
 .category-button {
@@ -24,7 +24,7 @@
   background-color: transparent;
   color: #1e3932; /* Dark green text */
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 8px 16px; /* Reduced padding */
   font-size: 1rem;
   transition: all 0.3s ease;
 }

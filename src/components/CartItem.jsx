@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import './CartItem.css';
 import PlaceOrderPage from './PlaceOrderPage';
-import AskForBillPage from './AskForBillPage';
 
 const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemCount }) => {
   const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
-  const [showAskForBillPage, setShowAskForBillPage] = useState(false);
 
   const handleBackToCart = () => {
     setShowCartItem(false);
@@ -23,14 +21,6 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
     setShowPlaceOrderPage(true);
   };
 
-  const handleAskForBill = () => {
-    if (nameEntered && whatsappEntered) {
-      setShowAskForBillPage(true);
-    } else {
-      alert('Please enter your name and WhatsApp number before asking for the bill.');
-    }
-  };
-
   if (showPlaceOrderPage) {
     return (
       <div className="cart-item-container">
@@ -39,15 +29,6 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
           setShowPlaceOrderPage={setShowPlaceOrderPage}
         />
       </div>
-    );
-  }
-
-  if (showAskForBillPage) {
-    return (
-      <AskForBillPage
-        cartItems={cartItems}
-        setShowAskForBillPage={setShowAskForBillPage}
-      />
     );
   }
 

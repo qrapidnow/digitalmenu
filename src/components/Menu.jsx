@@ -3,7 +3,7 @@ import './Menu.css';
 import FoodItemCard from './FoodItemCard';
 import { useParams } from 'react-router-dom';
 import { db } from '../firebase-config';
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 
 const Menu = ({ addItem, cart, updateItemCount, activeCategory, searchTerm }) => {
     const { uid } = useParams();  // Read UID from URL parameters

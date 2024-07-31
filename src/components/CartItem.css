@@ -106,6 +106,17 @@
   background-color: #145a32; /* Darker green on hover */
 }
 
+.quantity-controls span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
 .delete-button {
   padding: 5px 10px;
   background-color: #ff6347; /* Red button */
@@ -114,7 +125,6 @@
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  align-self: flex-end; /* Align delete button to the right */
 }
 
 .delete-button:hover {

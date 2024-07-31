@@ -55,12 +55,14 @@ const App = () => {
         setCart((prevCart) => {
             const existingItem = prevCart.find(cartItem => cartItem._id === item._id);
             if (existingItem) {
+                // If item exists, increase the quantity
                 return prevCart.map(cartItem =>
                     cartItem._id === item._id
                         ? { ...cartItem, quantity: cartItem.quantity + 1 }
                         : cartItem
                 );
             } else {
+                // If item does not exist, add new item with quantity set to 1
                 return [...prevCart, { ...item, quantity: 1 }];
             }
         });

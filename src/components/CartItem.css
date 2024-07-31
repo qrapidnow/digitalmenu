@@ -186,15 +186,22 @@
   color: #666;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .cart-item {
     width: 95%;
     padding: 15px; /* Adjusted padding for mobile */
   }
 
   .cart-item-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .item-details {
     flex-direction: column;
     align-items: flex-start;
+    flex-grow: 1;
   }
 
   .quantity-controls {
@@ -203,16 +210,19 @@
   }
 
   .delete-button {
-    align-self: flex-end;
+    align-self: center;
+    margin-top: 0; /* Remove top margin for mobile view */
+    margin-left: 10px; /* Add some space to the left of the delete button */
   }
 
   .cart-item-actions {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 10px;
   }
 
   .action-button {
-    width: 100%; /* Full width for mobile */
+    width: 48%; /* Adjust width to fit side by side */
     margin: 5px 0; /* Margin between buttons */
   }
 }

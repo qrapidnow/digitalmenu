@@ -1,16 +1,16 @@
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Oswald', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #FDFFFC;
-  color: #011627;
+  background-color: #E5E5E5;
+  color: #000000;
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #2EC4B6;
-  color: #011627;
+  background-color: #000000; /* Black */
+  color: #FFFFFF;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -18,8 +18,8 @@ body {
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px; /* Rounded bottom corners */
+  border-bottom-right-radius: 30px; /* Rounded bottom corners */
 }
 
 .header-logo {
@@ -36,17 +36,18 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
+  font-family: 'Oswald', sans-serif;
 }
 
 .header-subtitle {
   font-size: 1rem;
-  color: #E71D36;
+  color: #FFD700; /* Gold */
   margin: 5px 0;
 }
 
 .header-status {
   font-size: 1rem;
-  color: #011627;
+  color: #FFFFFF;
   margin: 5px 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }

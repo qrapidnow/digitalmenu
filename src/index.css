@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Nunito', sans-serif; /* Main body font */
-  background-color: #FDFFFC; /* Baby Powder background color */
-  color: #011627; /* Rich Black base text color */
+  font-family: 'Oswald', sans-serif; /* Main body font */
+  background-color: #E5E5E5; /* Platinum background color */
+  color: #000000; /* Black base text color */
 }
 
 * {

@@ -1,7 +1,7 @@
 .food-item-card {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   overflow: hidden;
@@ -10,7 +10,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   cursor: pointer;
-  border-bottom: 1px dotted #ddd; /* Dotted line between items */
+  border-bottom: 1px dotted #DDDDDD;
 }
 
 .food-item-content {
@@ -34,34 +34,34 @@
 
 .food-item-title {
   font-size: 1.1rem;
-  color: #1e3932;
+  color: #3A3A3A;
   margin: 0;
   font-weight: 600;
 }
 
 .food-item-price {
   font-size: 1rem;
-  color: #1e3932;
+  color: #3A3A3A;
   font-weight: 600;
   margin: 0;
 }
 
 .food-item-description {
   font-size: 0.9rem;
-  color: #666;
+  color: #666666;
   margin: 8px 0;
 }
 
 .read-more {
-  color: #2eb81f;
+  color: #FFD700;
   cursor: pointer;
 }
 
 .add-button {
   align-self: flex-end;
   padding: 8px 12px;
-  background-color: #000;
-  color: #fff;
+  background-color: #FF6F61;
+  color: #FFFFFF;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -72,7 +72,7 @@
 }
 
 .add-button:hover {
-  background-color: #333;
+  background-color: #333333;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

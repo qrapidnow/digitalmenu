@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: #F0F0F0;
+  color: #333333;
   line-height: 1.6;
 }
 
@@ -18,7 +18,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  padding: 10px; /* Reduced padding */
+  padding: 10px;
 }
 
 .search-cart-container {
@@ -27,17 +27,17 @@ body {
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  margin: 10px 0; /* Reduced margin */
+  margin: 10px 0;
 }
 
 .cart-button {
   padding: 10px;
-  background-color: #fff;
-  fill: #1e3932; /* Dark green */
-  border: 2px solid #1e3932; /* Dark green */
+  background-color: #FF6F61;
+  fill: #FFFFFF;
+  border: 2px solid #FF6F61;
   border-radius: 5px;
   cursor: pointer;
-  color: #1e3932; /* Dark green */
+  color: #FFFFFF;
 }
 
 .view-order-bar {
@@ -47,8 +47,8 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #1e3932; /* Dark green background */
-  color: #ffffff;
+  background-color: #3A3A3A;
+  color: #FFFFFF;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -59,8 +59,8 @@ body {
 }
 
 .order-count {
-  background-color: #145a32; /* Darker green */
-  color: #ffffff;
+  background-color: #FFD700;
+  color: #3A3A3A;
   padding: 6px;
   border-radius: 50%;
 }
@@ -105,33 +105,33 @@ body {
 
 .back-to-top {
   position: fixed;
-  bottom: 90px; /* Adjusted position to be above the View Order bar */
+  bottom: 90px;
   right: 30px;
-  width: 60px; /* Slightly larger for better visibility */
-  height: 60px; /* Slightly larger for better visibility */
-  background-color: #1e3932; /* Consistent dark green */
-  color: #ffffff;
+  width: 60px;
+  height: 60px;
+  background-color: #3A3A3A;
+  color: #FFFFFF;
   border: none;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Added transform transition */
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
   z-index: 1000;
 }
 
 .back-to-top.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0); /* Smooth entrance */
+  transform: translateY(0);
 }
 
 .back-to-top:hover {
-  background-color: #145a32; /* Darker green on hover */
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  background-color: #FF6F61;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }

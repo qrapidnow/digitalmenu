@@ -2,9 +2,9 @@
 
 body {
   margin: 0;
-  font-family: 'Kameron', serif;  /* Main body font */
-  background-color: #f9f9f9; /* Softer background color */
-  color: #333; /* Slightly darker base text color */
+  font-family: 'Kameron', serif;
+  background-color: #F0F0F0;
+  color: #333333;
 }
 
 * {

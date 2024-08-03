@@ -2,9 +2,9 @@
 
 body {
   margin: 0;
-  font-family: 'Playfair Display', serif; /* Main body font */
-  background-color: #f9f9f9; /* Softer background color */
-  color: #333333; /* Slightly darker base text color */
+  font-family: 'Playfair Display', serif;
+  background-color: #f5f5dc; /* Creamy background */
+  color: #4b2e22; /* Dark brown text */
 }
 
 * {

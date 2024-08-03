@@ -2,14 +2,14 @@ body {
   font-family: 'Playfair Display', serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
-  color: #333333;
+  background-color: #f5f5dc;
+  color: #4b2e22;
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #964B00; /* Warm Earthy Brown */
+  background-color: #4b2e22;
   color: #fff;
   text-align: center;
   display: flex;
@@ -18,8 +18,8 @@ body {
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  border-bottom-left-radius: 30px; /* Rounded bottom corners */
-  border-bottom-right-radius: 30px; /* Rounded bottom corners */
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .header-logo {
@@ -47,7 +47,7 @@ body {
 
 .header-status {
   font-size: 1rem;
-  color: #f9f9f9;
+  color: #f5f5dc;
   margin: 5px 0;
   font-family: 'Roboto', sans-serif;
 }

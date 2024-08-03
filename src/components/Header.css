@@ -2,8 +2,8 @@ body {
   font-family: 'Playfair Display', serif;
   margin: 0;
   padding: 0;
-  background-color: #F5F5F5; /* Creamy White */
-  color: #333333;
+  background-color: #F5F5F5;
+  color: #2E4053;
 }
 
 .header {
@@ -41,13 +41,13 @@ body {
 
 .header-subtitle {
   font-size: 1rem;
-  color: #F2C464; /* Soft Coral */
+  color: #c1d1c0;
   margin: 5px 0;
 }
 
 .header-status {
   font-size: 1rem;
-  color: #F5F5F5; /* Creamy White */
+  color: #f9f9f9;
   margin: 5px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }

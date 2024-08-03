@@ -3,7 +3,7 @@
   padding: 10px 0;
   overflow-x: auto;
   white-space: nowrap;
-  background-color: #F5F5F5; /* Creamy White */
+  background-color: #F5F5F5;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -56,7 +56,7 @@
 
 .category-button span {
   font-size: 0.8rem;
-  color: #333333;
+  color: #2E4053;
   display: block;
   text-align: center;
   white-space: normal; /* Allow text to wrap */

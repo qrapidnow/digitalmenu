@@ -40,8 +40,10 @@ const Navbar = ({ setActiveCategory }) => {
               className="category-button"
               onClick={() => setActiveCategory(category._id)}
             >
-              <img src={category.image} alt={category.name} className="category-image" />
-              <span>{category.name}</span>
+              <div className="category-content">
+                <img src={category.image} alt={category.name} className="category-image" />
+                <span>{category.name}</span>
+              </div>
             </button>
           </li>
         ))}

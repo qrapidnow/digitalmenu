@@ -18,7 +18,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  padding: 10px;
+  padding: 10px; /* Reduced padding */
 }
 
 .search-cart-container {
@@ -27,17 +27,17 @@ body {
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  margin: 10px 0;
+  margin: 10px 0; /* Reduced margin */
 }
 
 .cart-button {
   padding: 10px;
   background-color: #fff;
-  fill: #964B00;
-  border: 2px solid #964B00;
+  fill: #964B00; /* Warm Earthy Brown */
+  border: 2px solid #964B00; /* Warm Earthy Brown */
   border-radius: 5px;
   cursor: pointer;
-  color: #964B00;
+  color: #964B00; /* Warm Earthy Brown */
 }
 
 .view-order-bar {
@@ -47,7 +47,7 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #964B00;
+  background-color: #964B00; /* Warm Earthy Brown background */
   color: #ffffff;
   padding: 10px 20px;
   display: flex;
@@ -59,7 +59,7 @@ body {
 }
 
 .order-count {
-  background-color: #786C3B;
+  background-color: #786C3B; /* Rich Walnut */
   color: #ffffff;
   padding: 6px;
   border-radius: 50%;
@@ -105,11 +105,11 @@ body {
 
 .back-to-top {
   position: fixed;
-  bottom: 90px;
+  bottom: 90px; /* Adjusted position to be above the View Order bar */
   right: 30px;
-  width: 60px;
-  height: 60px;
-  background-color: #964B00;
+  width: 60px; /* Slightly larger for better visibility */
+  height: 60px; /* Slightly larger for better visibility */
+  background-color: #964B00; /* Consistent Warm Earthy Brown */
   color: #ffffff;
   border: none;
   border-radius: 50%;
@@ -117,21 +117,21 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Added transform transition */
   z-index: 1000;
 }
 
 .back-to-top.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0); /* Smooth entrance */
 }
 
 .back-to-top:hover {
-  background-color: #786C3B;
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background-color: #786C3B; /* Darker Rich Walnut on hover */
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }

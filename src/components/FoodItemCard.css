@@ -10,7 +10,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   cursor: pointer;
-  border-bottom: 1px dotted #ddd;
+  border-bottom: 1px dotted #ddd; /* Dotted line between items */
 }
 
 .food-item-content {
@@ -34,14 +34,14 @@
 
 .food-item-title {
   font-size: 1.1rem;
-  color: #964B00;
+  color: #964B00; /* Warm Earthy Brown */
   margin: 0;
   font-weight: 600;
 }
 
 .food-item-price {
   font-size: 1rem;
-  color: #964B00;
+  color: #964B00; /* Warm Earthy Brown */
   font-weight: 600;
   margin: 0;
 }
@@ -53,7 +53,7 @@
 }
 
 .read-more {
-  color: #964B00;
+  color: #964B00; /* Warm Earthy Brown */
   cursor: pointer;
 }
 

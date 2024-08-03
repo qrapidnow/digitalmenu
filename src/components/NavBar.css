@@ -17,7 +17,7 @@
 
 .navbar li {
   flex: 0 0 auto;
-  margin: 0 10px;
+  margin: 0 10px; /* Adjusted margin for equal spacing */
 }
 
 .category-item {
@@ -33,7 +33,7 @@
   padding: 0;
   text-align: center;
   transition: transform 0.3s ease;
-  width: 100px;
+  width: 100px; /* Set a fixed width for consistency */
 }
 
 .category-button:hover {
@@ -59,6 +59,6 @@
   color: #333333;
   display: block;
   text-align: center;
-  white-space: normal;
-  word-wrap: break-word;
+  white-space: normal; /* Allow text to wrap */
+  word-wrap: break-word; /* Ensure text wraps within the container */
 }

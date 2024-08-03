@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './NavBar.css';
 import { useParams } from 'react-router-dom';
 import { db } from '../firebase-config';
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 
 const Navbar = ({ setActiveCategory }) => {
   const { uid } = useParams(); // Get UID from URL parameters
@@ -37,12 +37,13 @@ const Navbar = ({ setActiveCategory }) => {
     <nav className="navbar">
       <ul>
         {categories.map((category) => (
-          <li key={category._id}>
+          <li key={category._id} className="category-item">
             <button
               className="category-button"
               onClick={() => setActiveCategory(category._id)}
             >
-              {category.name}
+              <img src={category.image} alt={category.name} className="category-image" />
+              <span>{category.name}</span>
             </button>
           </li>
         ))}

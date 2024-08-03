@@ -15,26 +15,38 @@
 }
 
 .navbar li {
-  margin: 0 5px; /* Reduced space between buttons */
+  margin: 0 10px; /* Space between category items */
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .category-button {
-  border-radius: 20px;
-  border: 1px solid #1e3932; /* Dark green border */
+  border: none;
   background-color: transparent;
-  color: #1e3932; /* Dark green text */
   cursor: pointer;
-  padding: 8px 16px; /* Reduced padding */
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  padding: 0;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .category-button:hover {
-  color: #fff; /* White text on hover */
-  background-color: #1e3932; /* Dark green background on hover */
+  transform: scale(1.1);
 }
 
-.category-button.active {
-  background-color: #1e3932;
-  color: #fff; /* White active color */
+.category-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
+}
+
+.category-button span {
+  font-size: 0.9rem;
+  color: #333;
 }

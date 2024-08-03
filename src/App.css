@@ -6,9 +6,9 @@
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #F8F8F8;
-  color: #000000;
+  font-family: 'Nunito', sans-serif;
+  background-color: #FDFFFC;
+  color: #011627;
   line-height: 1.6;
 }
 
@@ -18,7 +18,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  padding: 10px; /* Reduced padding */
+  padding: 10px;
 }
 
 .search-cart-container {
@@ -27,17 +27,17 @@ body {
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  margin: 10px 0; /* Reduced margin */
+  margin: 10px 0;
 }
 
 .cart-button {
   padding: 10px;
-  background-color: #FFFFFF; /* White background */
-  fill: #00704A; /* Starbucks Green */
-  border: 2px solid #00704A; /* Starbucks Green */
+  background-color: #2EC4B6;
+  fill: #011627;
+  border: 2px solid #011627;
   border-radius: 5px;
   cursor: pointer;
-  color: #00704A; /* Starbucks Green */
+  color: #011627;
 }
 
 .view-order-bar {
@@ -47,8 +47,8 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #00704A; /* Starbucks Green background */
-  color: #FFFFFF; /* White text */
+  background-color: #E71D36;
+  color: #FDFFFC;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -59,8 +59,8 @@ body {
 }
 
 .order-count {
-  background-color: #000000; /* Black */
-  color: #FFFFFF; /* White text */
+  background-color: #011627;
+  color: #FDFFFC;
   padding: 6px;
   border-radius: 50%;
 }
@@ -105,33 +105,33 @@ body {
 
 .back-to-top {
   position: fixed;
-  bottom: 90px; /* Adjusted position to be above the View Order bar */
+  bottom: 90px;
   right: 30px;
-  width: 60px; /* Slightly larger for better visibility */
-  height: 60px; /* Slightly larger for better visibility */
-  background-color: #00704A; /* Starbucks Green */
-  color: #FFFFFF; /* White text */
+  width: 60px;
+  height: 60px;
+  background-color: #E71D36;
+  color: #FDFFFC;
   border: none;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Added transform transition */
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
   z-index: 1000;
 }
 
 .back-to-top.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0); /* Smooth entrance */
+  transform: translateY(0);
 }
 
 .back-to-top:hover {
-  background-color: #000000; /* Black on hover */
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  background-color: #011627;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }

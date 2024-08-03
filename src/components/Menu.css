@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 20px;
-  background-color: #F8F8F8; /* Light Gray background */
+  background-color: #FDFFFC;
 }
 
 .menu-section {
@@ -10,20 +10,20 @@
   width: 100%;
   padding: 10px 20px;
   margin-bottom: 15px;
-  border: 1px solid #00704A; /* Starbucks Green border */
+  border: 1px solid #2EC4B6;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .menu h2 {
   font-weight: 700;
-  color: #00704A; /* Starbucks Green */
+  color: #E71D36;
   margin-bottom: 10px;
-  border-bottom: 2px solid #00704A; /* Starbucks Green */
+  border-bottom: 2px solid #E71D36;
   padding-bottom: 5px;
   width: 100%;
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .menu-items {

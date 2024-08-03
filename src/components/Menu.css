@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 20px;
-  background-color: #F5F5F5; /* Creamy White */
+  background-color: #F4F4F9; /* Ghost White background */
 }
 
 .menu-section {
@@ -10,16 +10,16 @@
   width: 100%;
   padding: 10px 20px;
   margin-bottom: 15px;
-  border: 1px solid #E0B79C;
+  border: 1px solid #E8E9F3; /* Pale Lavender border */
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .menu h2 {
   font-weight: 700;
-  color: #964B00; /* Warm Earthy Brown */
+  color: #2D3047; /* Charcoal Blue text */
   margin-bottom: 10px;
-  border-bottom: 2px solid #964B00; /* Warm Earthy Brown */
+  border-bottom: 2px solid #2D3047; /* Charcoal Blue border */
   padding-bottom: 5px;
   width: 100%;
   text-align: center;

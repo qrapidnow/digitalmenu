@@ -2,14 +2,14 @@ body {
   font-family: 'Playfair Display', serif;
   margin: 0;
   padding: 0;
-  background-color: #F5F5F5; /* Creamy White */
-  color: #00698F; /* Deep Navy Blue */
+  background-color: #F4F4F9; /* Ghost White background */
+  color: #2D3047; /* Charcoal Blue text */
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #964B00; /* Warm Earthy Brown */
+  background-color: #2D3047; /* Charcoal Blue background */
   color: #fff;
   text-align: center;
   display: flex;
@@ -36,18 +36,18 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .header-subtitle {
   font-size: 1rem;
-  color: #C1D1C0;
+  color: #E8E9F3; /* Pale Lavender */
   margin: 5px 0;
 }
 
 .header-status {
   font-size: 1rem;
-  color: #F7D2C4; /* Soft Gold */
+  color: #F4F4F9; /* Ghost White */
   margin: 5px 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
 }

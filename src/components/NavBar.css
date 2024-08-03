@@ -9,13 +9,13 @@
 .navbar ul {
   list-style: none;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center; /* Center the categories */
   padding: 0;
   margin: 0;
 }
 
 .navbar li {
-  margin: 0 10px; /* Space between category items */
+  margin: 0 15px; /* Equal space between category items */
 }
 
 .category-item {

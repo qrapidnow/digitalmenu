@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Playfair Display', serif; /* Main body font */
-  background-color: #F4F4F9; /* Ghost White background color */
-  color: #2D3047; /* Charcoal Blue base text color */
+  font-family: 'Montserrat', sans-serif; /* Main body font */
+  background-color: #F8F8F8; /* Light Gray background */
+  color: #000000; /* Black base text color */
 }
 
 * {

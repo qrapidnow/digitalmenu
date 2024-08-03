@@ -6,9 +6,9 @@
 }
 
 body {
-  font-family: 'Playfair Display', serif;
-  background-color: #F4F4F9; /* Ghost White background color */
-  color: #2D3047; /* Charcoal Blue text color */
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F8F8F8;
+  color: #000000;
   line-height: 1.6;
 }
 
@@ -32,12 +32,12 @@ body {
 
 .cart-button {
   padding: 10px;
-  background-color: #E8E9F3; /* Pale Lavender background */
-  fill: #FF495C; /* Crimson */
-  border: 2px solid #FF495C; /* Crimson border */
+  background-color: #FFFFFF; /* White background */
+  fill: #00704A; /* Starbucks Green */
+  border: 2px solid #00704A; /* Starbucks Green */
   border-radius: 5px;
   cursor: pointer;
-  color: #FF495C; /* Crimson */
+  color: #00704A; /* Starbucks Green */
 }
 
 .view-order-bar {
@@ -47,8 +47,8 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #2D3047; /* Charcoal Blue background */
-  color: #ffffff;
+  background-color: #00704A; /* Starbucks Green background */
+  color: #FFFFFF; /* White text */
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -59,8 +59,8 @@ body {
 }
 
 .order-count {
-  background-color: #FF495C; /* Crimson */
-  color: #ffffff;
+  background-color: #000000; /* Black */
+  color: #FFFFFF; /* White text */
   padding: 6px;
   border-radius: 50%;
 }
@@ -109,8 +109,8 @@ body {
   right: 30px;
   width: 60px; /* Slightly larger for better visibility */
   height: 60px; /* Slightly larger for better visibility */
-  background-color: #2D3047; /* Charcoal Blue */
-  color: #ffffff;
+  background-color: #00704A; /* Starbucks Green */
+  color: #FFFFFF; /* White text */
   border: none;
   border-radius: 50%;
   display: flex;
@@ -131,7 +131,7 @@ body {
 }
 
 .back-to-top:hover {
-  background-color: #FF495C; /* Crimson on hover */
+  background-color: #000000; /* Black on hover */
   transform: translateY(-5px); /* Slight lift on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }

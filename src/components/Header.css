@@ -1,16 +1,16 @@
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #F4F4F9; /* Ghost White background */
-  color: #2D3047; /* Charcoal Blue text */
+  background-color: #F8F8F8;
+  color: #000000;
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #2D3047; /* Charcoal Blue background */
-  color: #fff;
+  background-color: #00704A; /* Starbucks Green */
+  color: #FFFFFF; /* White text */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -36,18 +36,18 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .header-subtitle {
   font-size: 1rem;
-  color: #E8E9F3; /* Pale Lavender */
+  color: #00704A; /* Starbucks Green */
   margin: 5px 0;
 }
 
 .header-status {
   font-size: 1rem;
-  color: #F4F4F9; /* Ghost White */
+  color: #F8F8F8; /* Light Gray */
   margin: 5px 0;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
 }

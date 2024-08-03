@@ -1,7 +1,7 @@
 .food-item-card {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #FFFFFF; /* White background */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   overflow: hidden;
@@ -10,7 +10,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   cursor: pointer;
-  border-bottom: 1px dotted #ddd; /* Dotted line between items */
+  border-bottom: 1px dotted #DDD; /* Dotted line between items */
 }
 
 .food-item-content {
@@ -34,14 +34,14 @@
 
 .food-item-title {
   font-size: 1.1rem;
-  color: #2D3047; /* Charcoal Blue */
+  color: #00704A; /* Starbucks Green */
   margin: 0;
   font-weight: 600;
 }
 
 .food-item-price {
   font-size: 1rem;
-  color: #FF495C; /* Crimson */
+  color: #00704A; /* Starbucks Green */
   font-weight: 600;
   margin: 0;
 }
@@ -53,15 +53,15 @@
 }
 
 .read-more {
-  color: #FF495C; /* Crimson */
+  color: #00704A; /* Starbucks Green */
   cursor: pointer;
 }
 
 .add-button {
   align-self: flex-end;
   padding: 8px 12px;
-  background-color: #2D3047; /* Charcoal Blue */
-  color: #ffffff;
+  background-color: #000000; /* Black */
+  color: #FFFFFF; /* White text */
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -72,7 +72,7 @@
 }
 
 .add-button:hover {
-  background-color: #FF495C; /* Crimson */
+  background-color: #333333; /* Darker Black on hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

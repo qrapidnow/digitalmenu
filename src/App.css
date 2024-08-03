@@ -6,9 +6,9 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: #FFFFFF;
-  color: #455A64;
+  font-family: 'Bodoni Moda', serif;
+  background-color: #F7F7F7;
+  color: #333333;
   line-height: 1.6;
 }
 
@@ -18,7 +18,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  padding: 10px;
+  padding: 10px; /* Reduced padding */
 }
 
 .search-cart-container {
@@ -27,17 +27,17 @@ body {
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  margin: 10px 0;
+  margin: 10px 0; /* Reduced margin */
 }
 
 .cart-button {
   padding: 10px;
-  background-color: #FFFFFF;
-  fill: #FFC080; /* Warm Amber */
-  border: 2px solid #FFC080; /* Warm Amber */
+  background-color: #fff;
+  fill: #228B22; /* Forest Green */
+  border: 2px solid #228B22; /* Forest Green */
   border-radius: 5px;
   cursor: pointer;
-  color: #FFC080; /* Warm Amber */
+  color: #228B22; /* Forest Green */
 }
 
 .view-order-bar {
@@ -47,8 +47,8 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #FFC080; /* Warm Amber background */
-  color: #FFFFFF;
+  background-color: #8B9467; /* Warm Beige background */
+  color: #ffffff;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -59,8 +59,8 @@ body {
 }
 
 .order-count {
-  background-color: #8B9467; /* Warm Beige */
-  color: #FFFFFF;
+  background-color: #228B22; /* Forest Green */
+  color: #ffffff;
   padding: 6px;
   border-radius: 50%;
 }
@@ -105,33 +105,33 @@ body {
 
 .back-to-top {
   position: fixed;
-  bottom: 90px;
+  bottom: 90px; /* Adjusted position to be above the View Order bar */
   right: 30px;
-  width: 60px;
-  height: 60px;
-  background-color: #FFC080; /* Warm Amber */
-  color: #FFFFFF;
+  width: 60px; /* Slightly larger for better visibility */
+  height: 60px; /* Slightly larger for better visibility */
+  background-color: #FFD700; /* Golden Yellow */
+  color: #ffffff;
   border: none;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Added transform transition */
   z-index: 1000;
 }
 
 .back-to-top.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0); /* Smooth entrance */
 }
 
 .back-to-top:hover {
-  background-color: #8B9467; /* Warm Beige */
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background-color: #8B9467; /* Warm Beige on hover */
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }

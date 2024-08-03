@@ -1,16 +1,16 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Bodoni Moda', serif;
   margin: 0;
   padding: 0;
-  background-color: #FFFFFF;
-  color: #455A64;
+  background-color: #F7F7F7; /* Soft Gray */
+  color: #333333;
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #FFC080; /* Warm Amber */
-  color: #FFFFFF;
+  background-color: #228B22; /* Forest Green */
+  color: #fff;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -18,8 +18,8 @@ body {
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px; /* Rounded bottom corners */
+  border-bottom-right-radius: 30px; /* Rounded bottom corners */
 }
 
 .header-logo {
@@ -36,7 +36,7 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Bodoni Moda', serif;
 }
 
 .header-subtitle {
@@ -47,7 +47,7 @@ body {
 
 .header-status {
   font-size: 1rem;
-  color: #FFFFFF;
+  color: #F7F7F7; /* Soft Gray */
   margin: 5px 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }

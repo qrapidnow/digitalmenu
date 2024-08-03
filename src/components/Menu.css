@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 20px;
-  background-color: #FFFFFF; /* Pure White background */
+  background-color: #F7F7F7; /* Soft Gray */
 }
 
 .menu-section {
@@ -10,20 +10,20 @@
   width: 100%;
   padding: 10px 20px;
   margin-bottom: 15px;
-  border: 1px solid #FFC080; /* Warm Amber */
+  border: 1px solid #8B9467; /* Warm Beige */
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .menu h2 {
   font-weight: 700;
-  color: #FFC080; /* Warm Amber */
+  color: #228B22; /* Forest Green */
   margin-bottom: 10px;
-  border-bottom: 2px solid #FFC080; /* Warm Amber */
+  border-bottom: 2px solid #228B22; /* Forest Green */
   padding-bottom: 5px;
   width: 100%;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Bodoni Moda', serif;
 }
 
 .menu-items {

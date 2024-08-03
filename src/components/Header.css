@@ -1,15 +1,15 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
-  color: #333333;
+  background-color: #f0eae1; /* Soft Cream */
+  color: #004d40; /* Dark Green */
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #964B00; /* Warm Earthy Brown */
+  background-color: #004d40; /* Dark Green */
   color: #fff;
   text-align: center;
   display: flex;
@@ -36,18 +36,18 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .header-subtitle {
   font-size: 1rem;
-  color: #c1d1c0;
+  color: #b2c2a1; /* Light Sage */
   margin: 5px 0;
 }
 
 .header-status {
   font-size: 1rem;
-  color: #f9f9f9;
+  color: #f0eae1; /* Soft Cream */
   margin: 5px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
 }

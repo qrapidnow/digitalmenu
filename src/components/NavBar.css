@@ -1,6 +1,6 @@
 .navbar {
   width: 100%;
-  padding: 10px 15px; /* Adjust padding to ensure first and last categories are visible */
+  padding: 10px 0; /* Adjust padding to ensure first and last categories are visible */
   overflow-x: auto; /* Enable horizontal scrolling */
   white-space: nowrap; /* Prevent wrapping of buttons */
   background-color: #f9f9f9; /* Light background */
@@ -16,7 +16,7 @@
 }
 
 .navbar li {
-  margin: 0 10px; /* Equal space between category items */
+  margin: 0 20px; /* Equal space between category items */
 }
 
 .category-item {
@@ -39,15 +39,15 @@
 }
 
 .category-image {
-  width: 80px;
-  height: 80px;
+  width: 100px; /* Increase size for better visibility */
+  height: 100px; /* Increase size for better visibility */
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  margin-bottom: 5px;
+  margin-bottom: 10px; /* Adjust margin for better spacing */
 }
 
 .category-button span {
-  font-size: 0.9rem;
+  font-size: 1rem; /* Adjust font size for better readability */
   color: #333;
 }

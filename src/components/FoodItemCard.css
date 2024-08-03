@@ -34,34 +34,34 @@
 
 .food-item-title {
   font-size: 1.1rem;
-  color: #34C759; /* Vibrant green */
+  color: #964B00; /* Warm Earthy Brown */
   margin: 0;
   font-weight: 600;
 }
 
 .food-item-price {
   font-size: 1rem;
-  color: #34C759; /* Vibrant green */
+  color: #964B00; /* Warm Earthy Brown */
   font-weight: 600;
   margin: 0;
 }
 
 .food-item-description {
   font-size: 0.9rem;
-  color: #666;
+  color: #666666;
   margin: 8px 0;
 }
 
 .read-more {
-  color: #FF69B4; /* Bright pink */
+  color: #964B00; /* Warm Earthy Brown */
   cursor: pointer;
 }
 
 .add-button {
   align-self: flex-end;
   padding: 8px 12px;
-  background-color: #34C759; /* Vibrant green */
-  color: #fff;
+  background-color: #000000;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -72,7 +72,7 @@
 }
 
 .add-button:hover {
-  background-color: #8BC34A; /* Deep green on hover */
+  background-color: #333333;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

@@ -6,11 +6,10 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #F7F7F7;
-  color: #333;
+  font-family: 'Playfair Display', serif;
+  background-color: #f9f9f9;
+  color: #333333;
   line-height: 1.6;
-  font-size: 16px; /* Minimum font size for body text */
 }
 
 .app {
@@ -34,11 +33,11 @@ body {
 .cart-button {
   padding: 10px;
   background-color: #fff;
-  fill: #34C759; /* Vibrant green */
-  border: 2px solid #34C759; /* Vibrant green */
+  fill: #964B00; /* Warm Earthy Brown */
+  border: 2px solid #964B00; /* Warm Earthy Brown */
   border-radius: 5px;
   cursor: pointer;
-  color: #34C759; /* Vibrant green */
+  color: #964B00; /* Warm Earthy Brown */
 }
 
 .view-order-bar {
@@ -48,7 +47,7 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #34C759; /* Vibrant green background */
+  background-color: #964B00; /* Warm Earthy Brown background */
   color: #ffffff;
   padding: 10px 20px;
   display: flex;
@@ -60,7 +59,7 @@ body {
 }
 
 .order-count {
-  background-color: #8BC34A; /* Deep green */
+  background-color: #786C3B; /* Rich Walnut */
   color: #ffffff;
   padding: 6px;
   border-radius: 50%;
@@ -110,7 +109,7 @@ body {
   right: 30px;
   width: 60px; /* Slightly larger for better visibility */
   height: 60px; /* Slightly larger for better visibility */
-  background-color: #34C759; /* Consistent vibrant green */
+  background-color: #964B00; /* Consistent Warm Earthy Brown */
   color: #ffffff;
   border: none;
   border-radius: 50%;
@@ -132,7 +131,7 @@ body {
 }
 
 .back-to-top:hover {
-  background-color: #8BC34A; /* Deep green on hover */
+  background-color: #786C3B; /* Darker Rich Walnut on hover */
   transform: translateY(-5px); /* Slight lift on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }

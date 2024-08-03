@@ -32,12 +32,12 @@ body {
 
 .cart-button {
   padding: 10px;
-  background-color: #b2c2a1; /* Light Sage */
+  background-color: #dd9235; /* Light Sage */
   fill: #004d40; /* Dark Green */
   border: 2px solid #004d40; /* Dark Green */
   border-radius: 5px;
   cursor: pointer;
-  color: #004d40; /* Dark Green */
+  color: #fff; /* Dark Green */
 }
 
 .view-order-bar {
@@ -47,7 +47,7 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #c19a6b; /* Muted Gold background */
+  background-color: #dd9235; /* Muted Gold background */
   color: #ffffff;
   padding: 10px 20px;
   display: flex;
@@ -59,7 +59,7 @@ body {
 }
 
 .order-count {
-  background-color: #8d8d8d; /* Warm Gray */
+  background-color: #004d40; /* Warm Gray */
   color: #ffffff;
   padding: 6px;
   border-radius: 50%;

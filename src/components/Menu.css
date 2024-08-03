@@ -10,14 +10,14 @@
   width: 100%;
   padding: 10px 20px;
   margin-bottom: 15px;
-  border: 1px solid #cc8630; /* Muted Gold */
+  border: 1px solid #dd9235; /* Muted Gold */
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .menu h2 {
   font-weight: 700;
-  color: #cc8630; /* Dark Green */
+  color: #dd9235; /* Dark Green */
   margin-bottom: 10px;
   border-bottom: 2px solid #004d40; /* Dark Green */
   padding-bottom: 5px;

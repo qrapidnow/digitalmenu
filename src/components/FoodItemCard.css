@@ -1,7 +1,7 @@
 .food-item-card {
   display: flex;
   flex-direction: column;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   overflow: hidden;
@@ -60,9 +60,6 @@
 .add-button {
   align-self: flex-end;
   padding: 8px 12px;
-  background-color: #000000;
-  color: #FFFFFF;
-  border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
@@ -72,7 +69,8 @@
 }
 
 .add-button:hover {
-  background-color: #333333;
+  background-color: #333333; /* Darker shade on hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+

@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Oswald', sans-serif;
-  background-color: #E5E5E5;
+  background-color: #f5f5dc;
   color: #000000;
   line-height: 1.6;
 }
@@ -32,12 +32,12 @@ body {
 
 .cart-button {
   padding: 10px;
-  background-color: #FFFFFF;
-  fill: #000000; /* Black */
-  border: 2px solid #000000; /* Black */
+  background-color: #ffffff;
+  fill: #FFD700; /* Gold */
+  border: 2px solid #FFD700; /* Gold */
   border-radius: 5px;
   cursor: pointer;
-  color: #000000; /* Black */
+  color: #FFD700; /* Gold */
 }
 
 .view-order-bar {
@@ -47,8 +47,8 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #000000; /* Black background */
-  color: #FFFFFF;
+  background-color: #FFD700; /* Gold background */
+  color: #000000; /* Black text color */
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -60,7 +60,7 @@ body {
 
 .order-count {
   background-color: #FFD700; /* Gold */
-  color: #000000;
+  color: #ffffff;
   padding: 6px;
   border-radius: 50%;
 }
@@ -109,8 +109,8 @@ body {
   right: 30px;
   width: 60px; /* Slightly larger for better visibility */
   height: 60px; /* Slightly larger for better visibility */
-  background-color: #000000; /* Black */
-  color: #FFFFFF;
+  background-color: #FFD700; /* Gold */
+  color: #000000; /* Black text color */
   border: none;
   border-radius: 50%;
   display: flex;
@@ -131,7 +131,7 @@ body {
 }
 
 .back-to-top:hover {
-  background-color: #FFD700; /* Gold on hover */
+  background-color: #333333; /* Darker shade on hover */
   transform: translateY(-5px); /* Slight lift on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }

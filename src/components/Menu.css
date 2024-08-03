@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 20px;
-  background-color: #E5E5E5; /* Platinum background */
+  background-color: #f5f5dc; /* Creamy background color */
 }
 
 .menu-section {
@@ -10,7 +10,7 @@
   width: 100%;
   padding: 10px 20px;
   margin-bottom: 15px;
-  border: 1px solid #000000;
+  border: 1px solid #e0b79c;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

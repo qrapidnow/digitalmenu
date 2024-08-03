@@ -1,25 +1,25 @@
 body {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5dc; /* Creamy background color */
-  color: #000000; /* Black text color */
+  background-color: #FFFDD0; /* Soft Cream */
+  color: #001219; /* Rich Black */
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #FFD700; /* Gold */
-  color: #ffffff; /* White text color */
+  background-color: #023020; /* Dark Forest Green */
+  color: #FFFDD0; /* Soft Cream */
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #D5E8D4; /* Light Sage Green */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  border-bottom-left-radius: 30px; /* Rounded bottom corners */
-  border-bottom-right-radius: 30px; /* Rounded bottom corners */
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .header-logo {
@@ -36,18 +36,18 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Merriweather', serif;
 }
 
 .header-subtitle {
   font-size: 1rem;
-  color: #FFD700; /* Gold */
+  color: #D5E8D4; /* Light Sage Green */
   margin: 5px 0;
 }
 
 .header-status {
   font-size: 1rem;
-  color: #ffffff; /* White text color */
+  color: #FFFDD0; /* Soft Cream */
   margin: 5px 0;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }

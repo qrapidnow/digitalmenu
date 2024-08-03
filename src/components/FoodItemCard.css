@@ -1,7 +1,7 @@
 .food-item-card {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #FFFDD0; /* Soft Cream */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   overflow: hidden;
@@ -10,7 +10,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   cursor: pointer;
-  border-bottom: 1px dotted #ddd; /* Dotted line between items */
+  border-bottom: 1px dotted #D5E8D4; /* Light Sage Green */
 }
 
 .food-item-content {
@@ -34,7 +34,7 @@
 
 .food-item-title {
   font-size: 1.1rem;
-  color: #FFD700; /* Gold */
+  color: #023020; /* Dark Forest Green */
   margin: 0;
   font-weight: 600;
 }
@@ -60,6 +60,9 @@
 .add-button {
   align-self: flex-end;
   padding: 8px 12px;
+  background-color: #FFD700; /* Gold */
+  color: #001219; /* Rich Black */
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
@@ -69,8 +72,7 @@
 }
 
 .add-button:hover {
-  background-color: #333333; /* Darker shade on hover */
+  background-color: #FFCF33; /* Slightly darker shade of Gold */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-

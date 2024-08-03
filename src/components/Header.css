@@ -1,16 +1,16 @@
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #F5F5F5;
-  color: #2E4053;
+  background-color: #FFFFFF;
+  color: #455A64;
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #964B00; /* Warm Earthy Brown */
-  color: #fff;
+  background-color: #FFC080; /* Warm Amber */
+  color: #FFFFFF;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -18,8 +18,8 @@ body {
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  border-bottom-left-radius: 30px; /* Rounded bottom corners */
-  border-bottom-right-radius: 30px; /* Rounded bottom corners */
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .header-logo {
@@ -36,18 +36,18 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .header-subtitle {
   font-size: 1rem;
-  color: #c1d1c0;
+  color: #8B9467; /* Warm Beige */
   margin: 5px 0;
 }
 
 .header-status {
   font-size: 1rem;
-  color: #f9f9f9;
+  color: #FFFFFF;
   margin: 5px 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
 }

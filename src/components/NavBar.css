@@ -1,21 +1,22 @@
 .navbar {
   width: 100%;
-  padding: 10px 0;
+  padding: 10px 15px; /* Adjust padding to ensure first and last categories are visible */
   overflow-x: auto; /* Enable horizontal scrolling */
   white-space: nowrap; /* Prevent wrapping of buttons */
   background-color: #f9f9f9; /* Light background */
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on touch devices */
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
-  justify-content: center; /* Center the categories */
+  justify-content: flex-start; /* Align categories to the start */
   padding: 0;
   margin: 0;
 }
 
 .navbar li {
-  margin: 0 15px; /* Equal space between category items */
+  margin: 0 10px; /* Equal space between category items */
 }
 
 .category-item {

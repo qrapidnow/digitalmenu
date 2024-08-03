@@ -20,9 +20,11 @@ const FoodItemCard = ({ item, addItem }) => {
         <img src={item.image} alt={item.name} className="food-item-image" />
         <div className="food-item-details">
           <h3 className="food-item-title">{item.name}</h3>
-          <p className="food-item-price">₹{item.price}</p>
+          <div className="food-item-price-add">
+            <p className="food-item-price">₹{item.price}</p>
+            <button onClick={handleAdd} className="add-button">Add</button>
+          </div>
         </div>
-        <button onClick={handleAdd} className="add-button">Add</button>
       </div>
       <p className="food-item-description">
         {isExpanded ? item.description : `${item.description.substring(0, 50)}...`}

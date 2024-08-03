@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 20px;
-  background-color: #f5f5dc;
+  background-color: #F5F5F5; /* Creamy White */
 }
 
 .menu-section {
@@ -10,16 +10,16 @@
   width: 100%;
   padding: 10px 20px;
   margin-bottom: 15px;
-  border: 1px solid #8b5e3c;
+  border: 1px solid #964B00; /* Warm Earthy Brown */
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .menu h2 {
   font-weight: 700;
-  color: #4b2e22;
+  color: #964B00; /* Warm Earthy Brown */
   margin-bottom: 10px;
-  border-bottom: 2px solid #4b2e22;
+  border-bottom: 2px solid #964B00; /* Warm Earthy Brown */
   padding-bottom: 5px;
   width: 100%;
   text-align: center;

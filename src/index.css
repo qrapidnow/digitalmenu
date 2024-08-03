@@ -2,12 +2,11 @@
 
 body {
   margin: 0;
-  font-family: 'Playfair Display', serif;
-  background-color: #f5f5dc; /* Creamy background */
-  color: #4b2e22; /* Dark brown text */
+  font-family: 'Playfair Display', serif; /* Main body font */
+  background-color: #F5F5F5; /* Creamy White */
+  color: #333333; /* Slightly darker base text color */
 }
 
 * {
   box-sizing: border-box;
 }
-

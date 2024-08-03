@@ -17,23 +17,21 @@ const FoodItemCard = ({ item, addItem }) => {
   return (
     <div className="food-item-card">
       <div className="food-item-content">
-        <div className="food-item-image-container">
-          <img src={item.image} alt={item.name} className="food-item-image" />
-        </div>
+        <img src={item.image} alt={item.name} className="food-item-image" />
         <div className="food-item-details">
           <h3 className="food-item-title">{item.name}</h3>
           <p className="food-item-price">₹{item.price}</p>
-          <p className="food-item-description">
-            {isExpanded ? item.description : `${item.description.substring(0, 50)}...`}
-            {item.description.length > 50 && (
-              <span className="read-more" onClick={toggleDescription}>
-                {isExpanded ? ' Show Less' : ' Read More'}
-              </span>
-            )}
-          </p>
-          <button onClick={handleAdd} className="add-button">Add</button>
         </div>
+        <button onClick={handleAdd} className="add-button">Add</button>
       </div>
+      <p className="food-item-description">
+        {isExpanded ? item.description : `${item.description.substring(0, 50)}...`}
+        {item.description.length > 50 && (
+          <span className="read-more" onClick={toggleDescription}>
+            {isExpanded ? ' Show Less' : ' Read More'}
+          </span>
+        )}
+      </p>
     </div>
   );
 };

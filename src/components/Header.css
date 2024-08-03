@@ -9,7 +9,7 @@ body {
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #964B00; /* Warm Earthy Brown */
+  background-color: #964B00;
   color: #fff;
   text-align: center;
   display: flex;
@@ -18,8 +18,8 @@ body {
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  border-bottom-left-radius: 30px; /* Rounded bottom corners */
-  border-bottom-right-radius: 30px; /* Rounded bottom corners */
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .header-logo {

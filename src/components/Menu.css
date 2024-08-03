@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 20px;
-  background-color: #f5f5dc; /* Greenish background */
+  background-color: #f5f5dc;
 }
 
 .menu-section {
@@ -17,9 +17,9 @@
 
 .menu h2 {
   font-weight: 700;
-  color: #964B00; /* Warm Earthy Brown */
+  color: #964B00;
   margin-bottom: 10px;
-  border-bottom: 2px solid #964B00; /* Warm Earthy Brown */
+  border-bottom: 2px solid #964B00;
   padding-bottom: 5px;
   width: 100%;
   text-align: center;

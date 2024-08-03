@@ -5,7 +5,7 @@ import { db } from '../firebase-config';
 import { collection, getDocs, query } from "firebase/firestore";
 
 const Navbar = ({ setActiveCategory }) => {
-  const { uid } = useParams(); // Get UID from URL parameters
+  const { uid } = useParams();
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,6 @@ const Navbar = ({ setActiveCategory }) => {
       return;
     }
 
-    console.log("Fetching categories for UID:", uid);
     const fetchCategories = async () => {
       try {
         const q = query(collection(db, 'restaurants', uid, 'categories'));
@@ -23,7 +22,6 @@ const Navbar = ({ setActiveCategory }) => {
           _id: doc.id,
           ...doc.data()
         }));
-        console.log("Categories response:", fetchedCategories);
         setCategories(fetchedCategories);
       } catch (error) {
         console.error('Error fetching categories:', error);

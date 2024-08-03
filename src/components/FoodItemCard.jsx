@@ -5,7 +5,7 @@ const FoodItemCard = ({ item, addItem, quantity, updateItemCount }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleAdd = (e) => {
-    e.stopPropagation(); // Prevent the card's onClick from firing
+    e.stopPropagation();
     console.log('Adding item:', item);
     addItem(item);
   };

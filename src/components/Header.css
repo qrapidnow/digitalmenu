@@ -1,15 +1,15 @@
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: #F7F7F7;
   color: #333;
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #1e3932;
+  background-color: #34C759; /* Vibrant green */
   color: #fff;
   text-align: center;
   display: flex;
@@ -36,7 +36,7 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Great Vibes', cursive;
 }
 
 .header-subtitle {

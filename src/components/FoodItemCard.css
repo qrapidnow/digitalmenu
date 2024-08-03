@@ -34,14 +34,14 @@
 
 .food-item-title {
   font-size: 1.1rem;
-  color: #1e3932;
+  color: #34C759; /* Vibrant green */
   margin: 0;
   font-weight: 600;
 }
 
 .food-item-price {
   font-size: 1rem;
-  color: #1e3932;
+  color: #34C759; /* Vibrant green */
   font-weight: 600;
   margin: 0;
 }
@@ -53,14 +53,14 @@
 }
 
 .read-more {
-  color: #2eb81f;
+  color: #FF69B4; /* Bright pink */
   cursor: pointer;
 }
 
 .add-button {
   align-self: flex-end;
   padding: 8px 12px;
-  background-color: #000;
+  background-color: #34C759; /* Vibrant green */
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -72,7 +72,7 @@
 }
 
 .add-button:hover {
-  background-color: #333;
+  background-color: #8BC34A; /* Deep green on hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

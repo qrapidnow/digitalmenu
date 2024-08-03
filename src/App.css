@@ -6,10 +6,11 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Inter', sans-serif;
+  background-color: #F7F7F7;
   color: #333;
   line-height: 1.6;
+  font-size: 16px; /* Minimum font size for body text */
 }
 
 .app {
@@ -33,11 +34,11 @@ body {
 .cart-button {
   padding: 10px;
   background-color: #fff;
-  fill: #1e3932; /* Dark green */
-  border: 2px solid #1e3932; /* Dark green */
+  fill: #34C759; /* Vibrant green */
+  border: 2px solid #34C759; /* Vibrant green */
   border-radius: 5px;
   cursor: pointer;
-  color: #1e3932; /* Dark green */
+  color: #34C759; /* Vibrant green */
 }
 
 .view-order-bar {
@@ -47,7 +48,7 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #1e3932; /* Dark green background */
+  background-color: #34C759; /* Vibrant green background */
   color: #ffffff;
   padding: 10px 20px;
   display: flex;
@@ -59,7 +60,7 @@ body {
 }
 
 .order-count {
-  background-color: #145a32; /* Darker green */
+  background-color: #8BC34A; /* Deep green */
   color: #ffffff;
   padding: 6px;
   border-radius: 50%;
@@ -109,7 +110,7 @@ body {
   right: 30px;
   width: 60px; /* Slightly larger for better visibility */
   height: 60px; /* Slightly larger for better visibility */
-  background-color: #1e3932; /* Consistent dark green */
+  background-color: #34C759; /* Consistent vibrant green */
   color: #ffffff;
   border: none;
   border-radius: 50%;
@@ -131,7 +132,7 @@ body {
 }
 
 .back-to-top:hover {
-  background-color: #145a32; /* Darker green on hover */
+  background-color: #8BC34A; /* Deep green on hover */
   transform: translateY(-5px); /* Slight lift on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }

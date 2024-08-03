@@ -17,13 +17,13 @@
 
 .menu h2 {
   font-weight: 700;
-  color: #1e3932;
+  color: #34C759; /* Vibrant green */
   margin-bottom: 10px;
-  border-bottom: 2px solid #1e3932;
+  border-bottom: 2px solid #34C759; /* Vibrant green */
   padding-bottom: 5px;
   width: 100%;
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .menu-items {
@@ -62,18 +62,18 @@
 }
 
 .menu-button {
-  border: 2px solid #4CAF50; /* Green border */
+  border: 2px solid #FFC107; /* Golden orange border */
   background: none;
   padding: 15px 30px;
   font-weight: bold;
   cursor: pointer;
-  color: #4CAF50; /* Green text */
+  color: #FFC107; /* Golden orange text */
   margin: 0 15px;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .menu-button:hover {
-  background-color: #388e3c; /* Darker green on hover */
+  background-color: #FF69B4; /* Bright pink on hover */
   transform: translateY(-2px);
   color: #fff; /* White text on hover */
 }
@@ -93,15 +93,15 @@
 }
 
 .toggle-button {
-  border: 2px solid #4CAF50; /* Green border */
+  border: 2px solid #FFC107; /* Golden orange border */
   background: none;
   padding: 10px 20px;
   cursor: pointer;
-  color: #4CAF50; /* Green text */
+  color: #FFC107; /* Golden orange text */
   transition: background-color 0.3s, color 0.3s;
 }
 
 .toggle-button.active {
-  background-color: #4CAF50; /* Green active background */
+  background-color: #FFC107; /* Golden orange active background */
   color: #fff; /* White text */
 }

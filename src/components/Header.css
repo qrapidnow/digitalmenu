@@ -1,15 +1,15 @@
 body {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Playfair Display', serif;
   margin: 0;
   padding: 0;
-  background-color: #F7F7F7; /* Soft Gray */
-  color: #333333;
+  background-color: #F5F5F5; /* Creamy White */
+  color: #00698F; /* Deep Navy Blue */
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #228B22; /* Forest Green */
+  background-color: #964B00; /* Warm Earthy Brown */
   color: #fff;
   text-align: center;
   display: flex;
@@ -36,18 +36,18 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .header-subtitle {
   font-size: 1rem;
-  color: #8B9467; /* Warm Beige */
+  color: #C1D1C0;
   margin: 5px 0;
 }
 
 .header-status {
   font-size: 1rem;
-  color: #F7F7F7; /* Soft Gray */
+  color: #F7D2C4; /* Soft Gold */
   margin: 5px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }

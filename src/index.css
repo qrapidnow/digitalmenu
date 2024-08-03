@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Bodoni Moda', serif; /* Main body font */
-  background-color: #F7F7F7; /* Soft Gray background */
-  color: #333333; /* Slightly darker base text color */
+  font-family: 'Playfair Display', serif; /* Main body font */
+  background-color: #F5F5F5; /* Creamy White */
+  color: #00698F; /* Deep Navy Blue base text color */
 }
 
 * {
   box-sizing: border-box;
 }
-

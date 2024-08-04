@@ -10,7 +10,7 @@ body {
 /* Header Styles */
 .header {
   width: 100%;
-  padding: 10px; /* Reduced padding for tighter spacing */
+  padding: 10px 0; /* Reduced padding for tighter spacing */
   background-color: #000; /* Black background */
   color: #fff;
   text-align: center;
@@ -22,6 +22,7 @@ body {
   position: relative;
   border-bottom-left-radius: 30px; /* Rounded bottom corners */
   border-bottom-right-radius: 30px; /* Rounded bottom corners */
+  margin: 0; /* Ensure no margin around the header */
 }
 
 .header-logo {
@@ -58,7 +59,7 @@ body {
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .header {
-    padding: 10px; /* Ensure padding is consistent on mobile */
+    padding: 10px 0; /* Ensure padding is consistent on mobile */
   }
   
   .header-title {

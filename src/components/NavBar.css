@@ -5,7 +5,7 @@
   padding: 0.5rem 0; /* Reduced padding for less space */
   overflow-x: auto;
   white-space: nowrap;
-  background-color: #f7f7f7; /* Soft Gray */
+  background-color: #ffff; /* Soft Gray */
   -webkit-overflow-scrolling: touch;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
@@ -43,7 +43,7 @@
 
 .category-button:hover {
   transform: scale(1.1);
-  background-color: #f2f2f2; /* Hover background color */
+  background-color: #000; /* Hover background color */
 }
 
 .category-content {

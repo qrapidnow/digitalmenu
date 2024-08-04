@@ -1,17 +1,15 @@
-/* General Styles */
 body {
   font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fff; /* White background */
-  color: #000; /* Black text color */
+  background-color: #fff; /* Soft Cream */
+  color: #000; /* Dark Green */
 }
 
-/* Header Styles */
 .header {
   width: 100%;
-  padding: 10px 0; /* Reduced padding for tighter spacing */
-  background-color: #000; /* Black background */
+  padding: 20px;
+  background-color: #000; /* Dark Green */
   color: #fff;
   text-align: center;
   display: flex;
@@ -22,13 +20,12 @@ body {
   position: relative;
   border-bottom-left-radius: 30px; /* Rounded bottom corners */
   border-bottom-right-radius: 30px; /* Rounded bottom corners */
-  margin: 0; /* Ensure no margin around the header */
 }
 
 .header-logo {
-  width: 80px; /* Reduced width for better mobile fit */
+  width: 100px;
   height: auto;
-  margin-bottom: 5px; /* Reduced margin for tighter spacing */
+  margin-bottom: 10px;
 }
 
 .header-text {
@@ -36,7 +33,7 @@ body {
 }
 
 .header-title {
-  font-size: 1.5rem; /* Adjusted font size for better mobile fit */
+  font-size: 2rem;
   font-weight: 700;
   margin: 0;
   color: #fff;
@@ -44,35 +41,14 @@ body {
 }
 
 .header-subtitle {
-  font-size: 0.9rem; /* Adjusted font size for better mobile fit */
-  color: #004d40; /* Dark Green */
+  font-size: 1rem;
+  color: #004d40; /* Light Sage */
   margin: 5px 0;
 }
 
 .header-status {
-  font-size: 0.9rem; /* Adjusted font size for better mobile fit */
-  color: #FFF; /* White */
+  font-size: 1rem;
+  color: #FFF; /* Soft Cream */
   margin: 5px 0;
   font-family: 'Lato', sans-serif;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .header {
-    padding: 10px 0; /* Ensure padding is consistent on mobile */
-  }
-  
-  .header-title {
-    font-size: 1.5rem; /* Adjust font size for mobile */
-  }
-  
-  .header-subtitle,
-  .header-status {
-    font-size: 0.9rem; /* Adjust font size for mobile */
-  }
-  
-  .header-logo {
-    width: 70px; /* Ensure the logo size fits well on mobile */
-    margin-bottom: 5px; /* Consistent spacing */
-  }
 }

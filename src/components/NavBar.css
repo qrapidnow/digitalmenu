@@ -35,7 +35,7 @@
   cursor: pointer;
   padding: 5px; /* Reduced padding for tighter click target */
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Added transitions for smooth hover effect */
   width: 100px; /* Reduced width for tighter layout */
   border-radius: 10px; /* Subtle border radius */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -44,6 +44,10 @@
 .category-button:hover {
   transform: scale(1.1);
   background-color: #000; /* Hover background color */
+}
+
+.category-button:hover span {
+  color: #fff; /* Change span text color to white on hover */
 }
 
 .category-content {

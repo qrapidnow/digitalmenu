@@ -47,8 +47,8 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #fff; /* Muted Gold background */
-  color: #004d40;
+  background-color: #004d40; /* Muted Gold background */
+  color: white;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -59,8 +59,8 @@ body {
 }
 
 .order-count {
-  background-color: #004d40; /* Warm Gray */
-  color: #000;
+  background-color: #fff; /* Warm Gray */
+  color: #004d40;
   padding: 6px;
   border-radius: 50%;
 }

@@ -17,7 +17,9 @@ const FoodItemCard = ({ item, addItem }) => {
   return (
     <div className="food-item-card">
       <div className="food-item-content">
-        <img src={item.image} alt={item.name} className="food-item-image" />
+        {item.image && (
+          <img src={item.image} alt={item.name} className="food-item-image" />
+        )}
         <div className="food-item-details">
           <h3 className="food-item-title">{item.name}</h3>
           <div className="food-item-price-add">

@@ -70,9 +70,9 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
           <button className="action-button" onClick={handleAddItems}>
             Add Items
           </button>
-          <button className="action-button" onClick={handlePlaceOrderPage}>
+          {/* <button className="action-button" onClick={handlePlaceOrderPage}>
             Place Order
-          </button>
+          </button> */}
         </div>
         {totalItems > 0 && (
           <div className="totals-container">

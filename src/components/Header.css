@@ -2,7 +2,7 @@ body {
   font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0eae1; /* Soft Cream */
+  background-color: #fff; /* Soft Cream */
   color: #000; /* Dark Green */
 }
 
@@ -41,7 +41,7 @@ body {
 
 .header-subtitle {
   font-size: 1rem;
-  color: #b2c2a1; /* Light Sage */
+  color: #004d40; /* Light Sage */
   margin: 5px 0;
 }
 

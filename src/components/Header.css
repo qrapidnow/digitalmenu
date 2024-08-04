@@ -1,15 +1,17 @@
+/* General Styles */
 body {
   font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fff; /* Soft Cream */
-  color: #000; /* Dark Green */
+  background-color: #fff; /* White background */
+  color: #000; /* Black text color */
 }
 
+/* Header Styles */
 .header {
   width: 100%;
-  padding: 20px;
-  background-color: #000; /* Dark Green */
+  padding: 10px; /* Reduced padding for tighter spacing */
+  background-color: #000; /* Black background */
   color: #fff;
   text-align: center;
   display: flex;
@@ -23,9 +25,9 @@ body {
 }
 
 .header-logo {
-  width: 100px;
+  width: 80px; /* Reduced width for better mobile fit */
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 5px; /* Reduced margin for tighter spacing */
 }
 
 .header-text {
@@ -33,7 +35,7 @@ body {
 }
 
 .header-title {
-  font-size: 2rem;
+  font-size: 1.5rem; /* Adjusted font size for better mobile fit */
   font-weight: 700;
   margin: 0;
   color: #fff;
@@ -41,14 +43,35 @@ body {
 }
 
 .header-subtitle {
-  font-size: 1rem;
-  color: #004d40; /* Light Sage */
+  font-size: 0.9rem; /* Adjusted font size for better mobile fit */
+  color: #004d40; /* Dark Green */
   margin: 5px 0;
 }
 
 .header-status {
-  font-size: 1rem;
-  color: #FFF; /* Soft Cream */
+  font-size: 0.9rem; /* Adjusted font size for better mobile fit */
+  color: #FFF; /* White */
   margin: 5px 0;
   font-family: 'Lato', sans-serif;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px; /* Ensure padding is consistent on mobile */
+  }
+  
+  .header-title {
+    font-size: 1.5rem; /* Adjust font size for mobile */
+  }
+  
+  .header-subtitle,
+  .header-status {
+    font-size: 0.9rem; /* Adjust font size for mobile */
+  }
+  
+  .header-logo {
+    width: 70px; /* Ensure the logo size fits well on mobile */
+    margin-bottom: 5px; /* Consistent spacing */
+  }
 }

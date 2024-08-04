@@ -1,67 +1,72 @@
-/* navbar.css */
-
-.navbar {
-  width: 100%;
-  padding: 10px 0;
-  overflow-x: auto;
-  white-space: nowrap;
-  background-color: #fff; /* Soft Cream */
-  -webkit-overflow-scrolling: touch;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-  justify-content: flex-start;
-  padding: 0;
-  margin: 0;
-}
-
-.navbar li {
-  flex: 0 0 auto;
-  margin: 0 10px; /* Adjusted margin for equal spacing */
-}
-
-.category-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.category-button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 0;
-  text-align: center;
-  transition: transform 0.3s ease;
-  width: 100px; /* Set a fixed width for consistency */
-}
-
-.category-button:hover {
-  transform: scale(1.1);
-}
-
-.category-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.category-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-bottom: 5px;
-}
-
-.category-button span {
-  font-family: 'Poppins', sans-serif; /* Apply Poppins font to span */
-  font-size: 0.8rem;
-  color: #004d40; /* Dark Green */
-  display: block;
-  text-align: center;
-  white-space: normal; /* Allow text to wrap */
-  word-wrap: break-word; /* Ensure text wraps within the container */
+/* navbar.css */  
+  
+.navbar {  
+  width: 100%;  
+  padding: 1rem 0; /* Increased padding for better spacing */  
+  overflow-x: auto;  
+  white-space: nowrap;  
+  background-color: #f7f7f7; /* Soft Gray instead of Soft Cream */  
+  -webkit-overflow-scrolling: touch;  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */  
+}  
+  
+.navbar ul {  
+  list-style: none;  
+  display: flex;  
+  justify-content: space-between; /* Changed to space-between for even spacing */  
+  padding: 0;  
+  margin: 0;  
+}  
+  
+.navbar li {  
+  flex: 0 0 auto;  
+  margin: 0 20px; /* Increased margin for better spacing */  
+}  
+  
+.category-item {  
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+}  
+  
+.category-button {  
+  border: none;  
+  background-color: transparent;  
+  cursor: pointer;  
+  padding: 10px; /* Added padding for better click target */  
+  text-align: center;  
+  transition: transform 0.3s ease;  
+  width: 120px; /* Increased width for better readability */  
+  border-radius: 10px; /* Added subtle border radius */  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */  
+}  
+  
+.category-button:hover {  
+  transform: scale(1.1);  
+  background-color: #f2f2f2; /* Added hover background color */  
+}  
+  
+.category-content {  
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+}  
+  
+.category-image {  
+  width: 80px;  
+  height: 80px;  
+  border-radius: 10px;  
+  object-fit: cover;  
+  margin-bottom: 10px; /* Increased margin for better spacing */  
+}  
+  
+.category-button span {  
+  font-family: 'Poppins', sans-serif;  
+  font-size: 0.9rem; /* Increased font size for better readability */  
+  color: #004d40; /* Dark Green */  
+  display: block;  
+  text-align: center;  
+  white-space: normal;  
+  word-wrap: break-word;  
+  padding: 10px; /* Added padding for better spacing */  
 }

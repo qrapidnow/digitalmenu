@@ -7,6 +7,7 @@ import { collection, getDocs, query } from "firebase/firestore";
 const Navbar = ({ setActiveCategory }) => {
   const { uid } = useParams();
   const [categories, setCategories] = useState([]);
+  const [activeButton, setActiveButton] = useState(null); // State to track active button
 
   useEffect(() => {
     if (!uid) {
@@ -31,14 +32,19 @@ const Navbar = ({ setActiveCategory }) => {
     fetchCategories();
   }, [uid]);
 
+  const handleCategoryClick = (categoryId) => {
+    setActiveCategory(categoryId);
+    setActiveButton(categoryId); // Set the active button
+  };
+
   return (
     <nav className="navbar">
       <ul>
         {categories.map((category) => (
           <li key={category._id} className="category-item">
             <button
-              className="category-button"
-              onClick={() => setActiveCategory(category._id)}
+              className={`category-button ${activeButton === category._id ? 'active' : ''}`}
+              onClick={() => handleCategoryClick(category._id)}
             >
               <div className="category-content">
                 <img src={category.image} alt={category.name} className="category-image" />

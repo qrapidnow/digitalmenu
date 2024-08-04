@@ -50,6 +50,14 @@
   color: #fff; /* Change span text color to white on hover */
 }
 
+.category-button.active {
+  background-color: #000; /* Active background color */
+}
+
+.category-button.active span {
+  color: #fff; /* Active text color */
+}
+
 .category-content {
   display: flex;
   flex-direction: column;

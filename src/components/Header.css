@@ -3,13 +3,13 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f0eae1; /* Soft Cream */
-  color: #004d40; /* Dark Green */
+  color: #000; /* Dark Green */
 }
 
 .header {
   width: 100%;
   padding: 20px;
-  background-color: #004d40; /* Dark Green */
+  background-color: #000; /* Dark Green */
   color: #fff;
   text-align: center;
   display: flex;
@@ -47,7 +47,7 @@ body {
 
 .header-status {
   font-size: 1rem;
-  color: #f0eae1; /* Soft Cream */
+  color: #FFF; /* Soft Cream */
   margin: 5px 0;
   font-family: 'Lato', sans-serif;
 }

@@ -5,7 +5,7 @@ body {
   margin: 0;
   font-family: 'Lato', sans-serif; /* Main body font */
   background-color: #ffffff; /* Soft Cream background color */
-  color: #004d40; /* Dark Green base text color */
+  color: #000; /* Dark Green base text color */
 }
 
 * {

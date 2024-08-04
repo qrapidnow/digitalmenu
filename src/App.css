@@ -8,7 +8,7 @@
 body {
   font-family: 'Lato', sans-serif;
   background-color: #ffffff;
-  color: #004d40;
+  color: #000;
   line-height: 1.6;
 }
 
@@ -32,12 +32,12 @@ body {
 
 .cart-button {
   padding: 10px;
-  background-color: #dd9235; /* Light Sage */
+  background-color: #004d40; /* Light Sage */
   fill: #000; /* Dark Green */
-  border: 2px solid #004d40; /* Dark Green */
+  border: 2px solid #000; /* Dark Green */
   border-radius: 5px;
   cursor: pointer;
-  color: #000; /* Dark Green */
+  color: #fff; /* Dark Green */
 }
 
 .view-order-bar {
@@ -47,8 +47,8 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 500px;
-  background-color: #dd9235; /* Muted Gold background */
-  color: #ffffff;
+  background-color: #fff; /* Muted Gold background */
+  color: #004d40;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -60,7 +60,7 @@ body {
 
 .order-count {
   background-color: #004d40; /* Warm Gray */
-  color: #ffffff;
+  color: #000;
   padding: 6px;
   border-radius: 50%;
 }
@@ -109,8 +109,8 @@ body {
   right: 30px;
   width: 60px;
   height: 60px;
-  background-color: #004d40; /* Dark Green */
-  color: #ffffff;
+  background-color: #fff; /* Dark Green */
+  color:#004d40;
   border: none;
   border-radius: 50%;
   display: flex;

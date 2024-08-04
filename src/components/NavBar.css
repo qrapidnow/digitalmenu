@@ -1,3 +1,5 @@
+/* navbar.css */
+
 .navbar {
   width: 100%;
   padding: 10px 0;
@@ -55,6 +57,7 @@
 }
 
 .category-button span {
+  font-family: 'Poppins', sans-serif; /* Apply Poppins font to span */
   font-size: 0.8rem;
   color: #004d40; /* Dark Green */
   display: block;

@@ -4,7 +4,7 @@ import './FoodItemCard.css';
 const FoodItemCard = ({ item, addItem }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleAdd = (e, variation) => {
+  const handleAdd = (e, variation = null) => {
     e.stopPropagation();
     console.log('Adding item:', item, 'Variation:', variation);
     addItem(item, variation);
@@ -22,7 +22,7 @@ const FoodItemCard = ({ item, addItem }) => {
         )}
         <div className="food-item-details">
           <h3 className="food-item-title">{item.name}</h3>
-          {item.variations ? (
+          {item.variations && item.variations.length > 0 ? (
             item.variations.map((variation, index) => (
               <div key={index} className="food-item-variation">
                 <div className="food-item-price-add">
@@ -33,7 +33,7 @@ const FoodItemCard = ({ item, addItem }) => {
                     onClick={(e) => handleAdd(e, variation)}
                     className="add-button"
                   >
-                    Add Items
+                    Add
                   </button>
                 </div>
                 <p className="food-item-description">
@@ -44,7 +44,7 @@ const FoodItemCard = ({ item, addItem }) => {
           ) : (
             <div className="food-item-price-add">
               <p className="food-item-price">₹{item.price}</p>
-              <button onClick={handleAdd} className="add-button">
+              <button onClick={(e) => handleAdd(e)} className="add-button">
                 Add
               </button>
             </div>

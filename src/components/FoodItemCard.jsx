@@ -4,10 +4,10 @@ import './FoodItemCard.css';
 const FoodItemCard = ({ item, addItem }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleAdd = (e) => {
+  const handleAdd = (e, variation) => {
     e.stopPropagation();
-    console.log('Adding item:', item);
-    addItem(item);
+    console.log('Adding item:', item, 'Variation:', variation);
+    addItem(item, variation);
   };
 
   const toggleDescription = () => {
@@ -22,10 +22,33 @@ const FoodItemCard = ({ item, addItem }) => {
         )}
         <div className="food-item-details">
           <h3 className="food-item-title">{item.name}</h3>
-          <div className="food-item-price-add">
-            <p className="food-item-price">₹{item.price}</p>
-            <button onClick={handleAdd} className="add-button">Add</button>
-          </div>
+          {item.variations ? (
+            item.variations.map((variation, index) => (
+              <div key={index} className="food-item-variation">
+                <div className="food-item-price-add">
+                  <p className="food-item-price">
+                    {variation.name}: ₹{variation.price}
+                  </p>
+                  <button
+                    onClick={(e) => handleAdd(e, variation)}
+                    className="add-button"
+                  >
+                    Add Items
+                  </button>
+                </div>
+                <p className="food-item-description">
+                  {variation.description}
+                </p>
+              </div>
+            ))
+          ) : (
+            <div className="food-item-price-add">
+              <p className="food-item-price">₹{item.price}</p>
+              <button onClick={handleAdd} className="add-button">
+                Add
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <p className="food-item-description">

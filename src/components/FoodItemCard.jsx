@@ -48,16 +48,24 @@ const FoodItemCard = ({ item, addItem }) => {
                   <p className="variation-description">
                     {variation.description}
                   </p>
+                  <p className="variation-weight">
+                    Weight: {variation.weight} {variation.unit}
+                  </p>
                 </div>
               ))}
             </>
           ) : (
-            <div className="food-item-price-add">
-              <p className="food-item-price">₹{item.price}</p>
-              <button onClick={(e) => handleAdd(e)} className="add-button">
-                Add
-              </button>
-            </div>
+            <>
+              <div className="food-item-price-add">
+                <p className="food-item-price">₹{item.price}</p>
+                <button onClick={(e) => handleAdd(e)} className="add-button">
+                  Add
+                </button>
+              </div>
+              <p className="food-item-weight">
+                Weight: {item.weight} {item.unit}
+              </p>
+            </>
           )}
         </div>
       </div>

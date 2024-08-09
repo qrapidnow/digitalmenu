@@ -15,6 +15,12 @@
     margin-bottom: 20px;  
   }  
     
+  .list-header span {  
+    font-size: 16px;  
+    color: #000;  
+    margin-bottom: 10px;  
+  }
+    
   .list-header h2 { /* added heading style */  
     font-size: 24px;  
     font-weight: bold;  
@@ -28,13 +34,24 @@
     border: none;  
     font-size: 24px;  
     cursor: pointer;  
-    color: #000; /* changed color to black */  
-    transform: rotate(180deg); /* added rotation */  
-    padding: 10px;  
-    border-radius: 5px;  
-    background-color: #145a32; /* changed background color to match the desired combo */  
-    transition: background-color 0.2s ease; /* added transition effect */  
+    color: #000;  
+    padding: 0;  
+    background-color: #fff;  
   }  
+    
+  .list-header {  
+    display: flex;  
+    justify-content: space-between;  
+    width: 100%;  
+    margin-bottom: 20px;  
+  }  
+    
+  .list-header span {  
+    font-size: 16px;  
+    color: #000;  
+    margin-bottom: 10px;  
+  }
+  
     
   .back-button:hover {  
     background-color: #0e3d21; /* changed hover color to a darker shade of #145a32 */  

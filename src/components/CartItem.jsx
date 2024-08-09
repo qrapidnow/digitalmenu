@@ -10,7 +10,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
   const [customerName, setCustomerName] = useState('');
   const [whatsappNumber, setWhatsappNumber] = useState('');
 
-
   useEffect(() => {
     // Load cart data from local storage
     const storedCartData = JSON.parse(localStorage.getItem('cartData'));
@@ -56,6 +55,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Testing with a simple write operation to Firestore
       await addDoc(collection(db, "customer_details"), {
         name: customerName,
         whatsapp_number: whatsappNumber,
@@ -64,7 +64,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
       setIsFormSubmitted(true);
       saveCartData();
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error("Error adding document:", error.message, error.code, error.stack);
       alert("There was an error saving your information. Please try again.");
     }
   };

@@ -10,6 +10,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
   const [customerName, setCustomerName] = useState('');
   const [whatsappNumber, setWhatsappNumber] = useState('');
 
+  
   useEffect(() => {
     // Load cart data from local storage
     const storedCartData = JSON.parse(localStorage.getItem('cartData'));

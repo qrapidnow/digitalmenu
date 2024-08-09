@@ -19,14 +19,20 @@ const List = ({ cartItems, setShowListPage }) => {
           <div key={index} className="list-item">
             <div className="item-details">
               <h3>{item.name}</h3>
+              {item.variation ? (
+                <p>
+                  {item.variation.name}: ₹{item.variation.price}/-
+                </p>
+              ) : (
+                <p>Price: ₹{item.price}/-</p>
+              )}
               <p>Quantity: {item.quantity}</p>
-              <p>Price: ₹{item.price}/-</p>
             </div>
           </div>
         ))}
       </div>
       <div className="thank-you-message">
-        <p>Thanking you for using QRapid, waiter will come to your table soon.</p>
+        <p>Thanking you for using QRapid, the waiter will come to your table soon.</p>
       </div>
     </div>
   );

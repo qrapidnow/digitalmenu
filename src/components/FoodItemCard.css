@@ -1,88 +1,85 @@
 .food-item-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 15px;
-  padding: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
-  cursor: pointer;
-  border-bottom: 1px dotted #ddd; /* Dotted line between items */
 }
 
-.food-item-content {
+.food-item-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
 }
 
 .food-item-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
+  border-radius: 8px;
   margin-right: 16px;
 }
 
 .food-item-details {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  flex: 1;
 }
 
 .food-item-title {
-  font-size: 1.1rem;
-  color: #004d40; /* Dark Green */
+  font-size: 1.5rem;
   margin: 0;
-  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.food-item-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.read-more {
+  color: #007bff;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.food-item-variations {
+  margin-top: 16px;
+}
+
+.food-item-variation {
+  padding: 8px 0;
+  border-top: 1px solid #eee;
 }
 
 .food-item-price-add {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin-top: 8px;
 }
 
 .food-item-price {
-  font-size: 1rem;
-  color: #000; /* Custom color for price */
-  font-weight: 600;
-  margin-right: 16px; /* Space between price and button */
-}
-
-.food-item-description {
-  font-size: 0.9rem;
-  color: #666666;
-  margin: 8px 0;
-}
-
-.read-more {
-  color: orange; /* Dark Green */
-  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
 }
 
 .add-button {
-  padding: 8px 12px;
-  background-color: #004d40; /* Muted Gold */
-  color: #ffffff;
+  background-color: #28a745;
+  color: white;
   border: none;
-  border-radius: 8px;
+  padding: 8px 16px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .add-button:hover {
-  background-color: #8d8d8d; /* Warm Gray on hover */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #218838;
 }
 
-.food-item-variation {
-  margin-top: 10px;
+.variation-description,
+.variation-weight {
+  font-size: 0.9rem;
+  color: #777;
 }

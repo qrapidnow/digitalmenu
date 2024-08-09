@@ -99,11 +99,12 @@ const App = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Save customer details to Firestore
+            // Save customer details along with the digital menu (restaurantName) to Firestore
             await addDoc(collection(db, "customer-details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
                 timestamp: new Date(),
+                digital_menu: restaurantName,  // Including the digital menu or restaurant name
             });
             setIsFormSubmitted(true);
             saveCartData();
@@ -112,6 +113,7 @@ const App = () => {
             alert("There was an error saving your information. Please try again.");
         }
     };
+    
 
     const saveCartData = () => {
         const cartData = {

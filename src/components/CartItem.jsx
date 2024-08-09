@@ -112,8 +112,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
               Submit
             </button>
             <p className="reward-message">
-              Providing your name and WhatsApp number is required for a chance to receive a 50% reward if you win.
-            </p>
+            Enter your name and WhatsApp to get 50% discount!            </p>
           </form>
         </div>
       </div>

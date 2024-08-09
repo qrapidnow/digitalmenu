@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './CartItem.css';
 import PlaceOrderPage from './PlaceOrderPage';
+import List from './List';  // Import the List component
 
 const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemCount }) => {
   const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
+  const [showListPage, setShowListPage] = useState(false);  // State to control the List page
 
   const handleBackToCart = () => {
     setShowCartItem(false);
@@ -21,12 +23,27 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
     setShowPlaceOrderPage(true);
   };
 
+  const handleShowListPage = () => {
+    setShowListPage(true);
+  };
+
   if (showPlaceOrderPage) {
     return (
       <div className="cart-item-container">
         <PlaceOrderPage
           cartItems={cartItems}
           setShowPlaceOrderPage={setShowPlaceOrderPage}
+        />
+      </div>
+    );
+  }
+
+  if (showListPage) {  // Conditionally render the List component
+    return (
+      <div className="cart-item-container">
+        <List
+          cartItems={cartItems}
+          setShowListPage={setShowListPage}
         />
       </div>
     );
@@ -70,9 +87,9 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
           <button className="action-button" onClick={handleAddItems}>
             Add Items
           </button>
-          {/* <button className="action-button" onClick={handlePlaceOrderPage}>
-            Place Order
-          </button> */}
+          <button className="action-button" onClick={handleShowListPage}>  {/* List button */}
+            List
+          </button>
         </div>
         {totalItems > 0 && (
           <div className="totals-container">

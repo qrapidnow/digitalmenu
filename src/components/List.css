@@ -1,51 +1,80 @@
-.list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-  }
-  
-  .list-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .back-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .list-content {
-    width: 100%;
-    max-height: 400px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-  }
-  
-  .list-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .item-details {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .thank-you-message {
-    text-align: center;
-    font-size: 16px;
-    color: #555;
+.list-container {  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    padding: 20px;  
+    background-color: #f9f9f9;  
+    border-radius: 10px;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* added box shadow for a premium look */  
+  }  
+    
+  .list-header {  
+    display: flex;  
+    justify-content: space-between;  
+    width: 100%;  
+    margin-bottom: 20px;  
+  }  
+    
+  .list-header h2 { /* added heading style */  
+    font-size: 24px;  
+    font-weight: bold;  
+    text-align: center;  
+    color: #145a32; /* changed color to match the desired combo */  
+    margin-bottom: 10px;  
+  }  
+    
+  .back-button {  
+    background: none;  
+    border: none;  
+    font-size: 24px;  
+    cursor: pointer;  
+    color: #000; /* changed color to black */  
+    transform: rotate(180deg); /* added rotation */  
+    padding: 10px;  
+    border-radius: 5px;  
+    background-color: #145a32; /* changed background color to match the desired combo */  
+    transition: background-color 0.2s ease; /* added transition effect */  
+  }  
+    
+  .back-button:hover {  
+    background-color: #0e3d21; /* changed hover color to a darker shade of #145a32 */  
+  }  
+    
+  .list-content {  
+    width: 100%;  
+    max-height: 400px;  
+    overflow-y: auto;  
+    margin-bottom: 20px;  
+    padding: 20px;  
+    background-color: #fff;  
+    border-radius: 10px;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* added box shadow for a premium look */  
+  }  
+    
+  .list-item {  
+    display: flex;  
+    justify-content: space-between;  
+    padding: 10px;  
+    background-color: #fff;  
+    border-bottom: 1px solid #ddd;  
+    border-radius: 5px;  
+    margin-bottom: 10px;  
+    transition: background-color 0.2s ease; /* added transition effect */  
+  }  
+    
+  .list-item:hover {  
+    background-color: #f7f7f7; /* changed hover color to a lighter shade of #fff */  
+  }  
+    
+  .item-details {  
+    display: flex;  
+    flex-direction: column;  
+  }  
+    
+  .thank-you-message {  
+    text-align: center;  
+    font-size: 16px;  
+    color: #555;  
+    margin-top: 20px;  
   }
   

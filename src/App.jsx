@@ -113,7 +113,6 @@ const App = () => {
             alert("There was an error saving your information. Please try again.");
         }
     };
-    
 
     const saveCartData = () => {
         const cartData = {

@@ -1,113 +1,80 @@
 .list-container {  
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    overflow: hidden;
-}
-
-.list-content {
-    width: 90%;
-    max-width: 500px;
-    max-height: 80%;
-    border: 2px solid #ccc;
-    border-radius: 20px;
-    padding: 20px;
-    background-color: #fff;
-    color: #000;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-}
-
-.list-header {  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    padding: 20px;  
+    background-color: #f9f9f9;  
+    border-radius: 10px;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* added box shadow for a premium look */  
+  }  
+    
+  .list-header {  
     display: flex;  
     justify-content: space-between;  
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.list-header h2 {  
-    font-size: 1.5em;
-    color: #1e3932; /* Dark green text color */
-}
-
-.back-button {  
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
-    color: #1e3932; /* Dark green color */
-    transform: rotate(180deg);
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #145a32; /* Dark green background */
-    transition: background-color 0.2s ease; 
-}
-
-.back-button:hover {  
-    background-color: #0e3d21; /* Darker green on hover */
-}
-
-.list-content-scrollable {  
-    flex-grow: 1;
-    overflow-y: auto;
-    padding-right: 10px;
-    margin-right: -10px;
-}
-
-.list-item {  
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.item-details {  
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.item-details h3 {
-    margin: 0;
-    font-size: 1.1em;
-    color: #333;
-}
-
-.item-details p {
-    margin: 5px 0;
-    color: #666;
-}
-
-.thank-you-message {  
-    text-align: center;
-    font-size: 1.1em;
-    color: #666;
-    margin-top: 20px;
-}
-
-@media (max-width: 500px) {
-    .list-content {
-        width: 95%;
-        padding: 15px; /* Adjusted padding for mobile */
-    }
-
-    .list-item {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .item-details {
-        flex: 1; /* Allow details to take available space */
-    }
-}
+    width: 100%;  
+    margin-bottom: 20px;  
+  }  
+    
+  .list-header h2 { /* added heading style */  
+    font-size: 24px;  
+    font-weight: bold;  
+    text-align: center;  
+    color: #145a32; /* changed color to match the desired combo */  
+    margin-bottom: 10px;  
+  }  
+    
+  .back-button {  
+    background: none;  
+    border: none;  
+    font-size: 24px;  
+    cursor: pointer;  
+    color: #000; /* changed color to black */  
+    transform: rotate(180deg); /* added rotation */  
+    padding: 10px;  
+    border-radius: 5px;  
+    background-color: #145a32; /* changed background color to match the desired combo */  
+    transition: background-color 0.2s ease; /* added transition effect */  
+  }  
+    
+  .back-button:hover {  
+    background-color: #0e3d21; /* changed hover color to a darker shade of #145a32 */  
+  }  
+    
+  .list-content {  
+    width: 100%;  
+    max-height: 400px;  
+    overflow-y: auto;  
+    margin-bottom: 20px;  
+    padding: 20px;  
+    background-color: #fff;  
+    border-radius: 10px;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* added box shadow for a premium look */  
+  }  
+    
+  .list-item {  
+    display: flex;  
+    justify-content: space-between;  
+    padding: 10px;  
+    background-color: #fff;  
+    border-bottom: 1px solid #ddd;  
+    border-radius: 5px;  
+    margin-bottom: 10px;  
+    transition: background-color 0.2s ease; /* added transition effect */  
+  }  
+    
+  .list-item:hover {  
+    background-color: #f7f7f7; /* changed hover color to a lighter shade of #fff */  
+  }  
+    
+  .item-details {  
+    display: flex;  
+    flex-direction: column;  
+  }  
+    
+  .thank-you-message {  
+    text-align: center;  
+    font-size: 16px;  
+    color: #555;  
+    margin-top: 20px;  
+  }
+  

@@ -32,7 +32,7 @@ const List = ({ cartItems, setShowListPage }) => {
         ))}
       </div>
       <div className="thank-you-message">
-        <p>Thanking you for using QRapid, the waiter will come to your table soon.</p>
+        <p>Thank you for using QRapid! Please call a waiter to share your list.</p>
       </div>
     </div>
   );

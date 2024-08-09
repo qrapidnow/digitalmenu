@@ -99,10 +99,11 @@ const App = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Save customer details to Firestore
+            // Save customer details along with restaurant name to Firestore
             await addDoc(collection(db, "customer-details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
+                restaurant_name: restaurantName,
                 timestamp: new Date(),
             });
             setIsFormSubmitted(true);
@@ -121,6 +122,7 @@ const App = () => {
         const customerData = {
             name: customerName,
             whatsapp_number: whatsappNumber,
+            restaurant_name: restaurantName,
         };
         localStorage.setItem('cartData', JSON.stringify(cartData));
         localStorage.setItem('customerData', JSON.stringify(customerData));
@@ -138,6 +140,7 @@ const App = () => {
                 setShowCartItem(true);
                 setCustomerName(storedCustomerData.name);
                 setWhatsappNumber(storedCustomerData.whatsapp_number);
+                setRestaurantName(storedCustomerData.restaurant_name);
                 setIsFormSubmitted(true);
             } else {
                 // Clear expired data

@@ -7,6 +7,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [customerName, setCustomerName] = useState('');
   const [whatsappNumber, setWhatsappNumber] = useState('');
+  const [restaurantName, setRestaurantName] = useState('');  // Add state for restaurant name
 
   const handleBackToCart = () => {
     setShowCartItem(false);
@@ -28,6 +29,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
           cartItems={cartItems}
           customerName={customerName}
           whatsappNumber={whatsappNumber}
+          restaurantName={restaurantName}  // Pass restaurant name to List component
           setShowListPage={setShowListPage}
         />
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CartItem.css';
 import List from './List';  
-import { db } from './firebase';  // Import the Firestore instance
+import { db } from './firebase-config';  // Import the Firestore instance
 import { collection, addDoc } from "firebase/firestore";  // Import Firestore functions
 
 const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) => {

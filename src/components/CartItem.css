@@ -66,6 +66,7 @@
 .item-details {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .item-details h3 {

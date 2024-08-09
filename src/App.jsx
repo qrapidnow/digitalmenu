@@ -9,7 +9,7 @@ import PlaceOrderPage from './components/PlaceOrderPage';
 import BackToTopButton from './components/BackToTopButton';
 import { useParams } from 'react-router-dom';
 import { db } from './firebase-config';
-import { collection, getDocs, query, where, doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, query, where, doc, getDoc, addDoc } from "firebase/firestore";
 
 // Creating a context for cart management
 export const CartContext = createContext();
@@ -24,6 +24,9 @@ const App = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [isFixed, setIsFixed] = useState(false);
     const [showBackToTop, setShowBackToTop] = useState(false);
+    const [customerName, setCustomerName] = useState('');
+    const [whatsappNumber, setWhatsappNumber] = useState('');
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
     useEffect(() => {
         if (uid) {
@@ -93,6 +96,57 @@ const App = () => {
         );
     };
 
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // Save customer details to Firestore
+            await addDoc(collection(db, "customer-details"), {
+                name: customerName,
+                whatsapp_number: whatsappNumber,
+                timestamp: new Date(),
+            });
+            setIsFormSubmitted(true);
+            saveCartData();
+        } catch (error) {
+            console.error("Error adding document:", error.message, error.code, error.stack);
+            alert("There was an error saving your information. Please try again.");
+        }
+    };
+
+    const saveCartData = () => {
+        const cartData = {
+            items: cart,
+            timestamp: new Date().getTime(),
+        };
+        const customerData = {
+            name: customerName,
+            whatsapp_number: whatsappNumber,
+        };
+        localStorage.setItem('cartData', JSON.stringify(cartData));
+        localStorage.setItem('customerData', JSON.stringify(customerData));
+    };
+
+    useEffect(() => {
+        // Load cart data from local storage
+        const storedCartData = JSON.parse(localStorage.getItem('cartData'));
+        const storedCustomerData = JSON.parse(localStorage.getItem('customerData'));
+        const currentTime = new Date().getTime();
+        
+        if (storedCartData && storedCustomerData) {
+            // Check if the stored data is within the 20-minute limit
+            if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
+                setShowCartItem(true);
+                setCustomerName(storedCustomerData.name);
+                setWhatsappNumber(storedCustomerData.whatsapp_number);
+                setIsFormSubmitted(true);
+            } else {
+                // Clear expired data
+                localStorage.removeItem('cartData');
+                localStorage.removeItem('customerData');
+            }
+        }
+    }, []);
+
     useEffect(() => {
         const handleScroll = () => {
             const offset = window.scrollY;
@@ -146,7 +200,43 @@ const App = () => {
                         <span className="order-count">{getTotalItems()}</span>
                     </div>
                 )}
-                {showCartItem && (
+                {showCartItem && !isFormSubmitted && (
+                    <div className="cart-item-container">
+                        <div className="cart-item">
+                            <div className="cart-item-header">
+                                <button className="back-button" onClick={() => setShowCartItem(false)}>
+                                    ➜
+                                </button>
+                                <h2>Customer Details</h2>
+                            </div>
+                            <form onSubmit={handleFormSubmit} className="customer-form">
+                                <label htmlFor="name">Name:</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    value={customerName}
+                                    onChange={(e) => setCustomerName(e.target.value)}
+                                    required
+                                />
+                                <label htmlFor="whatsapp">WhatsApp Number:</label>
+                                <input
+                                    type="text"
+                                    id="whatsapp"
+                                    value={whatsappNumber}
+                                    onChange={(e) => setWhatsappNumber(e.target.value)}
+                                    required
+                                />
+                                <button type="submit" className="action-button">
+                                    Submit
+                                </button>
+                                <p className="reward-message">
+                                    Providing your name and WhatsApp number is required for a chance to receive a 50% reward if you win.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                )}
+                {showCartItem && isFormSubmitted && (
                     <CartItem
                         cartItems={cart}
                         setCart={setCart}

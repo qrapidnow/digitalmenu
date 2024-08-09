@@ -1,48 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './CartItem.css';
-import List from './List';  
-import { db } from '../firebase-config';  // Import the Firestore instance
-import { collection, addDoc } from "firebase/firestore";  // Import Firestore functions
+import List from './List';  // Import the List component
 
 const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) => {
   const [showListPage, setShowListPage] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [customerName, setCustomerName] = useState('');
   const [whatsappNumber, setWhatsappNumber] = useState('');
-
-  useEffect(() => {
-    // Load cart data from local storage
-    const storedCartData = JSON.parse(localStorage.getItem('cartData'));
-    const storedCustomerData = JSON.parse(localStorage.getItem('customerData'));
-    const currentTime = new Date().getTime();
-    
-    if (storedCartData && storedCustomerData) {
-      // Check if the stored data is within the 20-minute limit
-      if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
-        setShowListPage(true);
-        setCustomerName(storedCustomerData.name);
-        setWhatsappNumber(storedCustomerData.whatsapp_number);
-        setIsFormSubmitted(true);
-      } else {
-        // Clear expired data
-        localStorage.removeItem('cartData');
-        localStorage.removeItem('customerData');
-      }
-    }
-  }, []);
-
-  const saveCartData = () => {
-    const cartData = {
-      items: cartItems,
-      timestamp: new Date().getTime(),
-    };
-    const customerData = {
-      name: customerName,
-      whatsapp_number: whatsappNumber,
-    };
-    localStorage.setItem('cartData', JSON.stringify(cartData));
-    localStorage.setItem('customerData', JSON.stringify(customerData));
-  };
 
   const handleBackToCart = () => {
     setShowCartItem(false);
@@ -52,21 +16,9 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
     setShowListPage(true);
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    try {
-      // Testing with a simple write operation to Firestore
-      await addDoc(collection(db, "customer_details"), {
-        name: customerName,
-        whatsapp_number: whatsappNumber,
-        timestamp: new Date(),
-      });
-      setIsFormSubmitted(true);
-      saveCartData();
-    } catch (error) {
-      console.error("Error adding document:", error.message, error.code, error.stack);
-      alert("There was an error saving your information. Please try again.");
-    }
+    setIsFormSubmitted(true);
   };
 
   if (showListPage && isFormSubmitted) {

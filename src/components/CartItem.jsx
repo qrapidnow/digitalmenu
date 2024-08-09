@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CartItem.css';
 import List from './List';  
-import { db } from './firebase-config';  // Import the Firestore instance
+import { db } from '../firebase-config';  // Import the Firestore instance
 import { collection, addDoc } from "firebase/firestore";  // Import Firestore functions
 
 const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) => {
@@ -10,7 +10,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
   const [customerName, setCustomerName] = useState('');
   const [whatsappNumber, setWhatsappNumber] = useState('');
 
-  
+
   useEffect(() => {
     // Load cart data from local storage
     const storedCartData = JSON.parse(localStorage.getItem('cartData'));

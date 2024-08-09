@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CartItem.css';
 import List from './List';  // Import the List component
 
@@ -9,16 +9,35 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
   const [whatsappNumber, setWhatsappNumber] = useState('');
   const [restaurantName, setRestaurantName] = useState('');  // Add state for restaurant name
 
+  useEffect(() => {
+    const storedCustomerData = JSON.parse(localStorage.getItem('customerData'));
+    const currentTime = new Date().getTime();
+
+    if (storedCustomerData && currentTime - storedCustomerData.timestamp < 20 * 60 * 1000) {
+      setCustomerName(storedCustomerData.name);
+      setWhatsappNumber(storedCustomerData.whatsapp_number);
+      setRestaurantName(storedCustomerData.restaurant_name);
+      setIsFormSubmitted(true);
+      setShowListPage(true);
+    }
+  }, []);
+
   const handleBackToCart = () => {
     setShowCartItem(false);
   };
 
-  const handleListButton = () => {
-    setShowListPage(true);
-  };
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    // Save customer details in localStorage with timestamp
+    const customerData = {
+      name: customerName,
+      whatsapp_number: whatsappNumber,
+      restaurant_name: restaurantName,
+      timestamp: new Date().getTime(),
+    };
+    localStorage.setItem('customerData', JSON.stringify(customerData));
+
     setIsFormSubmitted(true);
     setShowListPage(true);  // Automatically show the List component after form submission
   };
@@ -75,8 +94,8 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
           <button className="action-button" onClick={() => setShowCartItem(false)}>
             Add Items
           </button>
-          <button className="action-button" onClick={handleListButton}>
-            List
+          <button className="action-button" onClick={handleFormSubmit}>
+            Submit Details
           </button>
         </div>
       </div>

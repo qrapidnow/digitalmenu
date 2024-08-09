@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './CartItem.css';
-import List from './List';  
-import { db } from '../firebase-config';  // Import the Firestore instance
-import { collection, addDoc } from "firebase/firestore";  // Import Firestore functions
+import List from './List';
+import { db } from '../firebase-config';
+import { collection, addDoc } from "firebase/firestore";
 
 const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) => {
   const [showListPage, setShowListPage] = useState(false);
@@ -10,13 +10,12 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
   const [customerName, setCustomerName] = useState('');
   const [whatsappNumber, setWhatsappNumber] = useState('');
 
-
   useEffect(() => {
     // Load cart data from local storage
     const storedCartData = JSON.parse(localStorage.getItem('cartData'));
     const storedCustomerData = JSON.parse(localStorage.getItem('customerData'));
     const currentTime = new Date().getTime();
-    
+
     if (storedCartData && storedCustomerData) {
       // Check if the stored data is within the 20-minute limit
       if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
@@ -140,7 +139,11 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) =
               <div key={index} className="cart-item-row">
                 <div className="item-details">
                   <h3>{item.name}</h3>
-                  <p>₹{item.price}/-</p>
+                  {item.variation ? (
+                    <p>{item.variation.name}: ₹{item.variation.price}/-</p>
+                  ) : (
+                    <p>₹{item.price}/-</p>
+                  )}
                   <p>Quantity: {item.quantity}</p>
                   <div className="quantity-controls">
                     <button onClick={() => updateItemCount(item.id, -1)} disabled={item.quantity === 1}>-</button>

@@ -6,8 +6,7 @@ const FoodItemCard = ({ item, addItem }) => {
 
   const handleAdd = (e, variation = null) => {
     e.stopPropagation();
-    console.log('Adding item:', item, 'Variation:', variation);
-    addItem(item, variation);
+    addItem({ ...item, variation });
   };
 
   const toggleDescription = () => {

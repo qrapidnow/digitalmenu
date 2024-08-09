@@ -24,7 +24,9 @@ const FoodItemCard = ({ item, addItem }) => {
           {item.variations && item.variations.length > 0 ? (
             <>
               <p className="food-item-description">
-                {isExpanded ? item.description : `${item.description.substring(0, 50)}...`}
+                {isExpanded
+                  ? item.description
+                  : `${item.description.substring(0, 50)}...`}
                 {item.description.length > 50 && (
                   <span className="read-more" onClick={toggleDescription}>
                     {isExpanded ? ' Show Less' : ' Read More'}
@@ -70,7 +72,9 @@ const FoodItemCard = ({ item, addItem }) => {
       </div>
       {!item.variations || item.variations.length === 0 ? (
         <p className="food-item-description">
-          {isExpanded ? item.description : `${item.description.substring(0, 50)}...`}
+          {isExpanded
+            ? item.description
+            : `${item.description.substring(0, 50)}...`}
           {item.description.length > 50 && (
             <span className="read-more" onClick={toggleDescription}>
               {isExpanded ? ' Show Less' : ' Read More'}

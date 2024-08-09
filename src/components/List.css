@@ -17,8 +17,7 @@
 
 .list-header h2 {
   font-size: 1.5em;
-  color: #1e3932; /* Dark green text color to match cart.css */
-  text-align: center;
+  color: #1e3932;
 }
 
 .back-button {
@@ -26,12 +25,8 @@
   border: none;
   font-size: 1.5em;
   cursor: pointer;
-  color: #1e3932; /* Dark green color to match cart.css */
+  color: #1e3932; /* Dark green color */
   transform: rotate(180deg);
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #145a32; /* Background color to match cart.css */
-  transition: background-color 0.2s ease;
 }
 
 .back-button:hover {

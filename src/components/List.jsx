@@ -8,12 +8,13 @@ const List = ({ cartItems, setShowListPage }) => {
 
   return (
     <div className="list-container">
-      <div className="list-header">
-        <button className="back-button" onClick={handleBackToCart}>
-          ➜
-        </button>
-        <h2>Items List</h2>
-      </div>
+      <div className="list-header">  
+        <button className="back-button" onClick={handleBackToCart}>  
+        ←  
+        </button>  
+        <h2 style={{ flexGrow: 1, textAlign: 'center' }}>Items List</h2>  
+        </div>
+
       <div className="list-content">
         {cartItems.map((item, index) => (
           <div key={index} className="list-item">

@@ -1,50 +1,74 @@
 import React, { useState } from 'react';
 import './CartItem.css';
-import PlaceOrderPage from './PlaceOrderPage';
 import List from './List';  // Import the List component
 
-const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemCount }) => {
-  const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
-  const [showListPage, setShowListPage] = useState(false);  // State to control the List page
+const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem }) => {
+  const [showListPage, setShowListPage] = useState(false);
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [customerName, setCustomerName] = useState('');
+  const [whatsappNumber, setWhatsappNumber] = useState('');
 
   const handleBackToCart = () => {
     setShowCartItem(false);
   };
 
-  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
-
-  const totalAmount = cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
-
-  const handleAddItems = () => {
-    setShowCartItem(false);
-  };
-
-  const handlePlaceOrderPage = () => {
-    setShowPlaceOrderPage(true);
-  };
-
-  const handleShowListPage = () => {
+  const handleListButton = () => {
     setShowListPage(true);
   };
 
-  if (showPlaceOrderPage) {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setIsFormSubmitted(true);
+  };
+
+  if (showListPage && isFormSubmitted) {
     return (
       <div className="cart-item-container">
-        <PlaceOrderPage
+        <List
           cartItems={cartItems}
-          setShowPlaceOrderPage={setShowPlaceOrderPage}
+          customerName={customerName}
+          whatsappNumber={whatsappNumber}
+          setShowListPage={setShowListPage}
         />
       </div>
     );
   }
 
-  if (showListPage) {  // Conditionally render the List component
+  if (showListPage && !isFormSubmitted) {
     return (
       <div className="cart-item-container">
-        <List
-          cartItems={cartItems}
-          setShowListPage={setShowListPage}
-        />
+        <div className="cart-item">
+          <div className="cart-item-header">
+            <button className="back-button" onClick={handleBackToCart}>
+              ➜
+            </button>
+            <h2>Customer Details</h2>
+          </div>
+          <form onSubmit={handleFormSubmit} className="customer-form">
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              value={customerName}
+              onChange={(e) => setCustomerName(e.target.value)}
+              required
+            />
+            <label htmlFor="whatsapp">WhatsApp Number:</label>
+            <input
+              type="text"
+              id="whatsapp"
+              value={whatsappNumber}
+              onChange={(e) => setWhatsappNumber(e.target.value)}
+              required
+            />
+            <button type="submit" className="action-button">
+              Submit
+            </button>
+            <p className="reward-message">
+              Providing your name and WhatsApp number is required for a chance to receive a 50% reward if you win.
+            </p>
+          </form>
+        </div>
       </div>
     );
   }
@@ -58,7 +82,7 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
           </button>
           <h2>CART</h2>
         </div>
-        {totalItems === 0 ? (
+        {cartItems.length === 0 ? (
           <div className="empty-cart-message">
             <p>No items added yet. Add items to your cart!</p>
           </div>
@@ -84,25 +108,13 @@ const CartItem = ({ cartItems, setCart, removeItem, setShowCartItem, updateItemC
           </div>
         )}
         <div className="cart-item-actions">
-          <button className="action-button" onClick={handleAddItems}>
+          <button className="action-button" onClick={() => setShowCartItem(false)}>
             Add Items
           </button>
-          <button className="action-button" onClick={handleShowListPage}>  {/* List button */}
+          <button className="action-button" onClick={handleListButton}>
             List
           </button>
         </div>
-        {totalItems > 0 && (
-          <div className="totals-container">
-            <div className="totals-column">
-              <h3>Total Quantity:</h3>
-              <p>{totalItems}</p>
-            </div>
-            <div className="totals-column">
-              <h3>Total Amount:</h3>
-              <p>₹{totalAmount}</p>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

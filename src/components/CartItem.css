@@ -1,3 +1,46 @@
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.customer-form label {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.customer-form input {
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  background-color: #1e3932; /* Dark green button */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+.action-button:hover {
+  background-color: #145a32; /* Darker green on hover */
+  transform: translateY(-2px);
+}
+
+.reward-message {
+  font-size: 0.9em;
+  color: #666;
+  text-align: center;
+  margin-top: 10px;
+}
+
 .cart-item-container {
   position: fixed;
   top: 0;
@@ -24,7 +67,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .cart-item-header {

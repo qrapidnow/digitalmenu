@@ -157,6 +157,9 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                     </button>
                 </div>
             </div>
+            <div className="thank-you-message">
+              <p>Thank you for using QRapid! Please call a waiter to share your list.</p>
+              </div>
         </div>
     );
 };

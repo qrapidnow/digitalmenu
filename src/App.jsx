@@ -19,6 +19,7 @@ const App = () => {
     const [cart, setCart] = useState([]);
     const [showCartItem, setShowCartItem] = useState(false);
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
+    const [showCustomerForm, setShowCustomerForm] = useState(false); // New state to handle the customer form
     const [restaurantName, setRestaurantName] = useState('');
     const [activeCategory, setActiveCategory] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
@@ -70,12 +71,14 @@ const App = () => {
     const getTotalItems = () => cart.reduce((total, item) => total + item.quantity, 0);
 
     const handleViewOrderClick = () => {
-        setShowCartItem(true);
+        setShowCustomerForm(true);
+        setShowCartItem(false);
         setShowPlaceOrderPage(false);
     };
 
     const handleCartClick = () => {
-        setShowCartItem(true);
+        setShowCustomerForm(true);
+        setShowCartItem(false);
         setShowPlaceOrderPage(false);
     };
 
@@ -140,11 +143,22 @@ const App = () => {
                         searchTerm={searchTerm}
                     />
                 </div>
-                {!showCartItem && getTotalItems() > 0 && (
+                {!showCartItem && !showCustomerForm && getTotalItems() > 0 && (
                     <div className="view-order-bar" onClick={handleViewOrderClick}>
                         <span>View Order</span>
                         <span className="order-count">{getTotalItems()}</span>
                     </div>
+                )}
+                {showCustomerForm && !showCartItem && (
+                    <CartItem
+                        cartItems={cart}
+                        setCart={setCart}
+                        removeItem={removeItem}
+                        setShowCartItem={setShowCartItem}
+                        setShowCustomerForm={setShowCustomerForm}
+                        updateItemCount={updateItemCount}
+                        showCustomerForm={true} // Pass the new prop to show the customer form first
+                    />
                 )}
                 {showCartItem && (
                     <CartItem

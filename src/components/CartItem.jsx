@@ -19,7 +19,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         if (storedCartData && storedCustomerData) {
             // Check if the stored data is within the 20-minute limit
             if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
-                setShowListPage(true);
                 setCustomerName(storedCustomerData.name);
                 setWhatsappNumber(storedCustomerData.whatsapp_number);
                 setIsFormSubmitted(true);
@@ -64,25 +63,13 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             setIsFormSubmitted(true);
             saveCartData();
             setShowCustomerForm(false); // Hide customer form after submission
+            setShowListPage(false); // Ensure the list page is hidden
             setShowCartItem(true); // Show cart items after form submission
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
         }
     };
-
-    if (showListPage && isFormSubmitted) {
-        return (
-            <div className="cart-item-container">
-                <List
-                    cartItems={cartItems}
-                    customerName={customerName}
-                    whatsappNumber={whatsappNumber}
-                    setShowListPage={setShowListPage}
-                />
-            </div>
-        );
-    }
 
     if (showCustomerForm && !isFormSubmitted) {
         return (

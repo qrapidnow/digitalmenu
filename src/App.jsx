@@ -158,6 +158,7 @@ const App = () => {
                         setShowCustomerForm={setShowCustomerForm}
                         updateItemCount={updateItemCount}
                         showCustomerForm={true} // Pass the new prop to show the customer form first
+                        restaurantName={restaurantName} // Pass the restaurant name
                     />
                 )}
                 {showCartItem && (
@@ -167,6 +168,7 @@ const App = () => {
                         removeItem={removeItem}
                         setShowCartItem={setShowCartItem}
                         updateItemCount={updateItemCount}
+                        restaurantName={restaurantName} // Pass the restaurant name
                     />
                 )}
                 {showPlaceOrderPage && (

@@ -17,15 +17,15 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
 
         if (storedCartData && storedCustomerData) {
             // Check if the stored data is within the 20-minute limit
-            // if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
-            //     setCustomerName(storedCustomerData.name);
-            //     setWhatsappNumber(storedCustomerData.whatsapp_number);
-            //     setIsFormSubmitted(true);
-            // } else {
-            //     // Clear expired data
-            //     localStorage.removeItem('cartData');
-            //     localStorage.removeItem('customerData');
-            // }
+            if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
+                setCustomerName(storedCustomerData.name);
+                setWhatsappNumber(storedCustomerData.whatsapp_number);
+                setIsFormSubmitted(true);
+            } else {
+                // Clear expired data
+                localStorage.removeItem('cartData');
+                localStorage.removeItem('customerData');
+            }
         }
     }, []);
 
@@ -37,7 +37,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         const customerData = {
             name: customerName,
             whatsapp_number: whatsappNumber,
-            restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
+            restaurant_name: restaurantName, // Save the restaurant name from the prop
             items: cartItems, // Save the items in the cart
         };
         localStorage.setItem('cartData', JSON.stringify(cartData));
@@ -59,7 +59,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             await addDoc(collection(db, "customer_details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
-                restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
+                restaurant_name: restaurantName, // Use the actual restaurant name from the prop
                 cart_items: cartItems.map(item => ({
                     name: item.name,
                     variation: item.variation ? item.variation.name : null,

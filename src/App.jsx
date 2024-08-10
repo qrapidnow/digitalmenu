@@ -19,7 +19,7 @@ const App = () => {
     const [cart, setCart] = useState([]);
     const [showCartItem, setShowCartItem] = useState(false);
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
-    const [showCustomerForm, setShowCustomerForm] = useState(false); // New state to handle the customer form
+    const [showCustomerForm, setShowCustomerForm] = useState(false); // State to handle the customer form
     const [restaurantName, setRestaurantName] = useState('');
     const [activeCategory, setActiveCategory] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
@@ -149,26 +149,15 @@ const App = () => {
                         <span className="order-count">{getTotalItems()}</span>
                     </div>
                 )}
-                {showCustomerForm && !showCartItem && (
+                {showCustomerForm && (
                     <CartItem
                         cartItems={cart}
-                        setCart={setCart}
-                        removeItem={removeItem}
                         setShowCartItem={setShowCartItem}
                         setShowCustomerForm={setShowCustomerForm}
                         updateItemCount={updateItemCount}
-                        showCustomerForm={true} // Pass the new prop to show the customer form first
-                        restaurantName={restaurantName} // Pass the restaurant name
-                    />
-                )}
-                {showCartItem && (
-                    <CartItem
-                        cartItems={cart}
-                        setCart={setCart}
                         removeItem={removeItem}
-                        setShowCartItem={setShowCartItem}
-                        updateItemCount={updateItemCount}
-                        restaurantName={restaurantName} // Pass the restaurant name
+                        showCustomerForm={showCustomerForm}  // Ensure this is passed
+                        restaurantName={restaurantName}  // Ensure restaurantName is passed correctly
                     />
                 )}
                 {showPlaceOrderPage && (

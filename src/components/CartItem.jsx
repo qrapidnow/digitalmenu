@@ -18,15 +18,15 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
 
         if (storedCartData && storedCustomerData) {
             // Check if the stored data is within the 20-minute limit
-            if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
-                setCustomerName(storedCustomerData.name);
-                setWhatsappNumber(storedCustomerData.whatsapp_number);
-                setIsFormSubmitted(true);
-            } else {
-                // Clear expired data
-                localStorage.removeItem('cartData');
-                localStorage.removeItem('customerData');
-            }
+            // if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
+            //     setCustomerName(storedCustomerData.name);
+            //     setWhatsappNumber(storedCustomerData.whatsapp_number);
+            //     setIsFormSubmitted(true);
+            // } else {
+            //     // Clear expired data
+            //     localStorage.removeItem('cartData');
+            //     localStorage.removeItem('customerData');
+            // }
         }
     }, []);
 

@@ -3,7 +3,7 @@ import './CartItem.css';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
-const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm }) => {
+const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName }) => {
     const [showListPage, setShowListPage] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
@@ -37,6 +37,8 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         const customerData = {
             name: customerName,
             whatsapp_number: whatsappNumber,
+            restaurant_name: restaurantName, // Save the restaurant name
+            items: cartItems, // Save the items in the cart
         };
         localStorage.setItem('cartData', JSON.stringify(cartData));
         localStorage.setItem('customerData', JSON.stringify(customerData));
@@ -57,6 +59,13 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             await addDoc(collection(db, "customer_details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
+                restaurant_name: "Your Restaurant Name", // Replace with the actual restaurant name
+                cart_items: cartItems.map(item => ({
+                    name: item.name,
+                    variation: item.variation ? item.variation.name : null,
+                    price: item.variation ? item.variation.price : item.price,
+                    quantity: item.quantity
+                })),
                 timestamp: new Date(),
             });
             setIsFormSubmitted(true);
@@ -69,6 +78,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             alert("There was an error saving your information. Please try again.");
         }
     };
+    
 
     if (showCustomerForm && !isFormSubmitted) {
         return (

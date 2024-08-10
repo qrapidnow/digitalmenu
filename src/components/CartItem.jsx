@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './CartItem.css';
-import List from './List';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 

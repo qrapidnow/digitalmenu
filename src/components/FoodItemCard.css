@@ -15,7 +15,8 @@
 
 .food-item-content {
   display: flex;
-  flex-direction: column; /* Align the image and details vertically */
+  flex-direction: row; /* Align image and details horizontally */
+  align-items: flex-start;
 }
 
 .food-item-header {
@@ -91,5 +92,6 @@
 
 .food-item-variation {
   margin-top: 10px;
-  padding-left: 66px; /* Align variations below the main image and title */
+  padding-left: 0; /* Reduced left padding to align with content */
+  margin-left: 66px; /* Adjust left margin to match image width and spacing */
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './CartItem.css';
+import List from './List';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
@@ -155,10 +156,10 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                         List
                     </button>
                 </div>
+                <div className="thank-you-message">
+                    <p>Thank you for using QRapid! Please call a waiter to share your list.</p>
+                </div>
             </div>
-            <div className="thank-you-message">
-              <p>Thank you for using QRapid! Please call a waiter to share your list.</p>
-              </div>
         </div>
     );
 };

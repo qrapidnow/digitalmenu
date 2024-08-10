@@ -59,7 +59,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             await addDoc(collection(db, "customer_details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
-                restaurant_name: "Your Restaurant Name", // Replace with the actual restaurant name
+                restaurant_name: restaurantName, // Use the actual restaurant name from the prop
                 cart_items: cartItems.map(item => ({
                     name: item.name,
                     variation: item.variation ? item.variation.name : null,
@@ -78,7 +78,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             alert("There was an error saving your information. Please try again.");
         }
     };
-    
 
     if (showCustomerForm && !isFormSubmitted) {
         return (

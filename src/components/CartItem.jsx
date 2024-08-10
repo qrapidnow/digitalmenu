@@ -17,7 +17,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         const currentTime = new Date().getTime();
 
         if (storedCartData && storedCustomerData) {
-            // Check if the stored data is within the 20-minute limit
+            // Uncomment the following lines to restore the form data
             // if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
             //     setCustomerName(storedCustomerData.name);
             //     setWhatsappNumber(storedCustomerData.whatsapp_number);
@@ -49,7 +49,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
     };
 
     const handleListButton = () => {
-        setShowListPage(true);
+        setShowListPage(true); // Show the List page when the button is clicked
     };
 
     const handleFormSubmit = async (e) => {
@@ -70,6 +70,15 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             alert("There was an error saving your information. Please try again.");
         }
     };
+
+    if (showListPage) {
+        return (
+            <List
+                cartItems={cartItems}
+                setShowListPage={setShowListPage}
+            />
+        );
+    }
 
     if (showCustomerForm && !isFormSubmitted) {
         return (

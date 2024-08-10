@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './CartItem.css';
-import List from './List';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
@@ -17,7 +16,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         const currentTime = new Date().getTime();
 
         if (storedCartData && storedCustomerData) {
-            // Uncomment the following lines to restore the form data
+            // Check if the stored data is within the 20-minute limit
             // if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
             //     setCustomerName(storedCustomerData.name);
             //     setWhatsappNumber(storedCustomerData.whatsapp_number);
@@ -49,7 +48,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
     };
 
     const handleListButton = () => {
-        setShowListPage(true); // Show the List page when the button is clicked
+        setShowListPage(true);
     };
 
     const handleFormSubmit = async (e) => {
@@ -70,15 +69,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             alert("There was an error saving your information. Please try again.");
         }
     };
-
-    if (showListPage) {
-        return (
-            <List
-                cartItems={cartItems}
-                setShowListPage={setShowListPage}
-            />
-        );
-    }
 
     if (showCustomerForm && !isFormSubmitted) {
         return (

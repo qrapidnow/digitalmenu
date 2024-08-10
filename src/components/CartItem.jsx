@@ -37,7 +37,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         const customerData = {
             name: customerName,
             whatsapp_number: whatsappNumber,
-            restaurant_name: restaurantName, // Save the restaurant name
+            restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
             items: cartItems, // Save the items in the cart
         };
         localStorage.setItem('cartData', JSON.stringify(cartData));
@@ -59,7 +59,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             await addDoc(collection(db, "customer_details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
-                restaurant_name: restaurantName, // Use the actual restaurant name from the prop
+                restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
                 cart_items: cartItems.map(item => ({
                     name: item.name,
                     variation: item.variation ? item.variation.name : null,

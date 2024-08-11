@@ -3,12 +3,11 @@ import './CartItem.css';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
-const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName, setShowPlaceOrderPage }) => {
+const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName }) => {
     const [showListPage, setShowListPage] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
     const [whatsappNumber, setWhatsappNumber] = useState('');
-    const [tableNo, setTableNo] = useState('');
 
     useEffect(() => {
         // Load cart data from local storage
@@ -21,7 +20,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
                 setCustomerName(storedCustomerData.name);
                 setWhatsappNumber(storedCustomerData.whatsapp_number);
-                setTableNo(storedCustomerData.table_no);
                 setIsFormSubmitted(true);
             } else {
                 // Clear expired data
@@ -39,7 +37,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         const customerData = {
             name: customerName,
             whatsapp_number: whatsappNumber,
-            table_no: tableNo,
             restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
             items: cartItems, // Save the items in the cart
         };
@@ -62,7 +59,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             await addDoc(collection(db, "customer_details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
-                table_no: tableNo,
                 restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
                 cart_items: cartItems.map(item => ({
                     name: item.name,
@@ -82,10 +78,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         }
     };
     
-    const handlePlaceOrder = () => {
-        setShowPlaceOrderPage(true);
-        setShowCartItem(false);
-    };
 
     if (showCustomerForm && !isFormSubmitted) {
         return (
@@ -98,14 +90,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                         <h2>Customer Details</h2>
                     </div>
                     <form onSubmit={handleFormSubmit} className="customer-form">
-                        <label htmlFor="tableNo">Table Number:</label>
-                        <input
-                            type="text"
-                            id="tableNo"
-                            value={tableNo}
-                            onChange={(e) => setTableNo(e.target.value)}
-                            required
-                        />
                         <label htmlFor="name">Name:</label>
                         <input
                             type="text"
@@ -173,14 +157,11 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                     </div>
                 )}
                 <div className="cart-item-actions">
-                    <button className="action-button" onClick={handleBackToCart}>
+                    <button className="action-button" onClick={() => setShowCartItem(false)}>
                         Add Items
                     </button>
                     <button className="action-button" onClick={handleListButton}>
                         List
-                    </button>
-                    <button className="action-button place-order-button" onClick={handlePlaceOrder}>
-                        Place Order
                     </button>
                 </div>
                 <div className="thank-you-message">

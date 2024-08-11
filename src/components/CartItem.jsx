@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './CartItem.css';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
-import Swal from 'sweetalert2';
 
-const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, restaurantName }) => {
-    const [showForm, setShowForm] = useState(false);
+const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName, setShowPlaceOrderPage }) => {
+    const [showListPage, setShowListPage] = useState(false);
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
     const [whatsappNumber, setWhatsappNumber] = useState('');
     const [tableNo, setTableNo] = useState('');
@@ -22,6 +22,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, res
                 setCustomerName(storedCustomerData.name);
                 setWhatsappNumber(storedCustomerData.whatsapp_number);
                 setTableNo(storedCustomerData.table_no);
+                setIsFormSubmitted(true);
             } else {
                 // Clear expired data
                 localStorage.removeItem('cartData');
@@ -48,17 +49,22 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, res
 
     const handleBackToCart = () => {
         setShowCartItem(false);
+        setShowCustomerForm(false); // Ensure customer form is hidden when going back
+    };
+
+    const handleListButton = () => {
+        setShowListPage(true);
     };
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            await addDoc(collection(db, "orders"), {
+            await addDoc(collection(db, "customer_details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
                 table_no: tableNo,
                 restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
-                items: cartItems.map(item => ({
+                cart_items: cartItems.map(item => ({
                     name: item.name,
                     variation: item.variation ? item.variation.name : null,
                     price: item.variation ? item.variation.price : item.price,
@@ -66,35 +72,27 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, res
                 })),
                 timestamp: new Date(),
             });
+            setIsFormSubmitted(true);
             saveCartData();
-            Swal.fire({
-                title: 'Order Placed Successfully!',
-                text: 'Your order has been placed.',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
-            setShowCartItem(false);
+            setShowCustomerForm(false); // Hide the customer form
+            setShowCartItem(true); // Show the cart immediately after form submission
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
         }
     };
-
+    
     const handlePlaceOrder = () => {
-        setShowForm(true);
+        setShowPlaceOrderPage(true);
+        setShowCartItem(false);
     };
 
-    const handleListButton = () => {
-        console.log("List button clicked");
-        // Add any additional functionality here if needed
-    };
-
-    if (showForm) {
+    if (showCustomerForm && !isFormSubmitted) {
         return (
             <div className="cart-item-container">
                 <div className="cart-item">
                     <div className="cart-item-header">
-                        <button className="back-button" onClick={() => setShowForm(false)}>
+                        <button className="back-button" onClick={handleBackToCart}>
                             ➜
                         </button>
                         <h2>Customer Details</h2>
@@ -127,6 +125,9 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, res
                         <button type="submit" className="action-button">
                             Submit
                         </button>
+                        <p className="reward-message">
+                            Enter your name and WhatsApp to get 50% discount!
+                        </p>
                     </form>
                 </div>
             </div>

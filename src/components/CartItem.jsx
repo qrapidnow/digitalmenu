@@ -84,6 +84,11 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, res
         setShowForm(true);
     };
 
+    const handleListButton = () => {
+        console.log("List button clicked");
+        // Add any additional functionality here if needed
+    };
+
     if (showForm) {
         return (
             <div className="cart-item-container">

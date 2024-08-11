@@ -18,7 +18,7 @@ const App = () => {
     const { uid } = useParams();  // Read UID from URL parameters
     const [cart, setCart] = useState([]);
     const [showCartItem, setShowCartItem] = useState(false);
-    const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
+    const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false); // State to handle showing the PlaceOrderPage
     const [showCustomerForm, setShowCustomerForm] = useState(false); // State to handle the customer form
     const [restaurantName, setRestaurantName] = useState('');
     const [activeCategory, setActiveCategory] = useState(null);
@@ -143,21 +143,22 @@ const App = () => {
                         searchTerm={searchTerm}
                     />
                 </div>
-                {!showCartItem && !showCustomerForm && getTotalItems() > 0 && (
+                {!showCartItem && !showCustomerForm && !showPlaceOrderPage && getTotalItems() > 0 && (
                     <div className="view-order-bar" onClick={handleViewOrderClick}>
                         <span>View Order</span>
                         <span className="order-count">{getTotalItems()}</span>
                     </div>
                 )}
-                {showCustomerForm && (
+                {showCustomerForm && !showPlaceOrderPage && (
                     <CartItem
                         cartItems={cart}
                         setShowCartItem={setShowCartItem}
                         setShowCustomerForm={setShowCustomerForm}
                         updateItemCount={updateItemCount}
                         removeItem={removeItem}
-                        showCustomerForm={showCustomerForm}  // Ensure this is passed
-                        restaurantName={restaurantName}  // Ensure restaurantName is passed correctly
+                        showCustomerForm={showCustomerForm}
+                        restaurantName={restaurantName}
+                        setShowPlaceOrderPage={setShowPlaceOrderPage} // Pass this to handle showing the PlaceOrderPage
                     />
                 )}
                 {showPlaceOrderPage && (

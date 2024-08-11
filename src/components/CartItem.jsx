@@ -70,14 +70,14 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             });
             setIsFormSubmitted(true);
             saveCartData();
-            setShowCustomerForm(false); // Hide customer form after submission
-            setShowListPage(false); // Ensure the list page is hidden
-            setShowCartItem(true); // Show cart items after form submission
+            setShowCustomerForm(false); // Hide the customer form
+            setShowCartItem(true); // Show the cart immediately after form submission
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
         }
     };
+    
 
     if (showCustomerForm && !isFormSubmitted) {
         return (

@@ -65,20 +65,22 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                 })),
                 timestamp: new Date(),
             });
-
+    
             saveCartData();
-
-            // Set the states sequentially to ensure the cart item page opens immediately
+    
+            // Set the state to show the cart item page after form submission
             setIsFormSubmitted(true);
-            setShowCustomerForm(false); // Hide the customer form first
-            setShowCartItem(true);      // Then show the cart items
-
+            setShowCustomerForm(false); // Hide the customer form
+            setTimeout(() => {
+                setShowCartItem(true);  // Show the cart items
+            }, 0); // Use a minimal delay to ensure the state updates correctly
+    
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
         }
     };
-
+    
     if (showCustomerForm && !isFormSubmitted) {
         return (
             <div className="cart-item-container">

@@ -157,6 +157,7 @@ const App = () => {
                 {showCustomerForm && (
                     <CartItem
                         cartItems={cart}
+                        setCart={setCart}
                         setShowCartItem={setShowCartItem}
                         setShowCustomerForm={setShowCustomerForm}
                         updateItemCount={updateItemCount}

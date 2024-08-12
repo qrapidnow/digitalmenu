@@ -9,22 +9,22 @@ import PlaceOrderPage from './components/PlaceOrderPage';
 import BackToTopButton from './components/BackToTopButton';
 import { useParams } from 'react-router-dom';
 import { db } from './firebase-config';
-import { doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, query, where, doc, getDoc } from "firebase/firestore";
 
+// Creating a context for cart management
 export const CartContext = createContext();
 
 const App = () => {
-    const { uid } = useParams();
+    const { uid } = useParams();  // Read UID from URL parameters
     const [cart, setCart] = useState([]);
     const [showCartItem, setShowCartItem] = useState(false);
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
-    const [showCustomerForm, setShowCustomerForm] = useState(false);
+    const [showCustomerForm, setShowCustomerForm] = useState(false); // State to handle the customer form
     const [restaurantName, setRestaurantName] = useState('');
     const [activeCategory, setActiveCategory] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [isFixed, setIsFixed] = useState(false);
     const [showBackToTop, setShowBackToTop] = useState(false);
-    const [showMenu, setShowMenu] = useState(true);
 
     useEffect(() => {
         if (uid) {
@@ -74,14 +74,12 @@ const App = () => {
         setShowCustomerForm(true);
         setShowCartItem(false);
         setShowPlaceOrderPage(false);
-        setShowMenu(false);
     };
 
     const handleCartClick = () => {
         setShowCustomerForm(true);
         setShowCartItem(false);
         setShowPlaceOrderPage(false);
-        setShowMenu(false);
     };
 
     const removeItem = (itemToRemove) => {
@@ -101,8 +99,16 @@ const App = () => {
     useEffect(() => {
         const handleScroll = () => {
             const offset = window.scrollY;
-            setIsFixed(offset > 100);
-            setShowBackToTop(offset > 300);
+            if (offset > 100) {
+                setIsFixed(true);
+            } else {
+                setIsFixed(false);
+            }
+            if (offset > 300) {
+                setShowBackToTop(true);
+            } else {
+                setShowBackToTop(false);
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -129,15 +135,13 @@ const App = () => {
                     <Navbar setActiveCategory={setActiveCategory} />
                 </div>
                 <div className={`content-container ${isFixed ? 'fixed-margin' : ''}`}>
-                    {showMenu && (
-                        <Menu
-                            addItem={addItem}
-                            cart={cart}
-                            updateItemCount={updateItemCount}
-                            activeCategory={activeCategory}
-                            searchTerm={searchTerm}
-                        />
-                    )}
+                    <Menu 
+                        addItem={addItem}
+                        cart={cart}
+                        updateItemCount={updateItemCount}
+                        activeCategory={activeCategory}
+                        searchTerm={searchTerm}
+                    />
                 </div>
                 {!showCartItem && !showCustomerForm && getTotalItems() > 0 && (
                     <div className="view-order-bar" onClick={handleViewOrderClick}>
@@ -145,15 +149,15 @@ const App = () => {
                         <span className="order-count">{getTotalItems()}</span>
                     </div>
                 )}
-                {showCustomerForm && !showCartItem && (
+                {showCustomerForm && (
                     <CartItem
                         cartItems={cart}
                         setShowCartItem={setShowCartItem}
                         setShowCustomerForm={setShowCustomerForm}
                         updateItemCount={updateItemCount}
                         removeItem={removeItem}
-                        restaurantName={restaurantName}
-                        setShowMenu={setShowMenu}
+                        showCustomerForm={showCustomerForm}  // Ensure this is passed
+                        restaurantName={restaurantName}  // Ensure restaurantName is passed correctly
                     />
                 )}
                 {showPlaceOrderPage && (

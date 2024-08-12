@@ -21,6 +21,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                 setCustomerName(storedCustomerData.name);
                 setWhatsappNumber(storedCustomerData.whatsapp_number);
                 setIsFormSubmitted(true);
+                setShowCartItem(true); // Show the cart items immediately if data is valid
             } else {
                 // Clear expired data
                 localStorage.removeItem('cartData');
@@ -71,13 +72,12 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             setIsFormSubmitted(true);
             saveCartData();
             setShowCustomerForm(false); // Hide the customer form
-            setShowCartItem(true); // Show the cart immediately after form submission
+            setShowCartItem(true); // Show the cart items immediately after form submission
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
         }
     };
-    
 
     if (showCustomerForm && !isFormSubmitted) {
         return (
@@ -173,3 +173,4 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
 };
 
 export default CartItem;
+

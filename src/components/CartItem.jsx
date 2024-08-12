@@ -42,8 +42,8 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
     };
 
     const handleBackToCart = () => {
-        setShowCartItem(false);
         setShowCustomerForm(false);
+        setShowCartItem(false);
     };
 
     const handleListButton = () => {
@@ -66,12 +66,12 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                 timestamp: new Date(),
             });
 
-            setIsFormSubmitted(true);
             saveCartData();
 
-            // Show the cart item page after form submission
-            setShowCustomerForm(false);
-            setShowCartItem(true);
+            // Set the states sequentially to ensure the cart item page opens immediately
+            setIsFormSubmitted(true);
+            setShowCustomerForm(false); // Hide the customer form first
+            setShowCartItem(true);      // Then show the cart items
 
         } catch (error) {
             console.error("Error adding document: ", error);

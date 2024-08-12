@@ -3,30 +3,26 @@ import './CartItem.css';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
-const CartItem = ({
-    cartItems,
-    setShowCartItem,
-    updateItemCount,
-    removeItem,
-    setShowCustomerForm,
-    restaurantName,
-    setShowMenu
-}) => {
+const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName }) => {
+    const [showListPage, setShowListPage] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
     const [whatsappNumber, setWhatsappNumber] = useState('');
 
     useEffect(() => {
+        // Load cart data from local storage
         const storedCartData = JSON.parse(localStorage.getItem('cartData'));
         const storedCustomerData = JSON.parse(localStorage.getItem('customerData'));
         const currentTime = new Date().getTime();
 
         if (storedCartData && storedCustomerData) {
+            // Check if the stored data is within the 20-minute limit
             if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
                 setCustomerName(storedCustomerData.name);
                 setWhatsappNumber(storedCustomerData.whatsapp_number);
                 setIsFormSubmitted(true);
             } else {
+                // Clear expired data
                 localStorage.removeItem('cartData');
                 localStorage.removeItem('customerData');
             }
@@ -41,11 +37,20 @@ const CartItem = ({
         const customerData = {
             name: customerName,
             whatsapp_number: whatsappNumber,
-            restaurant_name: restaurantName || "Unknown Restaurant",
-            items: cartItems,
+            restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
+            items: cartItems, // Save the items in the cart
         };
         localStorage.setItem('cartData', JSON.stringify(cartData));
         localStorage.setItem('customerData', JSON.stringify(customerData));
+    };
+
+    const handleBackToCart = () => {
+        setShowCartItem(false);
+        setShowCustomerForm(false); // Ensure customer form is hidden when going back
+    };
+
+    const handleListButton = () => {
+        setShowListPage(true);
     };
 
     const handleFormSubmit = async (e) => {
@@ -54,7 +59,7 @@ const CartItem = ({
             await addDoc(collection(db, "customer_details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
-                restaurant_name: restaurantName || "Unknown Restaurant",
+                restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
                 cart_items: cartItems.map(item => ({
                     name: item.name,
                     variation: item.variation ? item.variation.name : null,
@@ -63,24 +68,18 @@ const CartItem = ({
                 })),
                 timestamp: new Date(),
             });
-            saveCartData();
-    
             setIsFormSubmitted(true);
-            setShowCustomerForm(false);
-            setShowCartItem(true);
+            saveCartData();
+            setShowCustomerForm(false); // Hide the customer form
+            setShowCartItem(true); // Show the cart immediately after form submission
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
         }
     };
+    
 
-    const handleBackToCart = () => {
-        setShowCustomerForm(false);
-        setShowCartItem(false);
-        setShowMenu(true);
-    };
-
-    if (!isFormSubmitted) {
+    if (showCustomerForm && !isFormSubmitted) {
         return (
             <div className="cart-item-container">
                 <div className="cart-item">
@@ -111,7 +110,7 @@ const CartItem = ({
                             Submit
                         </button>
                         <p className="reward-message">
-                            Enter your name and WhatsApp to get a 50% discount!
+                            Enter your name and WhatsApp to get 50% discount!
                         </p>
                     </form>
                 </div>
@@ -158,8 +157,11 @@ const CartItem = ({
                     </div>
                 )}
                 <div className="cart-item-actions">
-                    <button className="action-button" onClick={() => setShowMenu(true)}>
+                    <button className="action-button" onClick={() => setShowCartItem(false)}>
                         Add Items
+                    </button>
+                    <button className="action-button" onClick={handleListButton}>
+                        List
                     </button>
                 </div>
                 <div className="thank-you-message">

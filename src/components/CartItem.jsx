@@ -71,7 +71,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             setIsFormSubmitted(true);
             saveCartData();
             setShowCustomerForm(false); // Hide the customer form
-            // Do not close the cart item view
+            setShowCartItem(true); // Ensure cart item details are shown
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
@@ -88,7 +88,8 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                     <h2>CART</h2>
                 </div>
 
-                {showCustomerForm && !isFormSubmitted && (
+                {/* Show form if showCustomerForm is true and form is not submitted */}
+                {showCustomerForm && !isFormSubmitted ? (
                     <div className="customer-form-container">
                         <form onSubmit={handleFormSubmit} className="customer-form">
                             <label htmlFor="name">Name:</label>
@@ -115,9 +116,8 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                             </p>
                         </form>
                     </div>
-                )}
-
-                {!showCustomerForm && (
+                ) : (
+                    // Show cart items when form is not being displayed or after form is submitted
                     <>
                         {cartItems.length === 0 ? (
                             <div className="empty-cart-message">

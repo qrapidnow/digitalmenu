@@ -3,8 +3,15 @@ import './CartItem.css';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
-const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName, setShowMenu }) => {
-    const [showListPage, setShowListPage] = useState(false);
+const CartItem = ({
+    cartItems,
+    setShowCartItem,
+    updateItemCount,
+    removeItem,
+    setShowCustomerForm,
+    restaurantName,
+    setShowMenu
+}) => {
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
     const [whatsappNumber, setWhatsappNumber] = useState('');
@@ -41,15 +48,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         localStorage.setItem('customerData', JSON.stringify(customerData));
     };
 
-    const handleBackToCart = () => {
-        setShowCustomerForm(false);
-        setShowCartItem(false);
-    };
-
-    const handleListButton = () => {
-        setShowListPage(true);
-    };
-
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -65,23 +63,24 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                 })),
                 timestamp: new Date(),
             });
-    
             saveCartData();
     
-            // Set the state to show the cart item page after form submission
             setIsFormSubmitted(true);
-            setShowCustomerForm(false); // Hide the customer form
-            setTimeout(() => {
-                setShowCartItem(true);  // Show the cart items
-            }, 0); // Use a minimal delay to ensure the state updates correctly
-    
+            setShowCustomerForm(false);
+            setShowCartItem(true);
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
         }
     };
-    
-    if (showCustomerForm && !isFormSubmitted) {
+
+    const handleBackToCart = () => {
+        setShowCustomerForm(false);
+        setShowCartItem(false);
+        setShowMenu(true);
+    };
+
+    if (!isFormSubmitted) {
         return (
             <div className="cart-item-container">
                 <div className="cart-item">
@@ -112,7 +111,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                             Submit
                         </button>
                         <p className="reward-message">
-                            Enter your name and WhatsApp to get 50% discount!
+                            Enter your name and WhatsApp to get a 50% discount!
                         </p>
                     </form>
                 </div>
@@ -161,9 +160,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                 <div className="cart-item-actions">
                     <button className="action-button" onClick={() => setShowMenu(true)}>
                         Add Items
-                    </button>
-                    <button className="action-button" onClick={handleListButton}>
-                        List
                     </button>
                 </div>
                 <div className="thank-you-message">

@@ -4,6 +4,7 @@ import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
 const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName }) => {
+    const [showListPage, setShowListPage] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
     const [whatsappNumber, setWhatsappNumber] = useState('');
@@ -37,9 +38,19 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             name: customerName,
             whatsapp_number: whatsappNumber,
             restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
+            items: cartItems, // Save the items in the cart
         };
         localStorage.setItem('cartData', JSON.stringify(cartData));
         localStorage.setItem('customerData', JSON.stringify(customerData));
+    };
+
+    const handleBackToCart = () => {
+        setShowCartItem(false);
+        setShowCustomerForm(false); // Ensure customer form is hidden when going back
+    };
+
+    const handleListButton = () => {
+        setShowListPage(true);
     };
 
     const handleFormSubmit = async (e) => {
@@ -60,17 +71,52 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             setIsFormSubmitted(true);
             saveCartData();
             setShowCustomerForm(false); // Hide the customer form
-            setShowCartItem(true); // Show cart item details
+            setShowCartItem(true); // Show the cart immediately after form submission
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
         }
     };
+    
 
-    const handleBackToCart = () => {
-        setShowCartItem(false);
-        setShowCustomerForm(false); // Ensure customer form is hidden when going back
-    };
+    if (showCustomerForm && !isFormSubmitted) {
+        return (
+            <div className="cart-item-container">
+                <div className="cart-item">
+                    <div className="cart-item-header">
+                        <button className="back-button" onClick={handleBackToCart}>
+                            ➜
+                        </button>
+                        <h2>Customer Details</h2>
+                    </div>
+                    <form onSubmit={handleFormSubmit} className="customer-form">
+                        <label htmlFor="name">Name:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            value={customerName}
+                            onChange={(e) => setCustomerName(e.target.value)}
+                            required
+                        />
+                        <label htmlFor="whatsapp">WhatsApp Number:</label>
+                        <input
+                            type="text"
+                            id="whatsapp"
+                            value={whatsappNumber}
+                            onChange={(e) => setWhatsappNumber(e.target.value)}
+                            required
+                        />
+                        <button type="submit" className="action-button">
+                            Submit
+                        </button>
+                        <p className="reward-message">
+                            Enter your name and WhatsApp to get 50% discount!
+                        </p>
+                    </form>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="cart-item-container">
@@ -81,69 +127,41 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                     </button>
                     <h2>CART</h2>
                 </div>
-
-                {showCustomerForm && !isFormSubmitted ? (
-                    <div className="customer-form-container">
-                        <form onSubmit={handleFormSubmit} className="customer-form">
-                            <label htmlFor="name">Name:</label>
-                            <input
-                                type="text"
-                                id="name"
-                                value={customerName}
-                                onChange={(e) => setCustomerName(e.target.value)}
-                                required
-                            />
-                            <label htmlFor="whatsapp">WhatsApp Number:</label>
-                            <input
-                                type="text"
-                                id="whatsapp"
-                                value={whatsappNumber}
-                                onChange={(e) => setWhatsappNumber(e.target.value)}
-                                required
-                            />
-                            <button type="submit" className="action-button">
-                                Submit
-                            </button>
-                            <p className="reward-message">
-                                Enter your name and WhatsApp to get 50% discount!
-                            </p>
-                        </form>
+                {cartItems.length === 0 ? (
+                    <div className="empty-cart-message">
+                        <p>No items added yet. Add items to your cart!</p>
                     </div>
                 ) : (
                     <div className="cart-item-scrollable">
-                        {cartItems.length === 0 ? (
-                            <div className="empty-cart-message">
-                                <p>No items added yet. Add items to your cart!</p>
-                            </div>
-                        ) : (
-                            cartItems.map((item, index) => (
-                                <div key={index} className="cart-item-row">
-                                    <div className="item-details">
-                                        <h3>{item.name}</h3>
-                                        {item.variation ? (
-                                            <p>{item.variation.name}: ₹{item.variation.price}/-</p>
-                                        ) : (
-                                            <p>₹{item.price}/-</p>
-                                        )}
-                                        <p>Quantity: {item.quantity}</p>
-                                        <div className="quantity-controls">
-                                            <button onClick={() => updateItemCount(item.id, -1)} disabled={item.quantity === 1}>-</button>
-                                            <span>{item.quantity}</span>
-                                            <button onClick={() => updateItemCount(item.id, 1)}>+</button>
-                                        </div>
+                        {cartItems.map((item, index) => (
+                            <div key={index} className="cart-item-row">
+                                <div className="item-details">
+                                    <h3>{item.name}</h3>
+                                    {item.variation ? (
+                                        <p>{item.variation.name}: ₹{item.variation.price}/-</p>
+                                    ) : (
+                                        <p>₹{item.price}/-</p>
+                                    )}
+                                    <p>Quantity: {item.quantity}</p>
+                                    <div className="quantity-controls">
+                                        <button onClick={() => updateItemCount(item.id, -1)} disabled={item.quantity === 1}>-</button>
+                                        <span>{item.quantity}</span>
+                                        <button onClick={() => updateItemCount(item.id, 1)}>+</button>
                                     </div>
-                                    <button className="delete-button" onClick={() => removeItem(item)}>
-                                        🗑
-                                    </button>
                                 </div>
-                            ))
-                        )}
+                                <button className="delete-button" onClick={() => removeItem(item)}>
+                                    🗑
+                                </button>
+                            </div>
+                        ))}
                     </div>
                 )}
-
                 <div className="cart-item-actions">
                     <button className="action-button" onClick={() => setShowCartItem(false)}>
                         Add Items
+                    </button>
+                    <button className="action-button" onClick={handleListButton}>
+                        List
                     </button>
                 </div>
                 <div className="thank-you-message">

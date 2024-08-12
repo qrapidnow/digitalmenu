@@ -3,7 +3,7 @@ import './CartItem.css';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
-const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName }) => {
+const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName, setShowMenu }) => {
     const [showListPage, setShowListPage] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
@@ -69,7 +69,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             setIsFormSubmitted(true);
             saveCartData();
 
-            // Immediately show the cart page after form submission
+            // Show the cart item page after form submission
             setShowCustomerForm(false);
             setShowCartItem(true);
 
@@ -157,7 +157,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                     </div>
                 )}
                 <div className="cart-item-actions">
-                    <button className="action-button" onClick={() => setShowCartItem(false)}>
+                    <button className="action-button" onClick={() => setShowMenu(true)}>
                         Add Items
                     </button>
                     <button className="action-button" onClick={handleListButton}>

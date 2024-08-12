@@ -25,6 +25,7 @@ const App = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [isFixed, setIsFixed] = useState(false);
     const [showBackToTop, setShowBackToTop] = useState(false);
+    const [showMenu, setShowMenu] = useState(true); // New state to manage showing the menu
 
     useEffect(() => {
         if (uid) {
@@ -74,12 +75,14 @@ const App = () => {
         setShowCustomerForm(true);
         setShowCartItem(false);
         setShowPlaceOrderPage(false);
+        setShowMenu(false); // Hide menu when showing order
     };
 
     const handleCartClick = () => {
         setShowCustomerForm(true);
         setShowCartItem(false);
         setShowPlaceOrderPage(false);
+        setShowMenu(false); // Hide menu when showing cart
     };
 
     const removeItem = (itemToRemove) => {
@@ -135,13 +138,15 @@ const App = () => {
                     <Navbar setActiveCategory={setActiveCategory} />
                 </div>
                 <div className={`content-container ${isFixed ? 'fixed-margin' : ''}`}>
-                    <Menu 
-                        addItem={addItem}
-                        cart={cart}
-                        updateItemCount={updateItemCount}
-                        activeCategory={activeCategory}
-                        searchTerm={searchTerm}
-                    />
+                    {showMenu && (
+                        <Menu
+                            addItem={addItem}
+                            cart={cart}
+                            updateItemCount={updateItemCount}
+                            activeCategory={activeCategory}
+                            searchTerm={searchTerm}
+                        />
+                    )}
                 </div>
                 {!showCartItem && !showCustomerForm && getTotalItems() > 0 && (
                     <div className="view-order-bar" onClick={handleViewOrderClick}>
@@ -156,8 +161,9 @@ const App = () => {
                         setShowCustomerForm={setShowCustomerForm}
                         updateItemCount={updateItemCount}
                         removeItem={removeItem}
-                        showCustomerForm={showCustomerForm}  // Ensure this is passed
-                        restaurantName={restaurantName}  // Ensure restaurantName is passed correctly
+                        showCustomerForm={showCustomerForm}
+                        restaurantName={restaurantName}
+                        setShowMenu={setShowMenu}  // Pass setShowMenu to CartItem
                     />
                 )}
                 {showPlaceOrderPage && (

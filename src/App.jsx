@@ -11,7 +11,6 @@ import { useParams } from 'react-router-dom';
 import { db } from './firebase-config';
 import { collection, getDocs, query, where, doc, getDoc } from "firebase/firestore";
 
-// Creating a context for cart management
 export const CartContext = createContext();
 
 const App = () => {
@@ -41,7 +40,6 @@ const App = () => {
 
             if (docSnap.exists()) {
                 const restaurantData = docSnap.data();
-                console.log("Fetched restaurant data:", restaurantData);
                 setRestaurantName(restaurantData.restaurantName);
             } else {
                 console.error('No restaurant found');
@@ -53,7 +51,6 @@ const App = () => {
     };
 
     const addItem = (item) => {
-        console.log('Adding new item:', item);
         setCart((prevCart) => {
             const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
             if (existingItem) {
@@ -83,12 +80,10 @@ const App = () => {
     };
 
     const removeItem = (itemToRemove) => {
-        console.log('Removing item:', itemToRemove);
         setCart((prevCart) => prevCart.filter((item) => item.id !== itemToRemove.id));
     };
 
     const updateItemCount = (itemId, countChange) => {
-        console.log(`Updating item count for item ID ${itemId} by ${countChange}`);
         setCart((prevCart) =>
             prevCart.map((item) =>
                 item.id === itemId ? { ...item, quantity: item.quantity + countChange } : item
@@ -156,8 +151,8 @@ const App = () => {
                         setShowCustomerForm={setShowCustomerForm}
                         updateItemCount={updateItemCount}
                         removeItem={removeItem}
-                        showCustomerForm={showCustomerForm}  // Ensure this is passed
-                        restaurantName={restaurantName}  // Ensure restaurantName is passed correctly
+                        showCustomerForm={showCustomerForm}
+                        restaurantName={restaurantName}
                     />
                 )}
                 {showPlaceOrderPage && (

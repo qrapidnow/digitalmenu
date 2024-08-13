@@ -15,11 +15,11 @@ import { collection, getDocs, query, where, doc, getDoc } from "firebase/firesto
 export const CartContext = createContext();
 
 const App = () => {
-    const { uid } = useParams();  // Read UID from URL parameters
+    const { uid } = useParams();
     const [cart, setCart] = useState([]);
     const [showCartItem, setShowCartItem] = useState(false);
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
-    const [showCustomerForm, setShowCustomerForm] = useState(false); // State to handle the customer form
+    const [showCustomerForm, setShowCustomerForm] = useState(false);
     const [restaurantName, setRestaurantName] = useState('');
     const [activeCategory, setActiveCategory] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');

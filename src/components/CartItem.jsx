@@ -10,19 +10,16 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
     const [whatsappNumber, setWhatsappNumber] = useState('');
 
     useEffect(() => {
-        // Load cart data from local storage
         const storedCartData = JSON.parse(localStorage.getItem('cartData'));
         const storedCustomerData = JSON.parse(localStorage.getItem('customerData'));
         const currentTime = new Date().getTime();
 
         if (storedCartData && storedCustomerData) {
-            // Check if the stored data is within the 20-minute limit
             if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
                 setCustomerName(storedCustomerData.name);
                 setWhatsappNumber(storedCustomerData.whatsapp_number);
                 setIsFormSubmitted(true);
             } else {
-                // Clear expired data
                 localStorage.removeItem('cartData');
                 localStorage.removeItem('customerData');
             }
@@ -37,8 +34,8 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         const customerData = {
             name: customerName,
             whatsapp_number: whatsappNumber,
-            restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
-            items: cartItems, // Save the items in the cart
+            restaurant_name: restaurantName || "Unknown Restaurant",
+            items: cartItems,
         };
         localStorage.setItem('cartData', JSON.stringify(cartData));
         localStorage.setItem('customerData', JSON.stringify(customerData));
@@ -46,7 +43,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
 
     const handleBackToCart = () => {
         setShowCartItem(false);
-        setShowCustomerForm(false); // Ensure customer form is hidden when going back
+        setShowCustomerForm(false);
     };
 
     const handleListButton = () => {
@@ -59,7 +56,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             await addDoc(collection(db, "customer_details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
-                restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
+                restaurant_name: restaurantName || "Unknown Restaurant",
                 cart_items: cartItems.map(item => ({
                     name: item.name,
                     variation: item.variation ? item.variation.name : null,
@@ -70,14 +67,12 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             });
             setIsFormSubmitted(true);
             saveCartData();
-            setShowCustomerForm(false); // Hide the customer form
-            setShowCartItem(true); // Show the cart immediately after form submission
+            // No need to toggle setShowCartItem or setShowCustomerForm
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
         }
     };
-    
 
     if (showCustomerForm && !isFormSubmitted) {
         return (

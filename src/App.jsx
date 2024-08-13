@@ -72,13 +72,13 @@ const App = () => {
 
     const handleViewOrderClick = () => {
         setShowCustomerForm(true);
-        setShowCartItem(false);
+        setShowCartItem(true); // Ensure the cart remains visible when the customer form is shown
         setShowPlaceOrderPage(false);
     };
 
     const handleCartClick = () => {
         setShowCustomerForm(true);
-        setShowCartItem(false);
+        setShowCartItem(true); // Ensure the cart remains visible when the customer form is shown
         setShowPlaceOrderPage(false);
     };
 
@@ -156,10 +156,11 @@ const App = () => {
                         setShowCustomerForm={setShowCustomerForm}
                         updateItemCount={updateItemCount}
                         removeItem={removeItem}
-                        showCustomerForm={showCustomerForm}  // Ensure this is passed
-                        restaurantName={restaurantName}  // Ensure restaurantName is passed correctly
+                        showCustomerForm={showCustomerForm} 
+                        restaurantName={restaurantName}  
                     />
                 )}
+
                 {showPlaceOrderPage && (
                     <PlaceOrderPage cartItems={cart} setShowPlaceOrderPage={setShowPlaceOrderPage} />
                 )}

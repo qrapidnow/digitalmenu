@@ -68,10 +68,14 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                 })),
                 timestamp: new Date(),
             });
+            
             setIsFormSubmitted(true);
             saveCartData();
+    
+            // Show the cart immediately after form submission
             setShowCustomerForm(false); // Hide the customer form
-            setShowCartItem(true); // Show the cart immediately after form submission
+            setShowCartItem(true); // Ensure the cart is visible
+            
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");

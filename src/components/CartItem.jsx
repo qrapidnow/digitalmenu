@@ -59,7 +59,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             await addDoc(collection(db, "customer_details"), {
                 name: customerName,
                 whatsapp_number: whatsappNumber,
-                restaurant_name: restaurantName || "Unknown Restaurant", // Use restaurantName or a default value
+                restaurant_name: restaurantName || "Unknown Restaurant", 
                 cart_items: cartItems.map(item => ({
                     name: item.name,
                     variation: item.variation ? item.variation.name : null,
@@ -72,15 +72,16 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             setIsFormSubmitted(true);
             saveCartData();
     
-            // Show the cart immediately after form submission
-            setShowCustomerForm(false); // Hide the customer form
-            setShowCartItem(true); // Ensure the cart is visible
-            
+            // Ensure the cart is visible after form submission
+            setShowCustomerForm(false); // Hide the customer form but keep the cart visible
+            setShowCartItem(true); // Ensure the cart remains visible
+    
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
         }
     };
+    
     
 
     if (showCustomerForm && !isFormSubmitted) {

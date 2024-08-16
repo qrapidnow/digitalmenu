@@ -3,7 +3,16 @@ import './CartItem.css';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
-const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName, setShowPlaceOrderPage }) => {
+const CartItem = ({ 
+    cartItems, 
+    setShowCartItem, 
+    updateItemCount, 
+    removeItem, 
+    setShowCustomerForm, 
+    showCustomerForm, 
+    restaurantName, 
+    setShowPlaceOrderPage 
+}) => {
     const [showListPage, setShowListPage] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
@@ -73,6 +82,7 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         }
     };
 
+    // Ensuring the return is properly checking conditions and displaying relevant UI
     if (showCustomerForm && !isFormSubmitted) {
         return (
             <div className="cart-item-container">
@@ -138,12 +148,20 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                                     )}
                                     <p>Quantity: {item.quantity}</p>
                                     <div className="quantity-controls">
-                                        <button onClick={() => updateItemCount(item.id, -1)} disabled={item.quantity === 1}>-</button>
+                                        <button 
+                                            onClick={() => updateItemCount(item.id, -1)} 
+                                            disabled={item.quantity === 1}
+                                        >
+                                            -
+                                        </button>
                                         <span>{item.quantity}</span>
                                         <button onClick={() => updateItemCount(item.id, 1)}>+</button>
                                     </div>
                                 </div>
-                                <button className="delete-button" onClick={() => removeItem(item)}>
+                                <button 
+                                    className="delete-button" 
+                                    onClick={() => removeItem(item)}
+                                >
                                     🗑
                                 </button>
                             </div>

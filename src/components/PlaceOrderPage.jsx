@@ -3,7 +3,9 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './PlaceOrderPage.css';
 
-const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, customerName, whatsappNumber }) => {
+const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
+  const [name, setName] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
   const [tableNo, setTableNo] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,8 +14,8 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, customerName, whatsa
     setIsLoading(true);
 
     const orderData = {
-      name: customerName,
-      whatsapp: whatsappNumber,
+      name,
+      whatsapp,
       tableNo,
       items: cartItems.map(item => ({
         name: item.name,
@@ -74,6 +76,26 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, customerName, whatsa
             required
             value={tableNo}
             onChange={(e) => setTableNo(e.target.value)}
+          />
+
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+
+          <label htmlFor="whatsapp">WhatsApp Number:</label>
+          <input
+            type="text"
+            id="whatsapp"
+            name="whatsapp"
+            required
+            value={whatsapp}
+            onChange={(e) => setWhatsapp(e.target.value)}
           />
 
           <button type="submit" className="place-order-button">Submit Order</button>

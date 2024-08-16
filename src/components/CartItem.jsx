@@ -3,7 +3,8 @@ import './CartItem.css';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
-const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName }) => {
+const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName, setShowPlaceOrderPage }) => {
+    const [showListPage, setShowListPage] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
     const [whatsappNumber, setWhatsappNumber] = useState('');
@@ -45,10 +46,8 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         setShowCustomerForm(false);
     };
 
-    const handlePlaceOrder = () => {
-        setShowCartItem(false);
-        // Assuming there is a state or method to show the PlaceOrderPage
-        // setShowPlaceOrderPage(true); // This would be implemented in the parent component
+    const handleListButton = () => {
+        setShowListPage(true);
     };
 
     const handleFormSubmit = async (e) => {
@@ -68,7 +67,6 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
             });
             setIsFormSubmitted(true);
             saveCartData();
-            // No need to toggle setShowCartItem or setShowCustomerForm
         } catch (error) {
             console.error("Error adding document: ", error);
             alert("There was an error saving your information. Please try again.");
@@ -156,7 +154,10 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                     <button className="action-button" onClick={() => setShowCartItem(false)}>
                         Add Items
                     </button>
-                    <button className="action-button" onClick={handlePlaceOrder}>
+                    <button className="action-button" onClick={handleListButton}>
+                        List
+                    </button>
+                    <button className="action-button" onClick={() => setShowPlaceOrderPage(true)}>
                         Place Order
                     </button>
                 </div>

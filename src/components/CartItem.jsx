@@ -4,7 +4,6 @@ import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
 
 const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, setShowCustomerForm, showCustomerForm, restaurantName }) => {
-    const [showListPage, setShowListPage] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
     const [whatsappNumber, setWhatsappNumber] = useState('');
@@ -46,8 +45,10 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
         setShowCustomerForm(false);
     };
 
-    const handleListButton = () => {
-        setShowListPage(true);
+    const handlePlaceOrder = () => {
+        setShowCartItem(false);
+        // Assuming there is a state or method to show the PlaceOrderPage
+        // setShowPlaceOrderPage(true); // This would be implemented in the parent component
     };
 
     const handleFormSubmit = async (e) => {
@@ -155,8 +156,8 @@ const CartItem = ({ cartItems, setShowCartItem, updateItemCount, removeItem, set
                     <button className="action-button" onClick={() => setShowCartItem(false)}>
                         Add Items
                     </button>
-                    <button className="action-button" onClick={handleListButton}>
-                        List
+                    <button className="action-button" onClick={handlePlaceOrder}>
+                        Place Order
                     </button>
                 </div>
                 <div className="thank-you-message">

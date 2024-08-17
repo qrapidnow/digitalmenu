@@ -20,7 +20,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       })),
     };
 
-    console.log("Attempting to send order data:", orderData); // Log data being sent
+    console.log("Attempting to send order data:", orderData);
 
     try {
       const response = await axios.post(
@@ -28,7 +28,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
         orderData,
         { headers: { 'Content-Type': 'application/json' } }
       );
-      console.log("Order response data:", response.data); // Log response data
+      console.log("Order response data:", response.data);
       Swal.fire({
         title: 'Order Placed Successfully!',
         text: 'Your order has been placed.',
@@ -39,7 +39,6 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
     } catch (error) {
       console.error('Error sending order:', error);
       if (error.response) {
-        // Log details of response error if it exists
         console.error('Response data:', error.response.data);
         console.error('Response status:', error.response.status);
       }

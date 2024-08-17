@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './CartItem.css';
 import { db } from '../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
+import PlaceOrderPage from './PlaceOrderPage';
 
 const CartItem = ({ 
     cartItems, 
@@ -11,12 +12,12 @@ const CartItem = ({
     setShowCustomerForm, 
     showCustomerForm, 
     restaurantName, 
-    setShowPlaceOrderPage 
 }) => {
     const [showListPage, setShowListPage] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [customerName, setCustomerName] = useState('');
     const [whatsappNumber, setWhatsappNumber] = useState('');
+    const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
 
     useEffect(() => {
         const storedCartData = JSON.parse(localStorage.getItem('cartData'));
@@ -54,6 +55,21 @@ const CartItem = ({
         setShowCartItem(false);
         setShowCustomerForm(false);
     };
+
+    const handlePlaceOrderPage = () => {
+        setShowPlaceOrderPage(true);
+      };
+    
+      if (showPlaceOrderPage) {
+        return (
+          <div className="cart-item-container">
+            <PlaceOrderPage
+              cartItems={cartItems}
+              setShowPlaceOrderPage={setShowPlaceOrderPage}
+            />
+          </div>
+        );
+      }
 
     const handleListButton = () => {
         setShowListPage(true);
@@ -175,7 +191,7 @@ const CartItem = ({
                     <button className="action-button" onClick={handleListButton}>
                         List
                     </button>
-                    <button className="action-button" onClick={() => setShowPlaceOrderPage(true)}>
+                    <button className="action-button" onClick={handlePlaceOrderPage}>
                         Place Order
                     </button>
                 </div>

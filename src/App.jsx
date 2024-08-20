@@ -8,10 +8,7 @@ import CartItem from './components/CartItem';
 import PlaceOrderPage from './components/PlaceOrderPage';
 import BackToTopButton from './components/BackToTopButton';
 import { useParams } from 'react-router-dom';
-import { db } from './firebase-config';
-import { collection, getDocs, query, where, doc, getDoc } from "firebase/firestore";
 
-// Creating a context for cart management
 export const CartContext = createContext();
 
 const App = () => {
@@ -25,6 +22,7 @@ const App = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [isFixed, setIsFixed] = useState(false);
     const [showBackToTop, setShowBackToTop] = useState(false);
+    const apiBaseUrl = import.meta.env.VITE_APP_BASE_BACKEND_API; // Use the environment variable for the base URL
 
     useEffect(() => {
         if (uid) {
@@ -36,15 +34,14 @@ const App = () => {
 
     const fetchRestaurantDetails = async (uid) => {
         try {
-            const docRef = doc(db, 'restaurants', uid);
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                const restaurantData = docSnap.data();
+            const response = await fetch(`${apiBaseUrl}/restaurant/${uid}`); // Fetching from the backend API
+            if (response.ok) {
+                const restaurantData = await response.json();
                 console.log("Fetched restaurant data:", restaurantData);
-                setRestaurantName(restaurantData.restaurantName);
+                setRestaurantName(restaurantData.restaurantName); // Set the restaurant name
             } else {
-                console.error('No restaurant found');
+                console.error('Failed to fetch restaurant data:', response.statusText);
+                alert('Failed to load restaurant details. Please try again.');
             }
         } catch (error) {
             console.error('Error fetching restaurant details:', error);

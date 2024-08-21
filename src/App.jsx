@@ -153,7 +153,6 @@ const App = () => {
                         setShowCustomerForm={setShowCustomerForm}
                         updateItemCount={updateItemCount}
                         removeItem={removeItem}
-                        showCustomerForm={showCustomerForm}  // Ensure this is passed
                         restaurantName={restaurantName}  // Ensure restaurantName is passed correctly
                     />
                 )}

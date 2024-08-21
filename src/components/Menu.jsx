@@ -9,6 +9,35 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
   const sectionRefs = useRef({}); // References to each section for scrolling
   const apiBaseUrl = import.meta.env.VITE_APP_BASE_BACKEND_API; // Updated environment variable
 
+  const fetchBestTimeToken = async () => {
+    try {
+      console.log(`Fetching bestTimeToken for restaurant UID: ${uid}`); // Debug log
+
+      const tokenResponse = await fetch(`${apiBaseUrl}/restaurant/${uid}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // Using the stored token
+        }
+      });
+
+      if (!tokenResponse.ok) {
+        const errorText = await tokenResponse.text();
+        throw new Error(`Failed to fetch bestTimeToken from the backend. Status: ${tokenResponse.status}, Error: ${errorText}`);
+      }
+
+      const { bestTimeToken } = await tokenResponse.json();
+      console.log(`Fetched bestTimeToken: ${bestTimeToken}`); // Debug log
+
+      // Store bestTimeToken in localStorage or state
+      localStorage.setItem('bestTimeToken', bestTimeToken);
+      return bestTimeToken;
+    } catch (error) {
+      console.error('Error fetching bestTimeToken:', error.message);
+      return null;
+    }
+  };
+
   useEffect(() => {
     if (!uid) {
       console.error('Restaurant UID not provided');
@@ -16,15 +45,18 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
     }
 
     const fetchCategoriesAndItems = async () => {
+      const bestTimeToken = await fetchBestTimeToken();
+      if (!bestTimeToken) return;
+
       try {
-        console.log("Fetching categories for restaurant UID:", uid); // Debugging line
+        console.log("Fetching categories for restaurant UID:", uid); // Debug log
 
         // Fetch categories for the restaurant
         const categoryResponse = await fetch(`${apiBaseUrl}/categories/${uid}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}` // Ensure the token is correct
+            'Authorization': `Bearer ${bestTimeToken}` // Use bestTimeToken
           }
         });
 
@@ -34,18 +66,18 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
         }
 
         const categories = await categoryResponse.json();
-        console.log("Fetched categories:", categories); // Debugging line
+        console.log("Fetched categories:", categories); // Debug log
 
         // Fetch items for each category
         const sectionsWithItems = await Promise.all(
           categories.map(async (category) => {
-            console.log(`Fetching items for category ID: ${category._id}`); // Debugging line
+            console.log(`Fetching items for category ID: ${category._id}`); // Debug log
 
             const itemsResponse = await fetch(`${apiBaseUrl}/items/${category._id}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` // Ensure the token is correct
+                'Authorization': `Bearer ${bestTimeToken}` // Use bestTimeToken
               }
             });
 
@@ -55,7 +87,7 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
             }
 
             const items = await itemsResponse.json();
-            console.log(`Fetched items for category ${category.name}:`, items); // Debugging line
+            console.log(`Fetched items for category ${category.name}:`, items); // Debug log
 
             sectionRefs.current[category._id] = React.createRef();
 
@@ -68,10 +100,10 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
         );
 
         setSections(sectionsWithItems);
-        console.log("Final sections with items:", sectionsWithItems); // Debugging line
+        console.log("Final sections with items:", sectionsWithItems); // Debug log
 
       } catch (error) {
-        console.error('Error fetching categories or items:', error.message); // Debugging line
+        console.error('Error fetching categories or items:', error.message);
       }
     };
 

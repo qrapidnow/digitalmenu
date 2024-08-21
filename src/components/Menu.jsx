@@ -68,6 +68,12 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
         const categories = await categoryResponse.json();
         console.log("Fetched categories:", categories); // Debug log
 
+        // Check if categories are empty
+        if (categories.length === 0) {
+          console.log("No categories found.");
+          return;
+        }
+
         // Fetch items for each category
         const sectionsWithItems = await Promise.all(
           categories.map(async (category) => {
@@ -99,6 +105,7 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
           })
         );
 
+        console.log("Setting sections with items:", sectionsWithItems); // Debug log
         setSections(sectionsWithItems);
         console.log("Final sections with items:", sectionsWithItems); // Debug log
 
@@ -124,6 +131,10 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
       )
     }))
     .filter((section) => section.items.length > 0);
+
+  if (filteredSections.length === 0) {
+    console.log("No filtered sections to display.");
+  }
 
   return (
     <div className="menu">

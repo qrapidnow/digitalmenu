@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './NavBar.css';
 import { useParams } from 'react-router-dom';
-import { db } from '../firebase-config';
-import { collection, getDocs, query } from "firebase/firestore";
 
 const Navbar = ({ setActiveCategory }) => {
   const { uid } = useParams();
   const [categories, setCategories] = useState([]);
   const [activeButton, setActiveButton] = useState(null); // State to track active button
+  const apiBaseUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
 
   useEffect(() => {
     if (!uid) {
@@ -17,20 +16,32 @@ const Navbar = ({ setActiveCategory }) => {
 
     const fetchCategories = async () => {
       try {
-        const q = query(collection(db, 'restaurants', uid, 'categories'));
-        const querySnapshot = await getDocs(q);
-        const fetchedCategories = querySnapshot.docs.map(doc => ({
-          _id: doc.id,
-          ...doc.data()
-        }));
+        console.log("Fetching categories for restaurant UID:", uid); // Debugging line
+
+        const categoryResponse = await fetch(`${apiBaseUrl}/categories/${uid}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('bestTimeToken')}` // Use bestTimeToken from local storage
+          }
+        });
+
+        if (!categoryResponse.ok) {
+          const errorText = await categoryResponse.text();
+          throw new Error(`Failed to fetch categories from the backend. Status: ${categoryResponse.status}, Error: ${errorText}`);
+        }
+
+        const fetchedCategories = await categoryResponse.json();
+        console.log("Fetched categories:", fetchedCategories); // Debugging line
+
         setCategories(fetchedCategories);
       } catch (error) {
-        console.error('Error fetching categories:', error);
+        console.error('Error fetching categories:', error.message);
       }
     };
 
     fetchCategories();
-  }, [uid]);
+  }, [uid, apiBaseUrl]);
 
   const handleCategoryClick = (categoryId) => {
     setActiveCategory(categoryId);

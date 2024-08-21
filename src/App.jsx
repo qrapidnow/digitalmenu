@@ -22,42 +22,35 @@ const App = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [isFixed, setIsFixed] = useState(false);
     const [showBackToTop, setShowBackToTop] = useState(false);
-    const apiBaseUrl = import.meta.env.VITE_APP_BASE_BACKEND_API;
+    const apiBaseUrl = import.meta.env.VITE_APP_BASE_BACKEND_API; // Use the environment variable for the base URL
 
     useEffect(() => {
         if (uid) {
-            console.log(`UID provided: ${uid}`); // Debug log
             fetchRestaurantDetails(uid);
         } else {
-            console.error("UID not provided"); // Debug log
+            console.error("UID not provided");
         }
     }, [uid]);
 
     const fetchRestaurantDetails = async (uid) => {
         try {
-            const url = `${apiBaseUrl}/restaurant/${uid}`;
-            console.log(`Fetching restaurant details from URL: ${url}`); // Debug log
-            const response = await fetch(url);
-    
-            console.log(`Received response with status: ${response.status}`); // Debug log
-            
+            const response = await fetch(`${apiBaseUrl}/restaurant/${uid}`); // Fetching from the backend API
             if (response.ok) {
                 const restaurantData = await response.json();
                 console.log("Fetched restaurant data:", restaurantData);
                 setRestaurantName(restaurantData.restaurantName); // Set the restaurant name
             } else {
-                console.error('Failed to fetch restaurant data:', response.status, response.statusText);
+                console.error('Failed to fetch restaurant data:', response.statusText);
                 alert('Failed to load restaurant details. Please try again.');
             }
         } catch (error) {
-            console.error('Error occurred while fetching restaurant details:', error);
+            console.error('Error fetching restaurant details:', error);
             alert('Failed to load restaurant details. Please try again.');
         }
     };
-    
 
     const addItem = (item) => {
-        console.log('Adding new item:', item); // Debug log
+        console.log('Adding new item:', item);
         setCart((prevCart) => {
             const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
             if (existingItem) {
@@ -87,12 +80,12 @@ const App = () => {
     };
 
     const removeItem = (itemToRemove) => {
-        console.log('Removing item:', itemToRemove); // Debug log
+        console.log('Removing item:', itemToRemove);
         setCart((prevCart) => prevCart.filter((item) => item.id !== itemToRemove.id));
     };
 
     const updateItemCount = (itemId, countChange) => {
-        console.log(`Updating item count for item ID ${itemId} by ${countChange}`); // Debug log
+        console.log(`Updating item count for item ID ${itemId} by ${countChange}`);
         setCart((prevCart) =>
             prevCart.map((item) =>
                 item.id === itemId ? { ...item, quantity: item.quantity + countChange } : item
@@ -122,7 +115,7 @@ const App = () => {
     }, []);
 
     useEffect(() => {
-        console.log('Cart updated:', cart); // Debug log
+        console.log('Cart updated:', cart);
     }, [cart]);
 
     return (
@@ -160,6 +153,7 @@ const App = () => {
                         setShowCustomerForm={setShowCustomerForm}
                         updateItemCount={updateItemCount}
                         removeItem={removeItem}
+                        showCustomerForm={showCustomerForm}  // Ensure this is passed
                         restaurantName={restaurantName}  // Ensure restaurantName is passed correctly
                     />
                 )}

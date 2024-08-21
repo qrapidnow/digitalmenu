@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CartItem.css';
 import { db } from '../firebase-config';
-import { collection, doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import PlaceOrderPage from './PlaceOrderPage';
 
 const CartItem = ({ 
@@ -10,7 +10,6 @@ const CartItem = ({
     updateItemCount, 
     removeItem, 
     setShowCustomerForm, 
-    showCustomerForm, 
     uid, // uid passed as a prop
 }) => {
     const [restaurantName, setRestaurantName] = useState('');
@@ -36,27 +35,6 @@ const CartItem = ({
         fetchRestaurantName();
     }, [uid]);
 
-    useEffect(() => {
-        const storedCartData = JSON.parse(localStorage.getItem('cartData'));
-        const currentTime = new Date().getTime();
-
-        if (storedCartData) {
-            if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
-                // Restore cart items from local storage
-            } else {
-                localStorage.removeItem('cartData');
-            }
-        }
-    }, []);
-
-    const saveCartData = () => {
-        const cartData = {
-            items: cartItems,
-            timestamp: new Date().getTime(),
-        };
-        localStorage.setItem('cartData', JSON.stringify(cartData));
-    };
-
     const handleBackToCart = () => {
         setShowCartItem(false); // Hide CartItem component, which should show the menu again
         setShowCustomerForm(false);
@@ -72,14 +50,11 @@ const CartItem = ({
                 <PlaceOrderPage
                     cartItems={cartItems}
                     setShowPlaceOrderPage={setShowPlaceOrderPage}
+                    restaurantName={restaurantName} // Pass the restaurant name
                 />
             </div>
         );
     }
-
-    const handleListButton = () => {
-        setShowCartItem(false); // Hide CartItem component, which should show the menu again
-    };
 
     return (
         <div className="cart-item-container">
@@ -128,12 +103,12 @@ const CartItem = ({
                     </div>
                 )}
                 <div className="cart-item-actions">
-                    <button className="action-button" onClick={handleListButton}>
+                    <button className="action-button" onClick={handleBackToCart}>
                         Add Items
                     </button>
-                    {/* <button className="action-button" onClick={handleListButton}>
+                    <button className="action-button" onClick={handleBackToCart}>
                         List
-                    </button> */}
+                    </button>
                     <button className="action-button" onClick={handlePlaceOrderPage}>
                         Place Order
                     </button>

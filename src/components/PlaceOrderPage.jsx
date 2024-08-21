@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './PlaceOrderPage.css';
 
-const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
+const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, restaurantName }) => {
   const [name, setName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [tableNo, setTableNo] = useState('');
@@ -17,6 +17,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       name,
       whatsapp,
       tableNo,
+      restaurantName, // Include the restaurant name in the order data
       items: cartItems.map(item => ({
         name: item.name,
         price: item.price,

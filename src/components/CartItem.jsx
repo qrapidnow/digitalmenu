@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CartItem.css';
+import { db } from '../firebase-config';
+import { collection, addDoc } from "firebase/firestore";
 import PlaceOrderPage from './PlaceOrderPage';
 
 const CartItem = ({ 
@@ -7,18 +9,43 @@ const CartItem = ({
     setShowCartItem, 
     updateItemCount, 
     removeItem, 
-    restaurantName 
+    setShowCustomerForm, 
+    showCustomerForm, 
+    restaurantName, 
 }) => {
+    const [showListPage, setShowListPage] = useState(false);
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
+
+    useEffect(() => {
+        const storedCartData = JSON.parse(localStorage.getItem('cartData'));
+        const currentTime = new Date().getTime();
+
+        if (storedCartData) {
+            if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
+                // Restore cart items from local storage
+            } else {
+                localStorage.removeItem('cartData');
+            }
+        }
+    }, []);
+
+    const saveCartData = () => {
+        const cartData = {
+            items: cartItems,
+            timestamp: new Date().getTime(),
+        };
+        localStorage.setItem('cartData', JSON.stringify(cartData));
+    };
 
     const handleBackToCart = () => {
         setShowCartItem(false);
+        setShowCustomerForm(false);
     };
 
     const handlePlaceOrderPage = () => {
         setShowPlaceOrderPage(true);
     };
-
+    
     if (showPlaceOrderPage) {
         return (
             <div className="cart-item-container">
@@ -29,6 +56,10 @@ const CartItem = ({
             </div>
         );
     }
+
+    const handleListButton = () => {
+        setShowListPage(true);
+    };
 
     return (
         <div className="cart-item-container">
@@ -80,6 +111,9 @@ const CartItem = ({
                     <button className="action-button" onClick={() => setShowCartItem(false)}>
                         Add Items
                     </button>
+                    {/* <button className="action-button" onClick={handleListButton}>
+                        List
+                    </button> */}
                     <button className="action-button" onClick={handlePlaceOrderPage}>
                         Place Order
                     </button>

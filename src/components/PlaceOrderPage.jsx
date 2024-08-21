@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './PlaceOrderPage.css';
 
-const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, restaurantName, uid }) => { // Pass uid as a prop
+const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, restaurantName, uid }) => { // uid is passed as a prop
   const [name, setName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [tableNo, setTableNo] = useState('');
@@ -17,7 +17,7 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, restaurantName, uid 
       name,
       whatsapp,
       tableNo,
-      restaurantName, // Include the restaurant name in the order data
+      restaurantName, // Include the restaurant name in order data
       items: cartItems.map(item => ({
         name: item.name,
         price: item.price,

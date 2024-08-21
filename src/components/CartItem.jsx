@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CartItem.css';
 import { db } from '../firebase-config';
-import { collection, addDoc } from "firebase/firestore";
+import { collection, doc, getDoc } from "firebase/firestore";
 import PlaceOrderPage from './PlaceOrderPage';
 
 const CartItem = ({ 
@@ -11,10 +11,30 @@ const CartItem = ({
     removeItem, 
     setShowCustomerForm, 
     showCustomerForm, 
-    restaurantName, 
+    uid, // uid passed as a prop
 }) => {
-    const [showListPage, setShowListPage] = useState(false);
+    const [restaurantName, setRestaurantName] = useState('');
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
+
+    useEffect(() => {
+        const fetchRestaurantName = async () => {
+            if (uid) {
+                try {
+                    const docRef = doc(db, "restaurants", uid);
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        setRestaurantName(docSnap.data().name);
+                    } else {
+                        console.error("No such document!");
+                    }
+                } catch (error) {
+                    console.error("Error fetching restaurant name: ", error);
+                }
+            }
+        };
+
+        fetchRestaurantName();
+    }, [uid]);
 
     useEffect(() => {
         const storedCartData = JSON.parse(localStorage.getItem('cartData'));
@@ -38,14 +58,14 @@ const CartItem = ({
     };
 
     const handleBackToCart = () => {
-        setShowCartItem(false);
+        setShowCartItem(false); // Hide CartItem component, which should show the menu again
         setShowCustomerForm(false);
     };
 
     const handlePlaceOrderPage = () => {
         setShowPlaceOrderPage(true);
     };
-    
+
     if (showPlaceOrderPage) {
         return (
             <div className="cart-item-container">
@@ -58,7 +78,7 @@ const CartItem = ({
     }
 
     const handleListButton = () => {
-        setShowListPage(true);
+        setShowCartItem(false); // Hide CartItem component, which should show the menu again
     };
 
     return (
@@ -68,7 +88,7 @@ const CartItem = ({
                     <button className="back-button" onClick={handleBackToCart}>
                         ➜
                     </button>
-                    <h2>CART</h2>
+                    <h2>{restaurantName || "CART"}</h2>
                 </div>
                 {cartItems.length === 0 ? (
                     <div className="empty-cart-message">
@@ -108,12 +128,12 @@ const CartItem = ({
                     </div>
                 )}
                 <div className="cart-item-actions">
-                    <button className="action-button" onClick={() => setShowCartItem(false)}>
+                    <button className="action-button" onClick={handleListButton}>
                         Add Items
                     </button>
-                    {/* <button className="action-button" onClick={handleListButton}>
+                    <button className="action-button" onClick={handleListButton}>
                         List
-                    </button> */}
+                    </button>
                     <button className="action-button" onClick={handlePlaceOrderPage}>
                         Place Order
                     </button>

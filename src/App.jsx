@@ -35,9 +35,10 @@ const App = () => {
 
     const fetchRestaurantDetails = async (uid) => {
         try {
-            console.log(`Fetching restaurant details for UID: ${uid}`); // Debug log
-            const response = await fetch(`${apiBaseUrl}/restaurant/${uid}`);
-
+            const url = `${apiBaseUrl}/restaurant/${uid}`;
+            console.log(`Fetching restaurant details from URL: ${url}`); // Debug log
+            const response = await fetch(url);
+    
             console.log(`Received response with status: ${response.status}`); // Debug log
             
             if (response.ok) {
@@ -53,6 +54,7 @@ const App = () => {
             alert('Failed to load restaurant details. Please try again.');
         }
     };
+    
 
     const addItem = (item) => {
         console.log('Adding new item:', item); // Debug log

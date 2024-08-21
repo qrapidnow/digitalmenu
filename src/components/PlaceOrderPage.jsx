@@ -24,8 +24,6 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       })),
     };
 
-    console.log("Attempting to send order data:", orderData); // Log data being sent
-
     try {
       // Send order data to MongoDB backend
       const mongoResponse = await axios.post(
@@ -33,15 +31,15 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
         orderData,
         { headers: { 'Content-Type': 'application/json' } }
       );
-      console.log("MongoDB Order response data:", mongoResponse.data); // Log MongoDB response data
+      console.log("MongoDB Order response data:", mongoResponse.data);
 
-      // Send order data to Firebase (this part is assumed to already exist)
+      // Send order data to Firebase
       const firebaseResponse = await axios.post(
         `${import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API}/orders`,
         orderData,
         { headers: { 'Content-Type': 'application/json' } }
       );
-      console.log("Firebase Order response data:", firebaseResponse.data); // Log Firebase response data
+      console.log("Firebase Order response data:", firebaseResponse.data);
 
       Swal.fire({
         title: 'Order Placed Successfully!',
@@ -52,10 +50,6 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
       setShowPlaceOrderPage(false);
     } catch (error) {
       console.error('Error sending order:', error);
-      if (error.response) {
-        console.error('Response data:', error.response.data);
-        console.error('Response status:', error.response.status);
-      }
       Swal.fire({
         title: 'Failed to Place Order',
         text: 'Please try again.',

@@ -131,9 +131,9 @@ const CartItem = ({
                     <button className="action-button" onClick={handleListButton}>
                         Add Items
                     </button>
-                    <button className="action-button" onClick={handleListButton}>
+                    {/* <button className="action-button" onClick={handleListButton}>
                         List
-                    </button>
+                    </button> */}
                     <button className="action-button" onClick={handlePlaceOrderPage}>
                         Place Order
                     </button>

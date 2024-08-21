@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './PlaceOrderPage.css';
 
-const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, restaurantName }) => {
+const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage }) => {
   const [name, setName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [tableNo, setTableNo] = useState('');
@@ -22,20 +22,17 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, restaurantName }) =>
         price: item.price,
         quantity: item.quantity,
       })),
-      restaurantName, // Include the restaurant name using the passed prop
     };
 
     console.log("Attempting to send order data:", orderData); // Log data being sent
 
     try {
-      // Send order to MongoDB via your backend
       const response = await axios.post(
-        `${import.meta.env.VITE_APP_BASE_BACKEND_API}/orders`,
+        `${import.meta.env.VITE_APP_BASE_CUSTOMER_BACKEND_API}/orders`,
         orderData,
         { headers: { 'Content-Type': 'application/json' } }
       );
-      console.log("Order response data from MongoDB:", response.data); // Log response data
-
+      console.log("Order response data:", response.data); // Log response data
       Swal.fire({
         title: 'Order Placed Successfully!',
         text: 'Your order has been placed.',

@@ -29,7 +29,8 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
         });
 
         if (!categoryResponse.ok) {
-          throw new Error('Failed to fetch categories from the backend');
+          const errorText = await categoryResponse.text();
+          throw new Error(`Failed to fetch categories from the backend. Status: ${categoryResponse.status}, Error: ${errorText}`);
         }
 
         const categories = await categoryResponse.json();
@@ -49,7 +50,8 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
             });
 
             if (!itemsResponse.ok) {
-              throw new Error(`Failed to fetch items for category ${category.name}`);
+              const errorText = await itemsResponse.text();
+              throw new Error(`Failed to fetch items for category ${category.name}. Status: ${itemsResponse.status}, Error: ${errorText}`);
             }
 
             const items = await itemsResponse.json();
@@ -69,7 +71,7 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
         console.log("Final sections with items:", sectionsWithItems); // Debugging line
 
       } catch (error) {
-        console.error('Error fetching categories or items:', error.message);
+        console.error('Error fetching categories or items:', error.message); // Debugging line
       }
     };
 

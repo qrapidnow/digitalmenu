@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './PlaceOrderPage.css';
 
-const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, restaurantName, uid }) => { // Pass uid as a prop
+const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, restaurantName }) => {
   const [name, setName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [tableNo, setTableNo] = useState('');
@@ -23,7 +23,6 @@ const PlaceOrderPage = ({ cartItems, setShowPlaceOrderPage, restaurantName, uid 
         price: item.price,
         quantity: item.quantity,
       })),
-      uid // Pass the UID to the backend
     };
 
     try {

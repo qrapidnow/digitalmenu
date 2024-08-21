@@ -4,10 +4,10 @@ import FoodItemCard from './FoodItemCard';
 import { useParams } from 'react-router-dom';
 
 const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
-  const { uid } = useParams(); // UID of the restaurant
+  const { uid } = useParams(); // Restaurant UID from the URL
   const [sections, setSections] = useState([]); // Stores categories and their items
   const sectionRefs = useRef({}); // References to each section for scrolling
-  const apiBaseUrl = import.meta.env.VITE_APP_BASE_BACKEND_API; // Base URL of your backend API
+  const apiBaseUrl = import.meta.env.VITE_APP_BASE_BACKEND_API; // Updated environment variable
 
   useEffect(() => {
     if (!uid) {
@@ -17,12 +17,14 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
 
     const fetchCategoriesAndItems = async () => {
       try {
+        console.log("Fetching categories for restaurant UID:", uid); // Debugging line
+
         // Fetch categories for the restaurant
         const categoryResponse = await fetch(`${apiBaseUrl}/categories/${uid}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${localStorage.getItem('token')}` // Ensure the token is correct
           }
         });
 
@@ -31,15 +33,18 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
         }
 
         const categories = await categoryResponse.json();
+        console.log("Fetched categories:", categories); // Debugging line
 
         // Fetch items for each category
         const sectionsWithItems = await Promise.all(
           categories.map(async (category) => {
+            console.log(`Fetching items for category ID: ${category._id}`); // Debugging line
+
             const itemsResponse = await fetch(`${apiBaseUrl}/items/${category._id}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}` // Ensure the token is correct
               }
             });
 
@@ -48,6 +53,8 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
             }
 
             const items = await itemsResponse.json();
+            console.log(`Fetched items for category ${category.name}:`, items); // Debugging line
+
             sectionRefs.current[category._id] = React.createRef();
 
             return {
@@ -59,6 +66,8 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
         );
 
         setSections(sectionsWithItems);
+        console.log("Final sections with items:", sectionsWithItems); // Debugging line
+
       } catch (error) {
         console.error('Error fetching categories or items:', error.message);
       }
@@ -88,15 +97,13 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
         <div key={section.id} ref={sectionRefs.current[section.id]} className="menu-section">
           <h2>{section.title}</h2>
           <div className="menu-items">
-            {section.items.map((item) => {
-              return (
-                <FoodItemCard 
-                  key={item._id} 
-                  item={item} 
-                  addItem={addItem} 
-                />
-              );
-            })}
+            {section.items.map((item) => (
+              <FoodItemCard 
+                key={item._id} 
+                item={item} 
+                addItem={addItem} 
+              />
+            ))}
           </div>
         </div>
       ))}

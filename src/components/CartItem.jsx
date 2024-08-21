@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './CartItem.css';
-import { db } from '../firebase-config';
-import { collection, addDoc } from "firebase/firestore";
 import PlaceOrderPage from './PlaceOrderPage';
 
 const CartItem = ({ 
@@ -9,131 +7,25 @@ const CartItem = ({
     setShowCartItem, 
     updateItemCount, 
     removeItem, 
-    setShowCustomerForm, 
-    showCustomerForm, 
-    restaurantName, 
+    restaurantName 
 }) => {
-    const [showListPage, setShowListPage] = useState(false);
-    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-    const [customerName, setCustomerName] = useState('');
-    const [whatsappNumber, setWhatsappNumber] = useState('');
     const [showPlaceOrderPage, setShowPlaceOrderPage] = useState(false);
-
-    useEffect(() => {
-        const storedCartData = JSON.parse(localStorage.getItem('cartData'));
-        const storedCustomerData = JSON.parse(localStorage.getItem('customerData'));
-        const currentTime = new Date().getTime();
-
-        if (storedCartData && storedCustomerData) {
-            if (currentTime - storedCartData.timestamp < 20 * 60 * 1000) {
-                setCustomerName(storedCustomerData.name);
-                setWhatsappNumber(storedCustomerData.whatsapp_number);
-                setIsFormSubmitted(true);
-            } else {
-                localStorage.removeItem('cartData');
-                localStorage.removeItem('customerData');
-            }
-        }
-    }, []);
-
-    const saveCartData = () => {
-        const cartData = {
-            items: cartItems,
-            timestamp: new Date().getTime(),
-        };
-        const customerData = {
-            name: customerName,
-            whatsapp_number: whatsappNumber,
-            restaurant_name: restaurantName || "Unknown Restaurant",
-            items: cartItems,
-        };
-        localStorage.setItem('cartData', JSON.stringify(cartData));
-        localStorage.setItem('customerData', JSON.stringify(customerData));
-    };
 
     const handleBackToCart = () => {
         setShowCartItem(false);
-        setShowCustomerForm(false);
     };
 
     const handlePlaceOrderPage = () => {
         setShowPlaceOrderPage(true);
-      };
-    
-      if (showPlaceOrderPage) {
-        return (
-          <div className="cart-item-container">
-            <PlaceOrderPage
-              cartItems={cartItems}
-              setShowPlaceOrderPage={setShowPlaceOrderPage}
-            />
-          </div>
-        );
-      }
-
-    const handleListButton = () => {
-        setShowListPage(true);
     };
 
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await addDoc(collection(db, "customer_details"), {
-                name: customerName,
-                whatsapp_number: whatsappNumber,
-                restaurant_name: restaurantName || "Unknown Restaurant",
-                cart_items: cartItems.map(item => ({
-                    name: item.name,
-                    variation: item.variation ? item.variation.name : null,
-                    price: item.variation ? item.variation.price : item.price,
-                    quantity: item.quantity
-                })),
-                timestamp: new Date(),
-            });
-            setIsFormSubmitted(true);
-            saveCartData();
-        } catch (error) {
-            console.error("Error adding document: ", error);
-            alert("There was an error saving your information. Please try again.");
-        }
-    };
-
-    // Ensuring the return is properly checking conditions and displaying relevant UI
-    if (showCustomerForm && !isFormSubmitted) {
+    if (showPlaceOrderPage) {
         return (
             <div className="cart-item-container">
-                <div className="cart-item">
-                    <div className="cart-item-header">
-                        <button className="back-button" onClick={handleBackToCart}>
-                            ➜
-                        </button>
-                        <h2>Customer Details</h2>
-                    </div>
-                    <form onSubmit={handleFormSubmit} className="customer-form">
-                        <label htmlFor="name">Name:</label>
-                        <input
-                            type="text"
-                            id="name"
-                            value={customerName}
-                            onChange={(e) => setCustomerName(e.target.value)}
-                            required
-                        />
-                        <label htmlFor="whatsapp">WhatsApp Number:</label>
-                        <input
-                            type="text"
-                            id="whatsapp"
-                            value={whatsappNumber}
-                            onChange={(e) => setWhatsappNumber(e.target.value)}
-                            required
-                        />
-                        <button type="submit" className="action-button">
-                            Submit
-                        </button>
-                        <p className="reward-message">
-                            Enter your name and WhatsApp to get 50% discount!
-                        </p>
-                    </form>
-                </div>
+                <PlaceOrderPage
+                    cartItems={cartItems}
+                    setShowPlaceOrderPage={setShowPlaceOrderPage}
+                />
             </div>
         );
     }
@@ -187,9 +79,6 @@ const CartItem = ({
                 <div className="cart-item-actions">
                     <button className="action-button" onClick={() => setShowCartItem(false)}>
                         Add Items
-                    </button>
-                    <button className="action-button" onClick={handleListButton}>
-                        List
                     </button>
                     <button className="action-button" onClick={handlePlaceOrderPage}>
                         Place Order

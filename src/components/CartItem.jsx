@@ -87,9 +87,9 @@ const CartItem = ({
                     <button className="action-button" onClick={() => setShowCartItem(false)}>
                         Add Items
                     </button>
-                    <button className="action-button" onClick={handleListButton}>
+                    {/* <button className="action-button" onClick={handleListButton}>
                         List
-                    </button>
+                    </button> */}
                     <button className="action-button" onClick={handlePlaceOrderPage}>
                         Place Order
                     </button>

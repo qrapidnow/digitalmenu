@@ -9,10 +9,9 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
   const sectionRefs = useRef({}); // References to each section for scrolling
   const apiBaseUrl = import.meta.env.VITE_APP_BASE_BACKEND_API; // Updated environment variable
 
+  // Fetch the authentication token
   const fetchBestTimeToken = async () => {
     try {
-      console.log(`Fetching bestTimeToken for restaurant UID: ${uid}`); // Debug log
-
       const tokenResponse = await fetch(`${apiBaseUrl}/restaurant/${uid}`, {
         method: 'GET',
         headers: {
@@ -27,10 +26,7 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
       }
 
       const { bestTimeToken } = await tokenResponse.json();
-      console.log(`Fetched bestTimeToken: ${bestTimeToken}`); // Debug log
-
-      // Store bestTimeToken in localStorage or state
-      localStorage.setItem('bestTimeToken', bestTimeToken);
+      localStorage.setItem('bestTimeToken', bestTimeToken); // Store the token
       return bestTimeToken;
     } catch (error) {
       console.error('Error fetching bestTimeToken:', error.message);
@@ -44,14 +40,12 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
       return;
     }
 
+    // Fetch categories and their items
     const fetchCategoriesAndItems = async () => {
       const bestTimeToken = await fetchBestTimeToken();
       if (!bestTimeToken) return;
 
       try {
-        console.log("Fetching categories for restaurant UID:", uid); // Debug log
-
-        // Fetch categories for the restaurant
         const categoryResponse = await fetch(`${apiBaseUrl}/categories/${uid}`, {
           method: 'GET',
           headers: {
@@ -66,9 +60,7 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
         }
 
         const categories = await categoryResponse.json();
-        console.log("Fetched categories:", categories); // Debug log
 
-        // Check if categories are empty
         if (categories.length === 0) {
           console.log("No categories found.");
           return;
@@ -77,8 +69,6 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
         // Fetch items for each category
         const sectionsWithItems = await Promise.all(
           categories.map(async (category) => {
-            console.log(`Fetching items for category ID: ${category._id}`); // Debug log
-
             const itemsResponse = await fetch(`${apiBaseUrl}/items/${category._id}`, {
               method: 'GET',
               headers: {
@@ -93,8 +83,6 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
             }
 
             const items = await itemsResponse.json();
-            console.log(`Fetched items for category ${category.name}:`, items); // Debug log
-
             sectionRefs.current[category._id] = React.createRef();
 
             return {
@@ -105,10 +93,7 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
           })
         );
 
-        console.log("Setting sections with items:", sectionsWithItems); // Debug log
         setSections(sectionsWithItems);
-        console.log("Final sections with items:", sectionsWithItems); // Debug log
-
       } catch (error) {
         console.error('Error fetching categories or items:', error.message);
       }
@@ -123,6 +108,7 @@ const Menu = ({ addItem, cart, activeCategory, searchTerm }) => {
     }
   }, [activeCategory]);
 
+  // Filter sections based on search term
   const filteredSections = sections
     .map((section) => ({
       ...section,
